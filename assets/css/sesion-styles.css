@@ -1,0 +1,73 @@
+body {
+  background-color: #DCEDC8;
+}
+
+h1 {
+  font-family: "Merriweather", serif;
+  font-size: 40px;
+}
+
+.decorator {
+  height: 560px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  background-color: #8BC34A;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+}
+
+form {
+  margin-top: 140px;
+  width: 600px;
+  height: 800px;
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  z-index: 1;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form div {
+  text-align: left;
+}
+form .form-control {
+  height: 56px !important;
+  border-radius: 10px !important;
+}
+form .form-inputs {
+  width: 454px !important;
+}
+form label {
+  font-size: 20px;
+}
+form label input[type=checkbox] {
+  font-size: 15px;
+}
+form button {
+  width: 100%;
+  height: 52px;
+  background-color: #558B2F;
+  border-radius: 10px;
+  border: none;
+  font-size: 20px;
+  color: #FFFFFF;
+  margin-top: 20px;
+  transition: background-color 0.3s ease-in-out;
+}
+form button:hover {
+  background-color: #8BC34A;
+}
+
+footer {
+  background-color: #333333;
+  height: 54px;
+}
+footer p {
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  color: #E0E0E0;
+}/*# sourceMappingURL=sesion-styles.css.map */
