@@ -36,7 +36,7 @@ class UserDAO
         $usuarios = array();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $usuario = new User($row['id'], $row['nombre'], $row['apellido'], $row['contrasena'], $row['id_rol']);
+            $usuario = new User($row['id'], $row['nombre'], $row['apellido'], $row['contrasena'], $row['contrasena_cambiada'], $row['id_rol']);
             array_push($usuarios, $usuario);
         }
 
@@ -52,10 +52,26 @@ class UserDAO
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($row) {
-            return new User($row['id'], $row['nombre'], $row['apellido'], $row['contrasena'], $row['id_rol']);
+            return new User($row['id'], $row['nombre'], $row['apellido'], $row['contrasena'], $row['contrasena_cambiada'], $row['id_rol']);
         } else {
             return null;
         }
+    }
+    public function updatePassword($user_id, $hashed_password)
+    {
+        $sql = "UPDATE usuarios SET contrasena = :contrasena WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':contrasena', $hashed_password);
+        $stmt->bindParam(':id', $user_id);
+        return $stmt->execute();
+    }
+
+    public function setPasswordChanged($user_id)
+    {
+        $sql = "UPDATE usuarios SET contrasena_cambiada = 1 WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $user_id);
+        return $stmt->execute();
     }
 }
 ?>

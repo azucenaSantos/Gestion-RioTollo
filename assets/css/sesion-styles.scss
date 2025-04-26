@@ -1,18 +1,11 @@
 @import "variables";
-body{
-  background-color: $third-color;
-}
-h1 {
-  font-family: "Merriweather", serif;
-  font-size: 40px;
-}
 
 .decorator {
   height: 560px;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: -2;
   width: 100%;
   background-color: $primary-color;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
@@ -30,25 +23,68 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  .alert{
-    height: 20px !important;
-    font-size: 12px;
+
+  .alert {
+    height: 30px !important;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
   }
 
   div {
     text-align: left;
   }
   .form-control {
-    height: 56px !important;
+    height: 46px !important;
     border-radius: 10px !important;
   }
   .form-inputs {
     width: 454px !important;
   }
+  .inputPassword {
+
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+  }
+  .input-group-text {
+    border: 1px solid $color-lightgrey;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    background-color: $color-lightgrey !important;
+    transition: background-color 0.3s ease-in-out;
+    color: $color-grey !important;
+
+    &:hover {
+      background-color: $color-grey !important;
+      color: $color-lightgrey !important;
+    }
+  }
+
+  .form-remember {
+    display: flex;
+    label {
+      margin-left: 5px;
+      font-size: 16px;
+    }
+  }
+
+  .form-forgot {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    a {
+      position: relative;
+      color: $color-grey;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }      
+    }
+  }
+  
 
   label {
-    font-size: 20px;
+    font-size: 18px;
     input[type="checkbox"] {
       font-size: 15px;
     }
@@ -67,15 +103,5 @@ form {
     &:hover {
       background-color: $primary-color;
     }
-  }
-}
-
-footer {
-  background-color: $color-grey;
-  height: 54px;
-  p {
-    font-size: 15px;
-    font-family: $font-Mont;
-    color: $color-lightgrey;
   }
 }

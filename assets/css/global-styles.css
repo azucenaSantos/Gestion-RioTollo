@@ -1,0 +1,89 @@
+h1 {
+  font-family: "Merriweather", serif;
+  font-size: 35px;
+}
+
+h2 {
+  font-family: "Merriweather", serif;
+  font-size: 25px;
+}
+
+h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+}
+
+a {
+  font-size: 14px;
+}
+
+footer {
+  background-color: #333333;
+  height: 54px;
+  width: 100%;
+}
+footer p {
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  color: #E0E0E0;
+}
+
+.input-error {
+  border: 1px solid red !important;
+}
+
+.welcome {
+  display: flex;
+  align-items: baseline;
+  width: 485px;
+  margin-left: 48px;
+}
+.welcome .iconUser,
+.welcome .iconLogout {
+  font-size: 42px;
+}
+.welcome .buttonLogout {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.welcome .buttonLogout .iconLogout {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  transition: color 0.2s ease-in-out;
+}
+.welcome .buttonLogout .iconLogout:hover {
+  color: red;
+}
+
+.lateral-menu {
+  background-color: #DCEDC8;
+  width: 400px;
+  height: 77vh;
+  padding-top: 36px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.lateral-menu li {
+  display: flex;
+  align-items: center;
+  height: 60px !important;
+  padding-left: 30px;
+  margin-top: 20px;
+  transition: background-color 0.4s ease-in-out;
+}
+.lateral-menu li:hover {
+  background-color: #8BC34A;
+}
+.lateral-menu .nav-section {
+  text-decoration: none;
+  color: #333333;
+  display: flex;
+  align-items: baseline;
+}
+.lateral-menu .nav-section i {
+  font-size: 21px;
+  margin-right: 10px;
+}/*# sourceMappingURL=global-styles.css.map */

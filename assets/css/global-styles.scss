@@ -1,0 +1,95 @@
+@import "variables.scss";
+
+h1 {
+  font-family: $font-Merri;
+  font-size: 35px;
+}
+
+h2 {
+  font-family: $font-Merri;
+  font-size: 25px;
+}
+
+h3 {
+  font-family: $font-Mont;
+  font-size: 20px;
+}
+
+a {
+  font-size: 14px;
+}
+footer {
+  background-color: $color-grey;
+  height: 54px;
+  width: 100%;
+  p {
+    font-size: 15px;
+    font-family: $font-Mont;
+    color: $color-lightgrey;
+  }
+}
+
+.input-error {
+  border: 1px solid red !important;
+}
+
+header {
+  //background-color: $third-color;
+}
+.welcome {
+  display: flex;
+  align-items: baseline;
+  width: 485px;
+  margin-left: 48px;
+
+  .iconUser,
+  .iconLogout {
+    font-size: 42px;
+  }
+  .buttonLogout {
+    //Eliminar estilos del botón
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    .iconLogout {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      transition: color 0.2s ease-in-out;
+      &:hover {
+        color: red;
+      }
+    }
+  }
+}
+
+.lateral-menu {
+  background-color: $third-color;
+  width: 400px;
+  height: 77vh;
+  padding-top: 36px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  li{
+    display: flex;
+    align-items: center;
+    height: 60px !important;
+    padding-left: 30px;
+    margin-top: 20px;
+    transition: background-color 0.4s ease-in-out;
+    &:hover{
+      background-color: $primary-color;
+    }
+  }
+  .nav-section {
+    text-decoration: none;
+    color: $color-grey;
+    display: flex;
+    align-items: baseline;
+    i{
+      font-size: 21px;
+      margin-right: 10px;
+    }
+  }
+}

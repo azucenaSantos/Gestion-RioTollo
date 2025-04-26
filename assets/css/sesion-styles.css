@@ -1,18 +1,9 @@
-body {
-  background-color: #DCEDC8;
-}
-
-h1 {
-  font-family: "Merriweather", serif;
-  font-size: 40px;
-}
-
 .decorator {
   height: 560px;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: -2;
   width: 100%;
   background-color: #8BC34A;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
@@ -32,21 +23,59 @@ form {
   align-items: center;
 }
 form .alert {
-  height: 20px !important;
-  font-size: 12px;
+  height: 30px !important;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
 }
 form div {
   text-align: left;
 }
 form .form-control {
-  height: 56px !important;
+  height: 46px !important;
   border-radius: 10px !important;
 }
 form .form-inputs {
   width: 454px !important;
 }
+form .inputPassword {
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+form .input-group-text {
+  border: 1px solid #E0E0E0;
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+  background-color: #E0E0E0 !important;
+  transition: background-color 0.3s ease-in-out;
+  color: #333333 !important;
+}
+form .input-group-text:hover {
+  background-color: #333333 !important;
+  color: #E0E0E0 !important;
+}
+form .form-remember {
+  display: flex;
+}
+form .form-remember label {
+  margin-left: 5px;
+  font-size: 16px;
+}
+form .form-forgot {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+form .form-forgot a {
+  position: relative;
+  color: #333333;
+  text-decoration: none;
+}
+form .form-forgot a:hover {
+  text-decoration: underline;
+}
 form label {
-  font-size: 20px;
+  font-size: 18px;
 }
 form label input[type=checkbox] {
   font-size: 15px;
@@ -64,14 +93,4 @@ form button {
 }
 form button:hover {
   background-color: #8BC34A;
-}
-
-footer {
-  background-color: #333333;
-  height: 54px;
-}
-footer p {
-  font-size: 15px;
-  font-family: "Montserrat", sans-serif;
-  color: #E0E0E0;
 }/*# sourceMappingURL=sesion-styles.css.map */
