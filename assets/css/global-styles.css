@@ -1,3 +1,9 @@
+@media screen and (max-width: 600px) {
+  body {
+    width: 100vh !important;
+  }
+}
+
 h1 {
   font-family: "Merriweather", serif;
   font-size: 35px;

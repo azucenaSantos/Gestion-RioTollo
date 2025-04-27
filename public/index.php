@@ -9,9 +9,10 @@ if (!isset($_REQUEST['c'])) {
     session_unset(); // Elimina todas las variables de sesión
     session_destroy(); // Destruye la sesión
     require_once '../view/sesion/sesion.php';
-    exit();
 } else {
     // Obtenemos el controlador que queremos cargar
+    //echo "Controlador: " . $_REQUEST['c'] . " - Acción: " . $_REQUEST['a'];
+
     $controller = strtolower($_REQUEST['c']);
     $accion = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'Index';
 

@@ -5,10 +5,13 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -2;
-  width: 100%;
+  z-index: -1;
+  width: 100vw;
   background-color: $primary-color;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  @media screen and (max-width: 600px) {
+    width: 100vh !important;
+  }
 }
 
 form {
@@ -23,6 +26,7 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 190px !important;
 
   .alert {
     height: 30px !important;
@@ -42,7 +46,6 @@ form {
     width: 454px !important;
   }
   .inputPassword {
-
     border-top-right-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
   }
@@ -78,10 +81,9 @@ form {
       text-decoration: none;
       &:hover {
         text-decoration: underline;
-      }      
+      }
     }
   }
-  
 
   label {
     font-size: 18px;
@@ -104,4 +106,14 @@ form {
       background-color: $primary-color;
     }
   }
+}
+
+.error-message {
+  font-size: 0.875rem;
+  margin-top: 5px;
+  display: none; // Ocultar por defecto
+}
+
+.error-message.visible {
+  display: block; // Mostrar cuando tenga la clase "visible"
 }

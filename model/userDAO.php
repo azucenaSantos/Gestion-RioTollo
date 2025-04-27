@@ -73,5 +73,14 @@ class UserDAO
         $stmt->bindParam(':id', $user_id);
         return $stmt->execute();
     }
+
+    public function updatePasswordChanged($user_id, $password_changed)
+    {
+        $sql = "UPDATE usuarios SET contrasena_cambiada = :contrasena_cambiada WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':contrasena_cambiada', $password_changed);
+        $stmt->bindParam(':id', $user_id);
+        return $stmt->execute();
+    }
 }
 ?>

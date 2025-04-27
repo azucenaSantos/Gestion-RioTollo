@@ -22,7 +22,7 @@
     <header> <!-- Header, comun a todos los usuarios -->
         <?php
         session_start(); //Inicio sesion para obtener el nombre de usuario almacenado
-        print_r($_SESSION);
+        //print_r($_SESSION);
         ?>
         <div class="welcome">
             <img class="mt-4" src="/GestionRioTollo/assets/img/logo.jpg" alt="Logotipo Rio Tollo" width="140px"

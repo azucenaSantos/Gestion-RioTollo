@@ -1,5 +1,11 @@
 @import "variables.scss";
 
+body{
+  @media screen and (max-width: 600px) {
+    width: 100vh !important;
+  }
+}
+
 h1 {
   font-family: $font-Merri;
   font-size: 35px;

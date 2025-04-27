@@ -1,9 +1,7 @@
 <?php
-/*session_start();
-if (!isset($_SESSION['user_id'])) {
-    header('Location: sesion.php');
-    exit();
-}*/
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -20,19 +18,19 @@ if (!isset($_SESSION['user_id'])) {
     <link
         href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/GestionRioTollo/assets/css/global-styles.css">
-    <link rel="stylesheet" href="/GestionRioTollo/assets/css/sesion-styles.css">
+        <link rel="stylesheet" href="../../assets/css/global-styles.css">
+        <link rel="stylesheet" href="../../assets/css/sesion-styles.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="/GestionRioTollo/assets/js/password-validation.js" defer></script>
+    <!--archovo de validacion de contraseñas-->
 </head>
 
-<body class="text-center">
-    <?php
-    session_start(); //Inicio sesion para obtener el nombre de usuario almacenado
-    ?>
+<body>
     <div class="decorator"></div>
     <main class="form-signin mb-5">
-        <form class="mx-auto p-5 shadow-sm" action="?c=User&a=changePassword" method="post">
+        <form class="mx-auto p-5 shadow-sm" action="/GestionRioTollo/public/index.php?c=User&a=changePassword"
+            method="post">
             <h1>Cambiar Contraseña</h1>
             <p class="mt-3">Introduzca la nueva contraseña para su inicio de sesión:</p>
             <div class="form-inputs">
@@ -55,8 +53,9 @@ if (!isset($_SESSION['user_id'])) {
                             <i class="la la-eye-slash"></i>
                         </span>
                     </div>
+                    <div id="errorValidation"></div>
                 </div>
-                <div class="checkbox mt-4">
+                <div class="checkbox mt-4 mb-4">
                     <label for="confirm_password">Confirmar contraseña:</label>
                     <div class="input-group">
                         <input type="password" id="confirmPassword" name="confirm_password"
@@ -65,10 +64,11 @@ if (!isset($_SESSION['user_id'])) {
                             <i class="la la-eye-slash"></i>
                         </span>
                     </div>
+                    <div id="errorSame"></div>
                 </div>
-                <?php if (!empty($errorPassword)): ?>
+                <?php if (!empty($error)): ?>
                     <div class="alert alert-danger">
-                        <?php echo htmlspecialchars($errorPassword); ?>
+                        <?php echo $error; ?>
                     </div>
                 <?php endif; ?>
 
@@ -86,22 +86,6 @@ if (!isset($_SESSION['user_id'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
-    <!--TO.DO-->
-    <!--pasar a un archivo js-->
-    <script>
-        document.querySelectorAll('.input-group-text').forEach(toggle => {
-            toggle.addEventListener('click', function () {
-                const input = this.previousElementSibling; // Selecciona el input asociado
-                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
-                input.setAttribute('type', type);
-
-                // Cambiar el icono
-                const icon = this.querySelector('i');
-                icon.classList.toggle('la-eye');
-                icon.classList.toggle('la-eye-slash');
-            });
-        });
-    </script>
 </body>
 
 </html>
