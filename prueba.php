@@ -9,7 +9,7 @@ $verifica = password_verify($contraInto, $contraHash) ;
 ?>
 
 <?php
-$contraHash = password_hash('rosa123', PASSWORD_BCRYPT) ;
+$contraHash = password_hash('patricia123', PASSWORD_BCRYPT) ;
     echo $contraHash . "\n";
 
 $contraInto= "rosa123" ;

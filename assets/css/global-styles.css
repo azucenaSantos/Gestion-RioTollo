@@ -1,7 +1,15 @@
+@charset "UTF-8";
+body {
+  position: relative;
+}
 @media screen and (max-width: 600px) {
   body {
     width: 100vh !important;
   }
+}
+
+.content {
+  z-index: 10;
 }
 
 h1 {
@@ -41,12 +49,17 @@ footer p {
 .welcome {
   display: flex;
   align-items: baseline;
-  width: 485px;
   margin-left: 48px;
 }
-.welcome .iconUser,
-.welcome .iconLogout {
+.welcome .welcome-text {
+  display: flex;
+  align-items: baseline;
+}
+.welcome .welcome-text .iconUser {
   font-size: 42px;
+}
+.welcome .nav-container {
+  margin-left: 120px;
 }
 .welcome .buttonLogout {
   background: none;
@@ -55,6 +68,7 @@ footer p {
   margin: 0;
 }
 .welcome .buttonLogout .iconLogout {
+  font-size: 42px;
   position: absolute;
   top: 30px;
   right: 30px;
@@ -65,7 +79,6 @@ footer p {
 }
 
 .lateral-menu {
-  background-color: #DCEDC8;
   width: 400px;
   height: 77vh;
   padding-top: 36px !important;
@@ -76,7 +89,7 @@ footer p {
   display: flex;
   align-items: center;
   height: 60px !important;
-  padding-left: 30px;
+  padding-left: 10px;
   margin-top: 20px;
   transition: background-color 0.4s ease-in-out;
 }
@@ -92,4 +105,18 @@ footer p {
 .lateral-menu .nav-section i {
   font-size: 21px;
   margin-right: 10px;
+}
+
+.line {
+  position: absolute; /* Lo coloca en la parte inferior de la página */
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 400px;
+  border-right: 1px solid #E0E0E0;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  z-index: -1; /* Asegura que el div esté por debajo de todo el contenido */
 }/*# sourceMappingURL=global-styles.css.map */

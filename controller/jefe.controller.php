@@ -11,25 +11,36 @@ class JefeController
 
     public function index()
     {
-        echo "Controlador de Jefe";
-        require_once '../view/jefe/jefe.php';
+        header('Location: ../view/jefe/jefe.php');
+        //require_once '../view/jefe/jefe.php';
+
     }
 
     public function gestionTrabajos()
     {
-        echo "Controlador de Jefe";
+        $pagina = "gestion-trabajos";
+        require_once '../view/header.php';
+        require_once '../view/jefe/gestionTrabajos.php';
+        require_once '../view/footer.php';
 
-        //require_once '../view/jefe/gestionTrabajos.php';
     }
 
     public function gestionGrupos()
     {
+        $pagina = "gestion-grupos";
+        require_once '../view/header.php';
         require_once '../view/jefe/gestionGrupos.php';
+        require_once '../view/footer.php';
+
     }
 
     public function visualizarProcesos()
     {
+        $pagina = "visualizar-procesos";
+        require_once '../view/header.php';
         require_once '../view/jefe/visualizarProcesos.php';
+        require_once '../view/footer.php';
+
     }
 
 }

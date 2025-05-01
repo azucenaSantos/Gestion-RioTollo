@@ -82,5 +82,20 @@ class UserDAO
         $stmt->bindParam(':id', $user_id);
         return $stmt->execute();
     }
+
+    //Funcion para obtener el nombre del rol de un usuario
+    public function getRolFromUser($user_rol){
+        $sql = "SELECT nombre FROM ms_roles WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $user_rol, PDO::PARAM_STR);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($row) {
+            return $row['nombre']; // Devuelve el nombre del rol
+        } else {
+            return null;
+        }
+    }
 }
 ?>

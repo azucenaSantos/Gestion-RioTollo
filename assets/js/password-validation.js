@@ -34,15 +34,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-document.querySelectorAll('.input-group-text').forEach(toggle => {
-    toggle.addEventListener('click', function () {
-        const input = this.previousElementSibling; // Selecciona el input asociado
-        const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
-        input.setAttribute('type', type);
-
-        // Cambiar el icono
-        const icon = this.querySelector('i');
-        icon.classList.toggle('la-eye');
-        icon.classList.toggle('la-eye-slash');
-    });
-});

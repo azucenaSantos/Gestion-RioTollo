@@ -34,7 +34,7 @@
                     <i class="las la-user iconUser"></i>
                     <h2 style="margin-bottom: 18px;">
                         <?php if (isset($_SESSION['username']))
-                            echo $_SESSION['username'] ?>  <strong style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name'] ?></strong>
+                            echo $_SESSION['username'] ?> <strong style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name'] ?></strong>
                     </h2>
                 </div>
                 <div class="nav-container">
@@ -79,21 +79,15 @@
             <div class="d-flex flex-column p-3 lateral-menu">
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="../../public/index.php?c=Jefe&a=gestionTrabajos" class="nav-section">
+                        <a href="../../public/index.php?c=Rrhh&a=gestionTrabajos" class="nav-section">
                             <i class="las la-briefcase"></i>
-                            <h3>Gestion de trabajos</h3>
+                            <h3>Gestionar Trabajadores</h3>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="../../public/index.php?c=Jefe&a=gestionGrupos" class="nav-section">
+                        <a href="../../public/index.php?c=Rrhh&a=gestionJefes" class="nav-section">
                             <i class="las la-object-group"></i>
-                            <h3>Gestion de grupos</h3>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../../public/index.php?c=Jefe&a=visualizarProcesos" class="nav-section">
-                            <i class="las la-chart-bar"></i>
-                            <h3>Visualizar procesos</h3>
+                            <h3>Gestionar Jefes</h3>
                         </a>
                     </li>
                 </ul>
@@ -101,48 +95,34 @@
             <!--Contenedor principal, donde se cargan los contenidos del apartado seleccionado -->
             <main class="d-flex flex-column align-items-center">
                 <div class="info-container">
-                    <h1 class="text-center">Bienvenido al Panel de Jefe</h1>
-                    <p class="text-center">Desde aquí podrás gestionar los trabajos y grupos de trabajo de la empresa.
+                    <h1 class="text-center">Bienvenido al Panel de Administrador (RRHH)</h1>
+                    <p class="text-center">Desde aquí podrás gestionar trabajadores y jefes que están registrados en la
+                        empresa.
                     </p>
-                    <p class="text-center">Además de visualizar los proceso de los trabajos realizados en diferentes
-                        zonas
-                        del vivero.</p>
+                    <p class="text-center">Podrás añadir, crear y modificar datos de jefes y trabajadores del vivero.
+                    </p>
                 </div>
                 <div class="container mt-5">
                     <div class="row text-center">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <i class="las la-briefcase display-4 mb-3"></i>
-                                    <h5 class="card-title">Gestión de Trabajos</h5>
-                                    <p class="card-text">Crea, edita y supervisa los trabajos asignados a los empleados.
-                                    </p>
+                                    <h5 class="card-title">Gestión de Trabajadors</h5>
+                                    <p class="card-text">Crea, edita y elimina trabajadores de la empresa.</p>
                                     <!-- <a href="../../public/index.php?c=Jefe&a=gestionTrabajos" class="btn btn-primary">Ir a
                                         Trabajos</a> -->
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <i class="las la-object-group display-4 mb-3"></i>
-                                    <h5 class="card-title">Gestión de Grupos</h5>
-                                    <p class="card-text">Organiza y administra los grupos de trabajo de la empresa.</p>
+                                    <h5 class="card-title">Gestión de Jefes</h5>
+                                    <p class="card-text">Crea, edita y elimina jefes de la empresa.</p>
                                     <!-- <a href="../../public/index.php?c=Jefe&a=gestionGrupos" class="btn btn-primary">Ir a
                                         Grupos</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card shadow-sm">
-                                <div class="card-body">
-                                    <i class="las la-chart-bar display-4 mb-3"></i>
-                                    <h5 class="card-title">Visualizar Procesos</h5>
-                                    <p class="card-text">Consulta el progreso y los resultados de los trabajos
-                                        realizados en
-                                        el vivero.</p>
-                                    <!-- <a href="../../public/index.php?c=Jefe&a=visualizarProcesos" class="btn btn-primary">Ir
-                                        a Procesos</a> -->
                                 </div>
                             </div>
                         </div>

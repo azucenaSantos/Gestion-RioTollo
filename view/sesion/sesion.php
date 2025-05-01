@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Inicio de Sesion</title>
-    <link rel="icon" href="/GestionRioTollo/assets/img/logo.jpg" type="image/x-icon">
+    <link rel="icon" href="../../assets/img/logo.jpg" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../assets/css/sesion-styles.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="../assets/js/eyes-sesion.js" defer></script>
 </head>
 
 <body>
@@ -85,26 +86,6 @@
         <p class="mt-3">© 2025 Gestion Rio Tollo - Rio Tollo S.L </p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
-    <!--TO.DO-->
-    <!--pasar a un archivo js-->
-    <script>
-        const togglePassword = document.querySelector('#togglePassword');
-        const passwordInput = document.querySelector('#inputPassword');
-
-        togglePassword.addEventListener('click', function () {
-            // Cambiar el tipo de input entre 'password' y 'text'
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-
-            // Cambiar el icono
-            const icon = this.querySelector('i');
-            icon.classList.toggle('la-eye');
-            icon.classList.toggle('la-eye-slash');
-        });
-    </script>
 </body>
 
 </html>

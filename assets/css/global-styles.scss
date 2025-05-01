@@ -1,9 +1,14 @@
 @import "variables.scss";
 
-body{
+body {
+  position: relative;
   @media screen and (max-width: 600px) {
     width: 100vh !important;
   }
+}
+
+.content {
+  z-index: 10;
 }
 
 h1 {
@@ -39,19 +44,23 @@ footer {
   border: 1px solid red !important;
 }
 
-header {
-  //background-color: $third-color;
-}
 .welcome {
   display: flex;
   align-items: baseline;
-  width: 485px;
+  //width: 485px;
   margin-left: 48px;
 
-  .iconUser,
-  .iconLogout {
-    font-size: 42px;
+  .welcome-text {
+    display: flex;
+    align-items: baseline;
+    .iconUser {
+      font-size: 42px;
+    }
   }
+  .nav-container {
+    margin-left: 120px;
+  }
+
   .buttonLogout {
     //Eliminar estilos del botón
     background: none;
@@ -59,6 +68,8 @@ header {
     padding: 0;
     margin: 0;
     .iconLogout {
+      font-size: 42px;
+
       position: absolute;
       top: 30px;
       right: 30px;
@@ -71,20 +82,20 @@ header {
 }
 
 .lateral-menu {
-  background-color: $third-color;
+  //background-color: $third-color;
   width: 400px;
   height: 77vh;
   padding-top: 36px !important;
   padding-left: 0px !important;
   padding-right: 0px !important;
-  li{
+  li {
     display: flex;
     align-items: center;
     height: 60px !important;
-    padding-left: 30px;
+    padding-left: 10px;
     margin-top: 20px;
     transition: background-color 0.4s ease-in-out;
-    &:hover{
+    &:hover {
       background-color: $primary-color;
     }
   }
@@ -93,9 +104,24 @@ header {
     color: $color-grey;
     display: flex;
     align-items: baseline;
-    i{
+    i {
       font-size: 21px;
       margin-right: 10px;
     }
   }
+}
+
+.line {
+  position: absolute; /* Lo coloca en la parte inferior de la página */
+  top:0;
+  left: 0;
+  height: 100vh;
+  width: 400px;
+  border-right: 1px solid #E0E0E0;
+  
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  z-index: -1; /* Asegura que el div esté por debajo de todo el contenido */
 }

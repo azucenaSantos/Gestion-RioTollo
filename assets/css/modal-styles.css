@@ -1,0 +1,36 @@
+#buttonModal {
+  width: 35%;
+  height: 40px;
+  background-color: #558B2F;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+  color: #FFFFFF;
+  margin-top: 20px;
+  transition: background-color 0.3s ease-in-out;
+}
+#buttonModal:hover {
+  background-color: #8BC34A;
+}
+#buttonModal a {
+  font-size: 15px;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+#buttonModalCancel {
+  width: 35%;
+  height: 40px;
+  background-color: #333333;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+  color: #FFFFFF;
+  margin-top: 20px;
+  transition: background-color 0.3s ease-in-out;
+}
+#buttonModalCancel:hover {
+  background-color: #FFFFFF;
+  color: #333333;
+  border: 1px solid #333333;
+}/*# sourceMappingURL=modal-styles.css.map */

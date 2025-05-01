@@ -108,12 +108,3 @@ form {
   }
 }
 
-.error-message {
-  font-size: 0.875rem;
-  margin-top: 5px;
-  display: none; // Ocultar por defecto
-}
-
-.error-message.visible {
-  display: block; // Mostrar cuando tenga la clase "visible"
-}

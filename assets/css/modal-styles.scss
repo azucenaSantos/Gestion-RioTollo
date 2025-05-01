@@ -1,0 +1,39 @@
+@import "variables";
+
+#buttonModal {
+  width: 35%;
+  height: 40px;
+  background-color: $secondary-color;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+  color: $color-white;
+  margin-top: 20px;
+  transition: background-color 0.3s ease-in-out;
+  &:hover {
+    background-color: $primary-color;
+  }
+  a {
+    font-size: 15px;
+    text-decoration: none;
+    color: $color-white;
+  }
+}
+
+#buttonModalCancel {
+  width: 35%;
+  height: 40px;
+  background-color: $color-grey;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+  color: $color-white;
+  margin-top: 20px;
+  transition: background-color 0.3s ease-in-out;
+  &:hover {
+    background-color: $color-white;
+    color: $color-grey;    
+    border: 1px solid $color-grey;
+
+  }
+}

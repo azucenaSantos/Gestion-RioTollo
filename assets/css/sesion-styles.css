@@ -99,14 +99,4 @@ form button {
 }
 form button:hover {
   background-color: #8BC34A;
-}
-
-.error-message {
-  font-size: 0.875rem;
-  margin-top: 5px;
-  display: none;
-}
-
-.error-message.visible {
-  display: block;
 }/*# sourceMappingURL=sesion-styles.css.map */

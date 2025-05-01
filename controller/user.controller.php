@@ -24,10 +24,13 @@ class UserController
 
             //Comrpobamos si existe el usuario y luego si es correcta la contraseña
             if ($user) {
+                //Guardammos el nombre de su rol para mostrarlo en el header
+                $rolName = $this->model->getRolFromUser($user->getRol());
                 session_start();
                 $_SESSION['user_id'] = $user->getId();
                 $_SESSION['username'] = $user->getName();
                 $_SESSION['rol'] = $user->getRol();
+                $_SESSION['rol_name'] = $rolName;
 
 
                 //Comprobar si la contraseña es correcta
@@ -37,7 +40,8 @@ class UserController
                         $user->setPasswordChanged(1);
                         $this->model->updatePasswordChanged($user->getId(), $user->getPasswordChanged());
                         //Si es la primera vez que inicia sesión, redirigir a la página de cambio de contraseña
-                        require_once '../view/sesion/cambiar_password.php';
+                        header('Location: ../view/sesion/cambiar_password.php');
+                        //require_once '../view/sesion/cambiar_password.php';
                         exit();
                     } else {
                         //Guardamos datos de usuario en la sesion
@@ -67,10 +71,10 @@ class UserController
                                 header('Location: ../view/jefe/jefe.php');
                                 break;
                             case '20': //rrhh
-                                //header('Location: ../view/user/dashboard.php');
+                                header('Location: ../view/rrhh/rrhh.php');
                                 break;
                             case '30': //coordinador
-                                //header('Location: ../view/user/dashboard.php');
+                                header('Location: ../view/coordinador/coordinador.php');
                                 break;
                             case '40': //traabajador
                                 //header('Location: ../view/user/dashboard.php');
@@ -153,7 +157,7 @@ class UserController
             // Actualizar la contraseña en la base de datos
             if ($this->model->updatePassword($user_id, $hashed_password)) {
                 // Redirigir al usuario según su rol
-                switch ($_SESSION['rol']) {
+                switch ($user_rol) {
                     case '1': // admin
                         //header('Location: ../view/admin/dashboard.php');
                         break;
@@ -161,10 +165,10 @@ class UserController
                         header('Location: ../view/jefe/jefe.php');
                         break;
                     case '20': // rrhh
-                        //header('Location: ../view/user/dashboard.php');
+                        header('Location: ../view/rrhh/rrhh.php');
                         break;
                     case '30': // coordinador
-                        //header('Location: ../view/user/dashboard.php');
+                        header('Location: ../view/coordinador/coordinador.php');
                         break;
                     case '40': // trabajador
                         //header('Location: ../view/user/dashboard.php');
@@ -185,8 +189,22 @@ class UserController
         }
     }
 
-
-
+    //Funcion para cerrar sesion
+    public function logout()
+    {
+        //Iniciar sesion si no está iniciada
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        session_destroy();
+        //Eliminar las posibles cookies
+        // setcookie('username', '', time() - 3600, "/");
+        // setcookie('password', '', time() - 3600, "/");
+        // setcookie('remember', '', time() - 3600, "/");
+        //Redirigimos a la pagina de inicio de sesion (la principal)
+        header('Location: ../public/index.php');
+        exit();
+    }
 }
 
 
