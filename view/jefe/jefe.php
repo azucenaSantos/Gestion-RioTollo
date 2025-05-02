@@ -1,8 +1,8 @@
-<html lang="en" data-bs-theme="dark">
-
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Jefe</title>
     <link rel="icon" href="../../assets/img/logo.jpg" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -12,9 +12,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/GestionRioTollo/assets/css/global-styles.css">
-    <link rel="stylesheet" href="/GestionRioTollo/assets/css/user-styles.css">
-    <link rel="stylesheet" href="/GestionRioTollo/assets/css/modal-styles.css">
+    <link rel="stylesheet" href="../../assets/css/global-styles.css">
+    <link rel="stylesheet" href="../../assets/css/user-styles.css">
+    <link rel="stylesheet" href="/../../assets/css/modal-styles.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <script src="../../assets/js/logout.js" defer></script>
@@ -33,8 +33,8 @@
                 <div class="welcome-text d-flex align-items-center">
                     <i class="las la-user iconUser"></i>
                     <h2 style="margin-bottom: 18px;">
-                        <?php if (isset($_SESSION['username']))
-                            echo $_SESSION['username'] ?>  <strong style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name'] ?></strong>
+                        <?php if (isset($_SESSION['name']))
+                            echo $_SESSION['name'] ?>  <strong style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name'] ?></strong>
                     </h2>
                 </div>
                 <div class="nav-container">

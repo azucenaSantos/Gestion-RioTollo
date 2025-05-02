@@ -2,13 +2,26 @@
 
 body {
   position: relative;
-  @media screen and (max-width: 600px) {
-    width: 100vh !important;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  @media (max-width: 600px) {
+    //width: 100vh !important;
   }
 }
 
 .content {
   z-index: 10;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 h1 {
@@ -30,6 +43,8 @@ a {
   font-size: 14px;
 }
 footer {
+  position: relative;
+  bottom: 0;
   background-color: $color-grey;
   height: 54px;
   width: 100%;
@@ -113,12 +128,12 @@ footer {
 
 .line {
   position: absolute; /* Lo coloca en la parte inferior de la página */
-  top:0;
+  top: 0;
   left: 0;
   height: 100vh;
   width: 400px;
-  border-right: 1px solid #E0E0E0;
-  
+  border-right: 1px solid #e0e0e0;
+
   color: white;
   text-align: center;
   padding: 20px;

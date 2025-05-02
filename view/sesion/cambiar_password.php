@@ -7,8 +7,8 @@ if (session_status() === PHP_SESSION_NONE) {
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cambiar contraseña</title>
     <link rel="icon" href="../../assets/img/logo.jpg" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -28,61 +28,63 @@ if (session_status() === PHP_SESSION_NONE) {
 </head>
 
 <body>
-    <div class="decorator"></div>
-    <main class="form-signin mb-5">
-        <form class="mx-auto p-5 shadow-sm" action="../../public/index.php?c=User&a=changePassword" method="post">
-            <h1>Cambiar Contraseña</h1>
-            <p class="mt-3">Introduzca la nueva contraseña para su inicio de sesión:</p>
-            <div class="form-inputs">
-                <div class="checkbox mt-4">
-                    <label for="new_password">Usuario:</label>
-                    <div class="input-group">
-                        <input type="text" name="user" class="form-control"
-                            value="<?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8') : ''; ?>"
-                            <?php
-                            echo isset($_SESSION['username']) ? 'readonly' : '';
-                            ?> required>
+    <div class="wrapper">
+        <div class="decorator"></div>
+        <main class="form-signin mb-5">
+            <form class="mx-auto p-5 shadow-sm" action="../../public/index.php?c=User&a=changePassword" method="post">
+                <h1>Cambie su Contraseña</h1>
+                <p class="mt-3">Introduzca la nueva contraseña para su inicio de sesión:</p>
+                <div class="form-inputs">
+                    <div class="checkbox mt-4">
+                        <label for="new_password">Usuario:</label>
+                        <div class="input-group">
+                            <input type="text" name="user" class="form-control"
+                                value="<?php echo isset($_SESSION['name']) ? htmlspecialchars($_SESSION['name'], ENT_QUOTES, 'UTF-8') : ''; ?>"
+                                <?php
+                                echo isset($_SESSION['name']) ? 'readonly' : '';
+                                ?> required>
+                        </div>
                     </div>
-                </div>
-                <div class="checkbox mt-4">
-                    <label for="new_password">Nueva contraseña:</label>
-                    <div class="input-group">
-                        <input type="password" id="newPassword" name="new_password" class="form-control inputPassword"
-                            required>
-                        <span class="input-group-text" id="toggleNewPassword" style="cursor: pointer;">
-                            <i class="la la-eye-slash"></i>
-                        </span>
+                    <div class="checkbox mt-4">
+                        <label for="new_password">Nueva contraseña:</label>
+                        <div class="input-group">
+                            <input type="password" id="newPassword" name="new_password"
+                                class="form-control inputPassword" required>
+                            <span class="input-group-text" id="toggleNewPassword" style="cursor: pointer;">
+                                <i class="la la-eye-slash"></i>
+                            </span>
+                        </div>
+                        <div id="errorValidation"></div>
                     </div>
-                    <div id="errorValidation"></div>
-                </div>
-                <div class="checkbox mt-4 mb-4">
-                    <label for="confirm_password">Confirmar contraseña:</label>
-                    <div class="input-group">
-                        <input type="password" id="confirmPassword" name="confirm_password"
-                            class="form-control inputPassword" required>
-                        <span class="input-group-text" id="toggleConfirmPassword" style="cursor: pointer;">
-                            <i class="la la-eye-slash"></i>
-                        </span>
+                    <div class="checkbox mt-4 mb-4">
+                        <label for="confirm_password">Confirmar contraseña:</label>
+                        <div class="input-group">
+                            <input type="password" id="confirmPassword" name="confirm_password"
+                                class="form-control inputPassword" required>
+                            <span class="input-group-text" id="toggleConfirmPassword" style="cursor: pointer;">
+                                <i class="la la-eye-slash"></i>
+                            </span>
+                        </div>
+                        <div id="errorSame"></div>
                     </div>
-                    <div id="errorSame"></div>
-                </div>
-                <?php if (!empty($error)): ?>
-                    <div class="alert alert-danger">
-                        <?php echo $error; ?>
-                    </div>
-                <?php endif; ?>
+                    <?php if (!empty($error)): ?>
+                        <div class="alert alert-danger">
+                            <?php echo $error; ?>
+                        </div>
+                    <?php endif; ?>
 
-                <button class="w-100 btn-lg" type="submit">Cambiar Contraseña</button>
-                <div class="form-forgot">
-                    <a href="../../public/index.php">Volver atrás</a>
-                    <i class="las la-angle-double-left"></i>
+                    <button class="w-100 btn-lg" type="submit">Cambiar Contraseña</button>
+                    <div class="form-forgot">
+                        <a href="../../public/index.php">Volver atrás</a>
+                        <i class="las la-angle-double-left"></i>
+                    </div>
                 </div>
-            </div>
-        </form>
-    </main>
-    <footer class="d-flex justify-content-center align-items-center">
-        <p class="mt-3">© 2025 Gestion Rio Tollo - Rio Tollo S.L </p>
-    </footer>
+            </form>
+        </main>
+        <footer class="d-flex justify-content-center align-items-center">
+            <p class="mt-3">© 2025 Gestion Rio Tollo - Rio Tollo S.L </p>
+        </footer>
+    </div>
 
 </body>
 

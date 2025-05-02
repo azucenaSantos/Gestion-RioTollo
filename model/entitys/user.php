@@ -4,15 +4,18 @@ class User
     private $id;
     private $name;
     private $surname;
+    private $username;
+
     private $password;
     private $passwordChanged;
     private $rol;
 
-    public function __construct($id, $name, $surname, $password, $passwordChanged, $rol)
+    public function __construct($id, $name, $surname,$username, $password, $passwordChanged, $rol)
     {
         $this->id = $id;
         $this->name = $name;
         $this->surname = $surname;
+        $this->username = $username;
         $this->password = $password;
         $this->passwordChanged = $passwordChanged;
         $this->rol = $rol;
@@ -29,6 +32,10 @@ class User
     public function getSurname()
     {
         return $this->surname;
+    }
+    public function getUsername()
+    {
+        return $this->username;
     }
     public function getPassword()
     {
@@ -53,6 +60,10 @@ class User
     public function setSurname($surname)
     {
         $this->surname = $surname;
+    }
+    public function setUsername($username)
+    {
+        $this->username = $username;
     }
     public function setPassword($password)
     {

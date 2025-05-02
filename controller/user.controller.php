@@ -15,54 +15,42 @@ class UserController
     {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            //Almacenamos los datos del formulario en variables
             $username = $_POST['username'];
             $password = $_POST['password'];
             $remember = isset($_POST['remember']);
-
+            //Recoger el usuario por el username(nombre de usuario)
             $user = $this->model->getUserByUsername($username);
 
-            //Comrpobamos si existe el usuario y luego si es correcta la contraseña
+            //Comrpobamos si existe el usuario
             if ($user) {
-                //Guardammos el nombre de su rol para mostrarlo en el header
-                $rolName = $this->model->getRolFromUser($user->getRol());
                 session_start();
                 $_SESSION['user_id'] = $user->getId();
-                $_SESSION['username'] = $user->getName();
+                $_SESSION['name'] = $user->getName();
                 $_SESSION['rol'] = $user->getRol();
+                //Guardamos el nombre del rol para mostrarlo en el header
+                $rolName = $this->model->getRolFromUser($user->getRol());
                 $_SESSION['rol_name'] = $rolName;
 
-
-                //Comprobar si la contraseña es correcta
+                //Comprobar la contraseña
                 if (password_verify($password, $user->getPassword())) {
-                    //Comprobar si es la primera vez que inicia sesión
+                    //Primer inicio de sesion
                     if ($user->getPasswordChanged() == 0) {
-                        $user->setPasswordChanged(1);
-                        $this->model->updatePasswordChanged($user->getId(), $user->getPasswordChanged());
-                        //Si es la primera vez que inicia sesión, redirigir a la página de cambio de contraseña
+                        $_SESSION['username'] = $user->getUsername(); //guardar para cambiar contraseña
                         header('Location: ../view/sesion/cambiar_password.php');
-                        //require_once '../view/sesion/cambiar_password.php';
                         exit();
                     } else {
-                        //Guardamos datos de usuario en la sesion
-                        //session_start();
-                        $_SESSION['user_id'] = $user->getId();
-                        $_SESSION['username'] = $user->getName();
-                        $_SESSION['rol'] = $user->getRol();
-
-                        //Comrpobamos si el checkbox de recordar datos está marcado
+                        //Checkbox de recordar datos
                         if ($remember) {
                             setcookie('username', $username, time() + (86400 * 30), "/"); // 30 días
-                            setcookie('password', $password, time() + (86400 * 30), "/"); // 30 días
-                            setcookie('remember', '1', time() + (86400 * 30), "/"); // Guarda el estado del checkbox
+                            setcookie('password', $password, time() + (86400 * 30), "/");
+                            setcookie('remember', '1', time() + (86400 * 30), "/"); //Estado del checkbox
                         } else {
                             //Si no está marcado el checkbox eliminamos las cookies
                             setcookie('username', '', time() - 3600, "/");
                             setcookie('password', '', time() - 3600, "/");
                             setcookie('remember', '', time() - 3600, "/");
                         }
-
-                        //Redirgir a la página correspondiente según el rol
+                        //Redirigir al usuario según el rol
                         switch ($user->getRol()) {
                             case '1': //admin
                                 //header('Location: ../view/admin/dashboard.php');
@@ -108,35 +96,13 @@ class UserController
             session_start();
         }
 
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $new_password = $_POST['new_password'];
             $confirm_password = $_POST['confirm_password'];
-            $user_changing = $_POST['user']; //Usuario que está cambiando la contarseña
-
-
-            //Recogemos el id del usuario (sesion o buscamos si no hay en sesion)
-            if (isset($_SESSION['user_id'])) {
-                $user_id = $_SESSION['user_id'];
-                $user_rol = $_SESSION['rol'];
-                $user = $this->model->getUserByUsername($user_changing);
-            } else {
-                $user = $this->model->getUserByUsername($user_changing);
-                if ($user) {
-                    $user_id = $user->getId();
-                    $user_rol = $user->getRol();
-                } else {
-                    $error = "Usuario no encontrado.";
-                    require_once '../view/sesion/cambiar_password.php';
-                    exit();
-                }
-            }
-
-            //Comprobamos si el usuario ya ha cambiado anteriormente la contraseña
-            if ($user->getPasswordChanged() == 0) {
-                $error = "Debe actualizar la contraseña inicial.<br>Contacte con la empresa si tiene dudas.";
-                require_once '../view/sesion/cambiar_password.php';
-                exit();
-            }
+            $user_changin = $_SESSION['username']; //nombre_usuario para modificar contraseña   
+            $user_id = $_SESSION['user_id'];
+            $user_rol = $_SESSION['rol'];
 
             // Validar que las contraseñas coincidan
             if ($new_password !== $confirm_password) {

@@ -9,13 +9,17 @@
   width: 100vw;
   background-color: $primary-color;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
-  @media screen and (max-width: 600px) {
-    width: 100vh !important;
+  @media (max-width: 600px) {
+    //width: 100vh !important;
   }
 }
 
+main {
+  padding-top: 60px;
+}
+
 form {
-  margin: 60px auto;
+  margin: 0px auto;
   width: 600px;
   padding: 30px;
   font-family: $font-Mont;
@@ -26,7 +30,23 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 190px !important;
+  // margin-bottom: 190px !important;
+  margin-bottom: 2rem; // mucho más razonable
+  @media (max-width: 600px) {
+    width: 90%;
+  }
+
+  img {
+    @media (max-width: 600px) {
+      width: 50%;
+    }
+  }
+
+  h1 {
+    @media (max-width: 600px) {
+      font-size: 28px;
+    }
+  }
 
   .alert {
     height: 30px !important;
@@ -41,9 +61,22 @@ form {
   .form-control {
     height: 46px !important;
     border-radius: 10px !important;
+    @media (max-width: 600px) {
+      height: 40px !important;
+    }
   }
   .form-inputs {
     width: 454px !important;
+
+    @media screen and (max-width: 600px) {
+      padding: 0px 70px;
+    }
+
+    .mt-5 {
+      @media screen and (max-width: 600px) {
+        margin-top: 2rem !important;
+      }
+    }
   }
   .inputPassword {
     border-top-right-radius: 0px !important;
@@ -68,6 +101,9 @@ form {
     label {
       margin-left: 5px;
       font-size: 16px;
+      @media (max-width: 600px) {
+        font-size: 14px;
+      }
     }
   }
 
@@ -87,6 +123,9 @@ form {
 
   label {
     font-size: 18px;
+    @media (max-width: 600px) {
+      font-size: 16px;
+    }
     input[type="checkbox"] {
       font-size: 15px;
     }
@@ -107,4 +146,3 @@ form {
     }
   }
 }
-
