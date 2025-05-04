@@ -18,6 +18,7 @@ class CoordinadorController
 
     public function reportarTrabajos()
     {
+        $rol = "coordinador";
         $pagina = "reportar-trabajos";
         require_once '../view/header.php';
         require_once '../view/coordinador/parte.php';
@@ -27,6 +28,7 @@ class CoordinadorController
 
     public function verParte()
     {
+        $rol = "coordinador";
         $pagina = "verParte";
         require_once '../view/header.php';
         require_once '../view/coordinador/reporte.php';

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Jefe</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de RRHH</title>
     <link rel="icon" href="../../assets/img/logo.jpg" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -33,14 +34,15 @@
                 <div class="welcome-text d-flex align-items-center">
                     <i class="las la-user iconUser"></i>
                     <h2 style="margin-bottom: 18px;">
-                        <?php if (isset($_SESSION['username']))
-                            echo $_SESSION['username'] ?> <strong style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name'] ?></strong>
+                        <?php if (isset($_SESSION['name']))
+                            echo $_SESSION['name'] ?> <strong
+                                style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name'] ?></strong>
                     </h2>
                 </div>
                 <div class="nav-container">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item">Inicio</a></li>
+                            <li class="breadcrumb-item active">Inicio</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -80,13 +82,13 @@
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
                         <a href="../../public/index.php?c=Rrhh&a=gestionTrabajos" class="nav-section">
-                            <i class="las la-briefcase"></i>
+                            <i class="las la-user-edit"></i>
                             <h3>Gestionar Trabajadores</h3>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="../../public/index.php?c=Rrhh&a=gestionJefes" class="nav-section">
-                            <i class="las la-object-group"></i>
+                            <i class="las la-user-shield"></i>
                             <h3>Gestionar Jefes</h3>
                         </a>
                     </li>
@@ -107,8 +109,8 @@
                         <div class="col-md-6">
                             <div class="card shadow-sm">
                                 <div class="card-body">
-                                    <i class="las la-briefcase display-4 mb-3"></i>
-                                    <h5 class="card-title">Gestión de Trabajadors</h5>
+                                    <i class="las la-user-edit display-4 mb-3"></i>
+                                    <h5 class="card-title">Gestión de Trabajador</h5>
                                     <p class="card-text">Crea, edita y elimina trabajadores de la empresa.</p>
                                     <!-- <a href="../../public/index.php?c=Jefe&a=gestionTrabajos" class="btn btn-primary">Ir a
                                         Trabajos</a> -->
@@ -118,7 +120,7 @@
                         <div class="col-md-6">
                             <div class="card shadow-sm">
                                 <div class="card-body">
-                                    <i class="las la-object-group display-4 mb-3"></i>
+                                    <i class="las la-user-shield display-4 mb-3"></i>
                                     <h5 class="card-title">Gestión de Jefes</h5>
                                     <p class="card-text">Crea, edita y elimina jefes de la empresa.</p>
                                     <!-- <a href="../../public/index.php?c=Jefe&a=gestionGrupos" class="btn btn-primary">Ir a

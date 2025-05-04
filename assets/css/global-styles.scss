@@ -14,6 +14,12 @@ body {
   z-index: 10;
 }
 
+input,
+select,
+textarea {
+  font-family: $font-Mont;
+}
+
 .wrapper {
   min-height: 100vh;
   display: flex;
@@ -42,6 +48,27 @@ h3 {
 a {
   font-size: 14px;
 }
+
+.breadcrumb {
+  .active {
+    color: $primary-color;
+    font-family: $font-Mont;
+    font-size: 16px;
+    text-decoration: underline;
+    font-style: italic;
+  }
+  li a {
+    text-decoration: none;
+    color: $color-grey;
+    font-family: $font-Mont;
+    font-size: 16px;
+    &:hover {
+      color: $primary-color;
+      text-decoration: underline;
+    }
+  }
+}
+
 footer {
   position: relative;
   bottom: 0;
@@ -73,7 +100,7 @@ footer {
     }
   }
   .nav-container {
-    margin-left: 120px;
+    margin-left: 175px;
   }
 
   .buttonLogout {
@@ -97,12 +124,23 @@ footer {
 }
 
 .lateral-menu {
+  display: block !important;
   //background-color: $third-color;
   width: 400px;
   height: 77vh;
   padding-top: 36px !important;
-  padding-left: 0px !important;
+  // padding-left: 0px !important;
   padding-right: 0px !important;
+  position: relative;
+  top: -40px;
+  @media (max-width: 990px) {
+    position: relative;
+    top: 0px;
+  }
+
+  .nav-item {
+    width: 389px;
+  }
   li {
     display: flex;
     align-items: center;

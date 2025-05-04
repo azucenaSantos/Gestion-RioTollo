@@ -1,3 +1,194 @@
+@charset "UTF-8";
 main {
   width: 100%;
+  margin-left: 75px;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-container .buttonAdd {
+  width: 225px;
+  height: 52px;
+  background-color: #558B2F;
+  border-radius: 10px;
+  border: none;
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  color: #FFFFFF;
+  margin-bottom: 35px;
+  transition: background-color 0.3s ease-in-out;
+}
+.btn-container .buttonAdd:hover {
+  background-color: #8BC34A;
+}
+
+.containerTable {
+  margin-left: 0px !important;
+  padding-left: 0px !important;
+}
+.containerTable table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #E0E0E0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.containerTable table thead {
+  background-color: #DCEDC8;
+  height: 75px;
+  border: 1px solid #E0E0E0;
+}
+.containerTable table thead tr th {
+  text-align: center;
+  vertical-align: middle;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333333;
+  text-align: center;
+}
+.containerTable table thead tr:first-child th:first-child {
+  border-top-left-radius: 10px;
+}
+.containerTable table thead tr:first-child th:last-child {
+  border-top-right-radius: 10px;
+}
+.containerTable table tbody tr {
+  height: 70px;
+}
+.containerTable table tbody tr td {
+  text-align: center;
+  vertical-align: middle;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333333;
+  text-align: center;
+  padding: 10px 0px;
+  border-bottom: 1px solid #E0E0E0;
+}
+.containerTable table tbody tr td .iconDelete {
+  color: #d82515;
+  font-size: 40px;
+}
+.containerTable table tbody tr td .iconDelete i {
+  border: 1px solid #E0E0E0;
+  border-radius: 10px;
+  padding: 4px 4px;
+}
+.containerTable table tbody tr td .iconDelete :hover {
+  transition: background-color 0.3s ease-in-out;
+  color: #FFFFFF;
+  background-color: #d82515;
+}
+.containerTable table tbody tr td .iconModify {
+  color: #558B2F;
+  font-size: 40px;
+}
+.containerTable table tbody tr td .iconModify i {
+  border: 1px solid #E0E0E0;
+  border-radius: 10px;
+  padding: 4px 4px;
+}
+.containerTable table tbody tr td .iconModify :hover {
+  transition: background-color 0.3s ease-in-out;
+  color: #FFFFFF;
+  background-color: #558B2F;
+}
+.containerTable table tbody tr td:first-child {
+  font-weight: bold;
+}
+.containerTable table tbody tr .actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.containerTable table tbody tr .anotaciones {
+  max-width: 50px; /* Ajusta el ancho según sea necesario */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.formEdits .form-control {
+  display: inline;
+  width: 32.5%;
+}
+.formEdits textarea {
+  width: 43% !important;
+  height: 80px;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+}
+.formEdits label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  width: 10%;
+}
+.formEdits input[type=time] {
+  width: 16.2%;
+}
+.formEdits .form-inputs input {
+  font-size: 14px !important;
+}
+.formEdits .form-inputs .form-select {
+  font-size: 14px !important;
+}
+.formEdits .form-inputs .listBox {
+  display: flex;
+}
+.formEdits .form-inputs .listBox .opcionesList {
+  width: 24%;
+}
+.formEdits .form-inputs .listBox .opcionesList select {
+  width: 79%;
+}
+.formEdits .form-inputs .listBox .opcionesList p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  width: 80%;
+  text-align: center;
+}
+.formEdits .buttons {
+  display: flex;
+  justify-content: center;
+  width: 43%;
+}
+.formEdits .buttons button {
+  width: 80px;
+  height: 30px;
+  background-color: #8BC34A;
+  border-radius: 10px;
+  border: none;
+  margin-left: 10px;
+  font-size: 13px;
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+  transition: background-color 0.1s ease-in-out;
+}
+.formEdits .buttons button:active {
+  background-color: #558B2F;
+}
+
+.estado {
+  width: 200px;
+}
+.estado .finalizado {
+  background: #8BC34A;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  width: 50%;
+  margin: 0 auto;
+}
+.estado .pendiente {
+  background: #d82515;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  width: 50%;
+  margin: 0 auto;
 }/*# sourceMappingURL=user-styles.css.map */

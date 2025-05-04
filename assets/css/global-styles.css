@@ -9,6 +9,12 @@ body {
   z-index: 10;
 }
 
+input,
+select,
+textarea {
+  font-family: "Montserrat", sans-serif;
+}
+
 .wrapper {
   min-height: 100vh;
   display: flex;
@@ -36,6 +42,24 @@ h3 {
 
 a {
   font-size: 14px;
+}
+
+.breadcrumb .active {
+  color: #8BC34A;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  text-decoration: underline;
+  font-style: italic;
+}
+.breadcrumb li a {
+  text-decoration: none;
+  color: #333333;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+.breadcrumb li a:hover {
+  color: #8BC34A;
+  text-decoration: underline;
 }
 
 footer {
@@ -68,7 +92,7 @@ footer p {
   font-size: 42px;
 }
 .welcome .nav-container {
-  margin-left: 120px;
+  margin-left: 175px;
 }
 .welcome .buttonLogout {
   background: none;
@@ -88,11 +112,22 @@ footer p {
 }
 
 .lateral-menu {
+  display: block !important;
   width: 400px;
   height: 77vh;
   padding-top: 36px !important;
-  padding-left: 0px !important;
   padding-right: 0px !important;
+  position: relative;
+  top: -40px;
+}
+@media (max-width: 990px) {
+  .lateral-menu {
+    position: relative;
+    top: 0px;
+  }
+}
+.lateral-menu .nav-item {
+  width: 389px;
 }
 .lateral-menu li {
   display: flex;

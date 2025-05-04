@@ -18,6 +18,7 @@ class RrhhController
 
     public function gestionTrabajos()
     {
+        $rol = "rrhh";
         $pagina = "añadir-trabajos";
         require_once '../view/header.php';
         require_once '../view/rrhh/gestionTrabajadores.php';
@@ -27,6 +28,7 @@ class RrhhController
 
     public function gestionJefes()
     {
+        $rol = "rrhh";
         $pagina = "añadir-jefe";
         require_once '../view/header.php';
         require_once '../view/rrhh/gestionJefes.php';

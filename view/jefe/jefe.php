@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Jefe</title>
     <link rel="icon" href="../../assets/img/logo.jpg" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -14,14 +15,14 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/global-styles.css">
     <link rel="stylesheet" href="../../assets/css/user-styles.css">
-    <link rel="stylesheet" href="/../../assets/css/modal-styles.css">
+    <link rel="stylesheet" href="../../assets/css/modal-styles.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <script src="../../assets/js/logout.js" defer></script>
 </head>
 
 <body>
-    <div class="content">
+   
         <header> <!-- Header, comun a todos los usuarios -->
             <?php
             session_start();
@@ -34,13 +35,14 @@
                     <i class="las la-user iconUser"></i>
                     <h2 style="margin-bottom: 18px;">
                         <?php if (isset($_SESSION['name']))
-                            echo $_SESSION['name'] ?>  <strong style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name'] ?></strong>
+                            echo $_SESSION['name'] ?> <strong
+                                style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name'] ?></strong>
                     </h2>
                 </div>
                 <div class="nav-container">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item">Inicio</a></li>
+                            <li class="breadcrumb-item active">Inicio</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -49,7 +51,7 @@
                 </button>
             </div>
         </header>
-
+        <div class="content d-flex flex-row">
         <!-- Modal bootstrap -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -72,88 +74,94 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="section d-flex flex-row">
-            <!--Menu lateral, comun a todos los usuarios (con más o menos apartados) -->
-            <div class="d-flex flex-column p-3 lateral-menu">
-                <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item">
-                        <a href="../../public/index.php?c=Jefe&a=gestionTrabajos" class="nav-section">
-                            <i class="las la-briefcase"></i>
-                            <h3>Gestion de trabajos</h3>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../../public/index.php?c=Jefe&a=gestionGrupos" class="nav-section">
-                            <i class="las la-object-group"></i>
-                            <h3>Gestion de grupos</h3>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../../public/index.php?c=Jefe&a=visualizarProcesos" class="nav-section">
-                            <i class="las la-chart-bar"></i>
-                            <h3>Visualizar procesos</h3>
-                        </a>
-                    </li>
-                </ul>
+        </div>        
+        <!-- Menú hamburguesa -->
+        <nav class="navbar navbar-expand-lg navbar-light" style="width: 400px;">
+            <div class="container-fluid lateral-menu">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-section" href="../../public/index.php?c=Jefe&a=gestionTrabajos">
+                                <i class="las la-briefcase"></i> 
+                                <h3>Gestión de Trabajos</h3>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-section" href="../../public/index.php?c=Jefe&a=gestionGrupos">
+                                <i class="las la-object-group"></i> 
+                                <h3>Gestión de Grupos</h3>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-section" href="../../public/index.php?c=Jefe&a=visualizarProcesos">
+                                <i class="las la-chart-bar"></i> 
+                                <h3>Visualizar Procesos</h3>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <!--Contenedor principal, donde se cargan los contenidos del apartado seleccionado -->
-            <main class="d-flex flex-column align-items-center">
-                <div class="info-container">
-                    <h1 class="text-center">Bienvenido al Panel de Jefe</h1>
-                    <p class="text-center">Desde aquí podrás gestionar los trabajos y grupos de trabajo de la empresa.
-                    </p>
-                    <p class="text-center">Además de visualizar los proceso de los trabajos realizados en diferentes
-                        zonas
-                        del vivero.</p>
-                </div>
-                <div class="container mt-5">
-                    <div class="row text-center">
-                        <div class="col-md-4">
-                            <div class="card shadow-sm">
-                                <div class="card-body">
-                                    <i class="las la-briefcase display-4 mb-3"></i>
-                                    <h5 class="card-title">Gestión de Trabajos</h5>
-                                    <p class="card-text">Crea, edita y supervisa los trabajos asignados a los empleados.
-                                    </p>
-                                    <!-- <a href="../../public/index.php?c=Jefe&a=gestionTrabajos" class="btn btn-primary">Ir a
+        </nav>
+        <!--Contenedor principal, donde se cargan los contenidos del apartado seleccionado -->
+        <main class="d-flex flex-column align-items-center">
+            <div class="info-container">
+                <h1 class="text-center">Bienvenido al Panel de Jefe</h1>
+                <p class="text-center">Desde aquí podrás gestionar los trabajos y grupos de trabajo de la empresa.
+                </p>
+                <p class="text-center">Además de visualizar los proceso de los trabajos realizados en diferentes
+                    zonas
+                    del vivero.</p>
+            </div>
+            <div class="container mt-5">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <i class="las la-briefcase display-4 mb-3"></i>
+                                <h5 class="card-title">Gestión de Trabajos</h5>
+                                <p class="card-text">Crea, edita y supervisa los trabajos asignados a los empleados.
+                                </p>
+                                <!-- <a href="../../public/index.php?c=Jefe&a=gestionTrabajos" class="btn btn-primary">Ir a
                                         Trabajos</a> -->
-                                </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card shadow-sm">
-                                <div class="card-body">
-                                    <i class="las la-object-group display-4 mb-3"></i>
-                                    <h5 class="card-title">Gestión de Grupos</h5>
-                                    <p class="card-text">Organiza y administra los grupos de trabajo de la empresa.</p>
-                                    <!-- <a href="../../public/index.php?c=Jefe&a=gestionGrupos" class="btn btn-primary">Ir a
-                                        Grupos</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card shadow-sm">
-                                <div class="card-body">
-                                    <i class="las la-chart-bar display-4 mb-3"></i>
-                                    <h5 class="card-title">Visualizar Procesos</h5>
-                                    <p class="card-text">Consulta el progreso y los resultados de los trabajos
-                                        realizados en
-                                        el vivero.</p>
-                                    <!-- <a href="../../public/index.php?c=Jefe&a=visualizarProcesos" class="btn btn-primary">Ir
-                                        a Procesos</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-center mt-5">Navega por el menu lateral para acceder a los diferentes apartados
-                            del
-                            panel.</p>
-
                     </div>
+                    <div class="col-md-4">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <i class="las la-object-group display-4 mb-3"></i>
+                                <h5 class="card-title">Gestión de Grupos</h5>
+                                <p class="card-text">Organiza y administra los grupos de trabajo de la empresa.</p>
+                                <!-- <a href="../../public/index.php?c=Jefe&a=gestionGrupos" class="btn btn-primary">Ir a
+                                        Grupos</a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <i class="las la-chart-bar display-4 mb-3"></i>
+                                <h5 class="card-title">Visualizar Procesos</h5>
+                                <p class="card-text">Consulta el progreso y los resultados de los trabajos
+                                    realizados en
+                                    el vivero.</p>
+                                <!-- <a href="../../public/index.php?c=Jefe&a=visualizarProcesos" class="btn btn-primary">Ir
+                                        a Procesos</a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center mt-5">Navega por el menu lateral para acceder a los diferentes apartados
+                        del
+                        panel.</p>
+
                 </div>
-            </main>
-        </div>
+            </div>
+        </main>
+    </div>
     </div>
     <div class="line"></div>
     <footer class="d-flex justify-content-center align-items-center">

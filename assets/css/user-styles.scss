@@ -1,3 +1,215 @@
-main{
-    width: 100%;
+@import "variables.scss";
+main {
+  width: 100%;
+  margin-left: 75px;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+  .buttonAdd {
+    width: 225px;
+    height: 52px;
+    background-color: $secondary-color;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    font-family: $font-Mont;
+    color: $color-white;
+    margin-bottom: 35px;
+    transition: background-color 0.3s ease-in-out;
+    &:hover {
+      background-color: $primary-color;
+    }
+  }
+}
+
+.containerTable {
+  margin-left: 0px !important;
+  padding-left: 0px !important;
+  //height: 100vh; //alto de la pantalla
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid $color-lightgrey;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    // height: 100%;
+    thead {
+      background-color: $third-color;
+      height: 75px;
+      border: 1px solid $color-lightgrey;
+
+      tr {
+        th {
+          text-align: center;
+          vertical-align: middle;
+          font-family: $font-Mont;
+          font-size: 20px;
+          font-weight: 700;
+          color: $color-grey;
+          text-align: center;
+        }
+      }
+      //Bordes del thead redondeados
+      tr:first-child {
+        th:first-child {
+          border-top-left-radius: 10px;
+        }
+        th:last-child {
+          border-top-right-radius: 10px;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        height: 70px;
+        td {
+          text-align: center;
+          vertical-align: middle;
+          font-family: $font-Mont;
+          font-size: 16px;
+          font-weight: 400;
+          color: $color-grey;
+          text-align: center;
+          padding: 10px 0px;
+          border-bottom: 1px solid $color-lightgrey;
+          .iconDelete {
+            color: $red;
+            font-size: 40px;
+            i {
+              border: 1px solid $color-lightgrey;
+              border-radius: 10px;
+              padding: 4px 4px;
+            }
+            :hover {
+              transition: background-color 0.3s ease-in-out;
+              color: $color-white;
+              background-color: $red;
+            }
+          }
+          .iconModify {
+            color: $secondary-color;
+            font-size: 40px;
+            i {
+              border: 1px solid $color-lightgrey;
+              border-radius: 10px;
+              padding: 4px 4px;
+            }
+            :hover {
+              transition: background-color 0.3s ease-in-out;
+              color: $color-white;
+              background-color: $secondary-color;
+            }
+          }
+        }
+        td:first-child {
+          font-weight: bold;
+        }
+
+        .actions {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+        }
+        .anotaciones {
+          max-width: 50px; /* Ajusta el ancho según sea necesario */
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}
+
+.formEdits {
+  .form-control {
+    display: inline;
+    width: 32.5%;
+  }
+
+  textarea {
+    width: 43% !important;
+    height: 80px;
+    font-size: 14px;
+    font-family: $font-Mont;
+  }
+
+  label {
+    font-family: $font-Mont;
+    font-size: 16px;
+    width: 10%;
+  }
+
+  input[type="time"] {
+    width: 16.2%;
+  }
+
+  .form-inputs {
+    input {
+      font-size: 14px !important;
+    }
+    .form-select {
+      font-size: 14px !important;
+    }
+    .listBox {
+      display: flex;
+      .opcionesList {
+        width: 24%;
+        select {
+          width: 79%;
+        }
+        p {
+          font-family: $font-Mont;
+          font-size: 12px;
+          width: 80%;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .buttons {
+    display: flex;
+    justify-content: center;
+    width: 43%;
+    button {
+      width: 80px;
+      height: 30px;
+      background-color: $primary-color;
+      border-radius: 10px;
+      border: none;
+      margin-left: 10px;
+      font-size: 13px;
+      font-family: "Montserrat", sans-serif;
+      color: #ffffff;
+      transition: background-color 0.1s ease-in-out;
+      &:active {
+        background-color: $secondary-color;
+      }
+    }
+  }
+}
+
+.estado {
+  width: 200px;
+  .finalizado {
+    background: $primary-color;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: $color-white;
+    width: 50%;
+    margin: 0 auto;
+  }
+  .pendiente {
+    background: $red;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: $color-white;
+    width: 50%;
+    margin: 0 auto;
+  }
 }
