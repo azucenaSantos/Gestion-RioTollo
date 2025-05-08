@@ -1,14 +1,14 @@
 <?php
 class User
 {
-    private $id;
-    private $name;
-    private $surname;
+    protected $id;
+    protected $name;
+    protected $surname;
     private $username;
 
-    private $password;
-    private $passwordChanged;
-    private $rol;
+    protected $password;
+    protected $passwordChanged;
+    protected $rol;
 
     public function __construct($id, $name, $surname,$username, $password, $passwordChanged, $rol)
     {

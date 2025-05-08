@@ -13,19 +13,19 @@
                     <ul class="navbar-nav flex-column">
                         <li class="nav-item">
                             <a class="nav-section" href="?c=Jefe&a=gestionTrabajos">
-                                <i class="las la-briefcase"></i> 
+                                <i class="las la-briefcase"></i>
                                 <h3>Gestión de Trabajos</h3>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-section" href="?c=Jefe&a=gestionGrupos">
-                                <i class="las la-object-group"></i> 
+                                <i class="las la-object-group"></i>
                                 <h3>Gestión de Grupos</h3>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-section" href="?c=Jefe&a=visualizarProcesos">
-                                <i class="las la-chart-bar"></i> 
+                                <i class="las la-chart-bar"></i>
                                 <h3>Visualizar Procesos</h3>
                             </a>
                         </li>
@@ -37,11 +37,10 @@
         <main>
             <div class="info-container">
                 <h1>Listado de Grupos</h1>
-
             </div>
             <div class="container containerTable">
-                <form class="btn-container" action="?c=Jefe&a=editarTrabajo" method="post">
-                    <button type="submit" class="buttonAdd">Añadir Trabajo</button>
+                <form class="btn-container" action="?c=Jefe&a=editarGrupo" method="post">
+                    <button type="submit" class="buttonAdd">Añadir Grupo</button>
                 </form>
                 <table class="table table-hover mx-auto shadow-sm">
                     <thead>
@@ -49,44 +48,46 @@
                             <th>Grupo</th>
                             <th>Coordinador(a)</th>
                             <th>Integrantes</th>
+                            <th class="acciones">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        if (empty($gruposInfo)) {
+                            echo "<tr><td colspan='7' class='text-center'>No hay grupos registrados</td></tr>";
+                        } ?>
                         <?php foreach ($gruposInfo as $grupo): ?>
                             <tr onclick="location.href='?c=Jefe&a=editarGrupo&id=<?php echo $grupo->getId(); ?>'">
                                 <td><?php echo $grupo->getNombre(); ?></td>
-                                <td><?php echo $grupo->getIdCoordinador(); ?></td>
-                                <td><?php echo "Numero de integrantes"?></td>
-                                <td class="actions">
-                                    <a href="?c=Jefe&a=editarTrabajo&id=<?php echo $trabajo->getId(); ?>"
-                                        class="iconModify">
-                                        <i class="las la-edit"></i>
-                                    </a>
-                                    <a href="?c=Jefe&a=gestionTrabajos" class="iconDelete" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal-<?php echo $trabajo->getId(); ?>"
+                                <td><?php echo $grupo->getNombreCoordinador(); ?></td>
+                                <td><?php echo $grupo->getIntegrantes() ?></td>
+                                <td class="acciones">
+                                    <a href="?c=Jefe&a=editarGrupo&id=<?php echo $grupo->getId(); ?>" class="iconModify">
+                                        <i class="las la-edit"></i></a>
+
+                                    <a href="?c=Jefe&a=gestionGrupos" class="iconDelete" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal-<?php echo $grupo->getId(); ?>"
                                         onclick="event.stopPropagation();">
-                                        <!-- Evitar que el evento de clic se propague y no rediriga a la pagina de edicion de trabajo-->
-                                        <i class="las la-trash-alt"></i>
-                                    </a>
+                                        <i class="las la-trash-alt"></i></a>
+
                                     <!-- Modal eliminar-->
-                                    <div class="modal fade" id="deleteModal-<?php echo $trabajo->getId(); ?>" tabindex="-1"
-                                        aria-labelledby="deleteModalLabel-<?php echo $trabajo->getId(); ?>"
+                                    <div class="modal fade" id="deleteModal-<?php echo $grupo->getId(); ?>" tabindex="-1"
+                                        aria-labelledby="deleteModalLabel-<?php echo $grupo->getId(); ?>"
                                         aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title">Confirmar eliminación</h5>
-                                                    <a href="?c=Jefe&a=gestionTrabajos" class="btn-close"></a>
+                                                    <a href="?c=Jefe&a=gestionGrupos" class="btn-close"></a>
                                                 </div>
                                                 <div class="modal-body">
-                                                    ¿Estás seguro de que deseas eliminar el trabajo
-                                                    "<?php echo $trabajo->getNombre(); ?>"?
+                                                    ¿Estás seguro de que deseas eliminar
+                                                    "<?php echo $grupo->getNombre(); ?>"?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <a href="?c=Jefe&a=gestionTrabajos"
-                                                        class="btn btn-secondary">Cancelar</a>
+                                                    <a href="?c=Jefe&a=gestionGrupos" class="btn btn-secondary">Cancelar</a>
 
-                                                    <a href="?c=Jefe&a=eliminarTrabajo&id=<?php echo $trabajo->getId(); ?>"
+                                                    <a href="?c=Jefe&a=eliminarGrupo&id=<?php echo $grupo->getId(); ?>"
                                                         class="btn btn-danger">Eliminar</a>
                                                 </div>
                                             </div>
@@ -100,6 +101,6 @@
             </div>
         </main>
     </div>
-        </main>
+    </main>
     </div>
     <div class="line"></div>

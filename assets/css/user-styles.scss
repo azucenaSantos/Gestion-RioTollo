@@ -131,6 +131,38 @@ main {
     display: inline;
     width: 32.5%;
   }
+  .form-range {
+    width:25%;
+    margin-right: 10px;
+    border: 0px;
+  }
+
+  .form-number{
+    width: 7%;
+  }
+
+  .side-by-side-multiselect__option {
+    font-style: italic;
+    color: $color-grey;
+    font-size: 13px;
+  }
+
+  .side-by-side-multiselect {
+    width: 43%;
+  }
+  .side-by-side-multiselectfilter__label {
+    width: 100%;
+    font-size: 13px;
+    padding-left: 0px;
+  }
+  .side-by-side-multiselect__inner {
+    padding: 5px;
+    border: 1px solid $color-lightgrey;
+    //Scroll al selector de parcelas
+    max-height: 50px;
+    overflow-y: auto;
+    padding: 5px;
+  }
 
   textarea {
     width: 43% !important;
@@ -143,6 +175,7 @@ main {
     font-family: $font-Mont;
     font-size: 16px;
     width: 10%;
+    font-weight: 500;
   }
 
   input[type="time"] {

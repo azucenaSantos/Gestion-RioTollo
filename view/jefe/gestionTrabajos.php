@@ -55,6 +55,10 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        if (empty($trabajosInfo)) {
+                            echo "<tr><td colspan='7' class='text-center'>No hay trabajos registrados</td></tr>";
+                        } ?>
                         <?php foreach ($trabajosInfo as $trabajo): ?>
                             <tr onclick="location.href='?c=Jefe&a=editarTrabajo&id=<?php echo $trabajo->getId(); ?>'">
                                 <td><?php echo $trabajo->getNombre(); ?></td>

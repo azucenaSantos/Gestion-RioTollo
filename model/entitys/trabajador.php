@@ -1,0 +1,32 @@
+<?php
+require_once 'user.php';
+class Trabajador extends User
+{
+    protected $id;
+    private $nombreApellidos;
+
+    public function __construct($id, $name, $surname, $username, $password, $passwordChanged, $rol)
+    {
+        parent::__construct($id, $name, $surname, $username, $password, $passwordChanged, $rol);
+        $this->nombreApellidos = "$name $surname";
+    }
+
+    public function getNombreApellidos()
+    {
+        return $this->nombreApellidos;
+    }
+    public function setNombreApellidos($nombreApellidos)
+    {
+        $this->nombreApellidos = $nombreApellidos;
+    }
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+}
+?>

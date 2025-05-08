@@ -13,19 +13,19 @@
                     <ul class="navbar-nav flex-column">
                         <li class="nav-item">
                             <a class="nav-section" href="?c=Jefe&a=gestionTrabajos">
-                                <i class="las la-briefcase"></i> 
+                                <i class="las la-briefcase"></i>
                                 <h3>Gestión de Trabajos</h3>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-section" href="?c=Jefe&a=gestionGrupos">
-                                <i class="las la-object-group"></i> 
+                                <i class="las la-object-group"></i>
                                 <h3>Gestión de Grupos</h3>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-section" href="?c=Jefe&a=visualizarProcesos">
-                                <i class="las la-chart-bar"></i> 
+                                <i class="las la-chart-bar"></i>
                                 <h3>Visualizar Procesos</h3>
                             </a>
                         </li>
@@ -35,9 +35,13 @@
         </nav>
         <!--Contenedor principal, donde se cargan los contenidos del apartado seleccionado -->
         <main>
-            <div class="info-container">
+        <div class="info-container">
+            <?php if (isset($_GET['id'])): ?>
+                <h1>Editar Trabajo</h1>
+            <?php else: ?>
                 <h1>Crear Trabajo</h1>
-            </div>
+            <?php endif; ?>
+        </div>
             <div class="container containerTable">
                 <form method="post" class="mx-auto p-5 shadow-sm formEdits" action="?c=Jefe&a=guardarTrabajo">
                     <!--campo vacio para el id del trabajo-->
@@ -56,8 +60,8 @@
                                         <option selected disabled>Selecciona una zona de trabajo</option>
                                     <?php endif; ?>
                                     <?php foreach ($zonas as $zona): ?>
-                                        <option value="<?php echo $zona->getId(); ?>" 
-                                            <?php echo isset($trabajo) && $trabajo->getZona() == $zona->getNombre() ? 'selected' : ''; ?>>
+                                        <option value="<?php echo $zona->getId(); ?>">
+                                            <?php echo isset($trabajo) && $trabajo->getZona() == $zona->getNombre() ? 'selected' : ''; ?>
                                             <?php echo $zona->getNombre(); ?>
                                         </option>
                                     <?php endforeach; ?>
@@ -66,28 +70,27 @@
                                 <?php endif; ?>
                             </select>
                         </div>
-                        <!--Dual Listbox-->
-                        <div class="dual-listbox mt-3 listBox">
-                            <div class="opcionesList">
-                                <select id="opcionesDisponibles" multiple size="5">
-                                    <!--se visualizan las parcelas de la zona seleccionada-->
-                                </select>
-                                <p>Parcelas disponibles</p>
-                            </div>
-                            <div class="opcionesList">
-                                <select id="opcionesSeleccionadas" name="opcionesSeleccionadas[]" multiple size="5">
-                                    <!-- se visualizan las parcelas para añadir al trabajo -->
-                                </select>
-                                <p>Parcelas seleccionadas</p>
-                            </div>
-                        </div>
-                        <div class="buttons">
-                            <button class="btn" id="addParcela" type="button">Añadir</button>
-                            <button class="btn" id="removeParcela" type="button"> Quitar</button>
-                        </div>
-                        <div class="mt-3">
-                            <label for="inputPorcentaje">Porcentaje: </label>
-                            <input type="number" class="form-control" id="inputPorcentaje" name="porcentaje"
+                        <!--Select multiple plugin-->
+                        <label>Parcelas: </label>
+                        <select class="js-sidebysidemultiselect" id="selectMultiple" multiple="multiple" name="opcionesSeleccionadas[]" required>
+                        <?php if (isset($parcelas)): ?>
+                            <?php foreach ($parcelas as $parcela): ?>
+                                <option value="<?php echo $parcela->getId(); ?>"
+                                <?php echo (in_array($parcela->getId(), $parcelasSeleccionadas))? 'selected': ''?>>
+                                    <?php echo $parcela->getNumParcela(); ?>
+                                </option>
+                            <?php endforeach; ?>
+                            <?php else: ?>
+                            <option value="">No hay parcelas disponibles</option>
+                        <?php endif; ?>
+
+                        </select>
+
+                        <div class="mt-3 d-flex">
+                            <label for="inputPorcentaje" class="form-label">Porcentaje: </label>
+                            <input type="range" class="form-range form-control" min="0" max="100" step="10" id="inputPorcentaje" name="porcentaje"
+                            value="<?php echo isset($trabajo) ? $trabajo->getPorcentaje() : '0'; ?>" required>
+                            <input type="number" class="form-control form-number" name="porcentaje" id="inputPorcentajeNum" min="0" max="100" step="10"
                                 value="<?php echo isset($trabajo) ? $trabajo->getPorcentaje() : '0'; ?>" required>
                         </div>
                         <div class="radios mt-3">
@@ -115,19 +118,19 @@
                         </div>
                             <div class="mt-3">
                             <label for="inputGrupo">Grupo: </label>
-                            <select class="form-control form-select" id="inputGrupo" name="grupo" required>
+                            <select class="form-control form-select" id="inputGrupo" name="grupo" required onchange="handleSelectChange(this)">
                                  <?php if (isset($grupos)): ?>
                                     <?php if ($trabajoId == null): ?>
                                         <option selected disabled>Selecciona un grupo de trabajo</option>
                                     <?php endif; ?>
                                     <?php foreach ($grupos as $grupo): ?>
-                                        <option value="<?php echo $grupo->getId(); ?>" 
+                                        <option value="<?php echo $grupo->getId(); ?>"
                                             <?php echo isset($trabajo) && $trabajo->getGrupoNombre() == $grupo->getNombre() ? 'selected' : ''; ?>>
                                             <?php echo $grupo->getNombre(); ?>
                                         </option>
                                     <?php endforeach; ?>                            
-                                    <option value="">
-                                        <?php echo "TO.DO -> Añadir un grupo nuevo..." ?>
+                                    <option value="nuevoGrupo">
+                                        Añadir un grupo nuevo
                                     </option>
                                 <?php else: ?>
                                     <option value="">No hay grupos disponibles</option>
@@ -141,7 +144,13 @@
                                 name="anotaciones"><?php echo isset($trabajo) ? htmlspecialchars($trabajo->getAnotaciones()) : ''; ?></textarea>
                         </div>
                         <div class="btn-container">
-                            <button type="submit" class="buttonAdd">Crear</button>
+                            <button type="submit" class="buttonAdd">
+                            <?php if (isset($_GET['id'])): ?>
+                               Editar
+                            <?php else: ?>
+                                Crear
+                            <?php endif; ?>
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -149,3 +158,12 @@
         </main>
     </div>
     <div class="line"></div>
+
+    <script>
+        function handleSelectChange(select) {
+            if (select.value === "nuevoGrupo") {
+                // Redirige al controlador y acción deseados
+                window.location.href = "?c=Jefe&a=editarGrupo";
+            }
+        }
+</script>

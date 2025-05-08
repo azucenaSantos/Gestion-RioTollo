@@ -16,10 +16,13 @@
     <link rel="stylesheet" href="../assets/css/global-styles.css">
     <link rel="stylesheet" href="../assets/css/user-styles.css">
     <link rel="stylesheet" href="../assets/css/modal-styles.css">
+    <link rel="stylesheet" href="../assets/lib/side-by-side-multiselect/css/side-by-side-multiselect.min.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <script src="../assets/js/logout.js" defer></script>
     <script src="../assets/js/take-parcelas.js" defer></script>
+    <script src="../assets/js/percent-change.js" defer></script>
+    <script src="../assets/lib/side-by-side-multiselect/js/side-by-side-multiselect.umd.min.js"></script>
 </head>
 
 <body>
@@ -52,20 +55,24 @@
                             </li>
 
                         <?php elseif ($pagina == "eliminar-trabajo"): ?>
-                            <li class="breadcrumb-item"><a href="?c=Jefe&a=gestionTrabajos">Listado Trabajos</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Editar Trabajo</a>
+                            <li class="breadcrumb-item active" aria-current="page">Listado Trabajos</li>
                             </li>
 
-                        <!--grupos-->    
+                            <!--grupos-->
                         <?php elseif ($pagina == "gestion-grupos"): ?>
                             <li class="breadcrumb-item active">Listado Grupos</li>
-                        <?php elseif ($pagina == "editar-grupos"): ?>
-                            <li class="breadcrumb-item"><a href="?c=Jefe&a=gestionTrabajos">Listado Grupos</a></li>
+                        <?php elseif ($pagina == "editar-grupo"): ?>
+                            <li class="breadcrumb-item"><a href="?c=Jefe&a=gestionGrupos">Listado Grupos</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Editar Grupo</a>
                             </li>
 
-                        
-                        <!--procesos-->
+
+                        <?php elseif ($pagina == "eliminar-grupo"): ?>
+                            <li class="breadcrumb-item active" aria-current="page">Listado Grupos</li>
+                            </li>
+
+
+                            <!--procesos-->
                         <?php elseif ($pagina == "visualizar-procesos"): ?>
                             <li class="breadcrumb-item active" aria-current="page">Mapa</li>
 
