@@ -22,6 +22,7 @@
     <script src="../assets/js/logout.js" defer></script>
     <script src="../assets/js/take-parcelas.js" defer></script>
     <script src="../assets/js/percent-change.js" defer></script>
+    <script src="../assets/js/form-validation.js" defer></script>
     <script src="../assets/lib/side-by-side-multiselect/js/side-by-side-multiselect.umd.min.js"></script>
 </head>
 

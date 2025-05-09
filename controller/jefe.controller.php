@@ -5,6 +5,7 @@ require_once '../model/entitys/grupo.php';
 require_once '../model/entitys/zona.php';
 require_once '../model/entitys/parcela.php';
 require_once '../model/entitys/trabajador.php';
+require_once 'functions/formFunctions.php';
 
 class JefeController
 {
@@ -191,11 +192,15 @@ class JefeController
     public function guardarGrupo()
     {
         $id_grupo = $_POST['id'] ?? null; //Trabajo a editar
-        $nombre = $_POST['grupo'];
+        $nombre = htmlspecialchars(trim(strip_tags($_POST['grupo'])), ENT_QUOTES, "ISO-8859-1");
         $integrantesSeleccionados = $_POST['integrantesSeleccionados'] ?? []; //Ids de los integrantes seleccionados
         $coordinador = $_POST['coordinador']; //id
         //Validar campos:
-        //...
+        $cadenaErrores = []; //array para almacenar los errores
+        if(!validarCampoVacio($nombre, "Grupo")){
+            $cadenaErrores[] = validarCampoVacio($nombre, "Grupo");
+        }
+        
 
         //Si son validos creamos el grupo 
         $grupo = new Grupo(

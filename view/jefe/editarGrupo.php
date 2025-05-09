@@ -43,7 +43,7 @@
                 <?php endif; ?>
             </div>
             <div class="container containerTable">
-                <form method="post" class="mx-auto p-5 shadow-sm formEdits" action="?c=Jefe&a=guardarGrupo">
+                <form method="post" class="mx-auto p-5 shadow-sm formEdits" action="?c=Jefe&a=guardarGrupo" id="formGrupo" novalidate>
                     <!--campo vacio para el id del grupo-->
                     <input type="hidden" name="id" value="<?php echo isset($grupo) ? $grupo->getId() : ''; ?>"> <!--campo oculto para el id del grupo-->
                     <div class="form-inputs">
@@ -52,12 +52,13 @@
                             <input type="text" class="form-control" id="inputGrupo" name="grupo"
                                 value="<?php echo isset($grupo) ? $grupo->getNombre() : ''; ?>" required>
                         </div>
+                        <div id="errorGrupo"></div>
                         <div class="mt-3">
                             <label for="inputCoordinador">Coordinador(a): </label>
                             <select class="form-control form-select" id="inputCoordinador" name="coordinador" required>
                                 <?php if (isset($coordinadores)): ?>
                                     <?php if ($grupoId == null): ?>
-                                        <option selected disabled>Selecciona un coordinador(a)</option>
+                                        <option value="noSeleccion" selected disabled>Selecciona un coordinador(a)</option>
                                     <?php endif; ?>
                                     <?php foreach ($coordinadores as $coordinador): ?>
                                         <option value="<?php echo $coordinador->getId(); ?>"
@@ -70,10 +71,11 @@
                                 <?php endif; ?>
                             </select>
                         </div>
+                        <div id="errorCoordinador"></div>
                         <!--Select multiple plugin-->
                         <label>Integrantes: </label>
                         <select class="js-sidebysidemultiselect" id="selectMultiple" multiple="multiple"
-                            name="integrantesSeleccionados[]" required>
+                            name="integrantesSeleccionados[]">
                             <?php if (isset($trabajadores)): ?>
                                 <?php foreach ($trabajadores as $trabajador): ?>
                                     <option value="<?php echo $trabajador->getId(); ?>"
@@ -84,7 +86,8 @@
                             <?php else: ?>
                                 <option value="">No hay integrante disponibles</option>
                             <?php endif; ?>
-                        </select>
+                        </select>                    
+                        <div id="errorIntegrantes"></div>
                         <div class="btn-container">
                             <button type="submit" class="buttonAdd">
                                 <?php if (isset($_GET['id'])): ?>

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    const selectMultiple = document.getElementById("selectMultiple");
+    const selectMultiple = document.getElementById("selectMultipleParcelas");
     const inputZona = document.getElementById("inputZona");
 
     //Funcion para cargar las parcelas

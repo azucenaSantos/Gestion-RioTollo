@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Coordinador</title>
     <link rel="icon" href="../../assets/img/logo.jpg" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -34,7 +35,8 @@
                     <i class="las la-user iconUser"></i>
                     <h2 style="margin-bottom: 18px;">
                         <?php if (isset($_SESSION['name']))
-                            echo $_SESSION['name'] ?> <strong style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name']?></strong>
+                            echo $_SESSION['name'] ?> <strong
+                                style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name'] ?></strong>
                     </h2>
                 </div>
                 <div class="nav-container">
@@ -76,22 +78,30 @@
 
         <div class="section d-flex flex-row">
             <!--Menu lateral, comun a todos los usuarios (con más o menos apartados) -->
-            <div class="d-flex flex-column p-3 lateral-menu">
-                <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item">
-                        <a href="../../public/index.php?c=Coordinador&a=reportarTrabajos" class="nav-section">
-                            <i class="las la-pen-alt"></i>
-                            <h3>Reportar Trabajo</h3>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../../public/index.php?c=Coordinador&a=verParte" class="nav-section">
-                            <i class="las la-file"></i>
-                            <h3>Visualizar Parte</h3>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <nav class="navbar navbar-expand-lg navbar-light" style="width: 400px;">
+                <div class="container-fluid lateral-menu">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-item">
+                                <a href="../../public/index.php?c=Coordinador&a=reportarTrabajos" class="nav-section">
+                                    <i class="las la-pen-alt"></i>
+                                    <h3>Reportar Trabajo</h3>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../public/index.php?c=Coordinador&a=verParte" class="nav-section">
+                                    <i class="las la-file"></i>
+                                    <h3>Visualizar Parte</h3>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
             <!--Contenedor principal, donde se cargan los contenidos del apartado seleccionado -->
             <main class="d-flex flex-column align-items-center">
                 <div class="info-container">

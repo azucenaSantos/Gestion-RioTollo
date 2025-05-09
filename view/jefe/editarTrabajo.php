@@ -43,7 +43,7 @@
             <?php endif; ?>
         </div>
             <div class="container containerTable">
-                <form method="post" class="mx-auto p-5 shadow-sm formEdits" action="?c=Jefe&a=guardarTrabajo">
+                <form method="post" class="mx-auto p-5 shadow-sm formEdits" action="?c=Jefe&a=guardarTrabajo" id="formTrabajo" novalidate>
                     <!--campo vacio para el id del trabajo-->
                     <input type="hidden" name="id" value="<?php echo isset($trabajo) ? $trabajo->getId() : ''; ?>">
                     <div class="form-inputs">
@@ -52,12 +52,13 @@
                             <input type="text" class="form-control" id="inputTrabajo" name="trabajo"
                                 value="<?php echo isset($trabajo) ? $trabajo->getNombre() : ''; ?>" required>
                         </div>
+                        <div id="errorTrabajo"></div>
                         <div class="mt-3">
                             <label for="inputZona">Zona: </label>
                             <select class="form-control form-select" id="inputZona" name="zona" required>
                                 <?php if (isset($zonas)): ?>
                                     <?php if ($trabajoId == null): ?>
-                                        <option selected disabled>Selecciona una zona de trabajo</option>
+                                        <option value="noSeleccion" selected disabled>Selecciona una zona de trabajo</option>
                                     <?php endif; ?>
                                     <?php foreach ($zonas as $zona): ?>
                                         <option value="<?php echo $zona->getId(); ?>">
@@ -70,9 +71,10 @@
                                 <?php endif; ?>
                             </select>
                         </div>
+                        <div id="errorZona"></div>
                         <!--Select multiple plugin-->
                         <label>Parcelas: </label>
-                        <select class="js-sidebysidemultiselect" id="selectMultiple" multiple="multiple" name="opcionesSeleccionadas[]" required>
+                        <select class="js-sidebysidemultiselect" id="selectMultipleParcelas" multiple="multiple" name="opcionesSeleccionadas[]" required>
                         <?php if (isset($parcelas)): ?>
                             <?php foreach ($parcelas as $parcela): ?>
                                 <option value="<?php echo $parcela->getId(); ?>"
@@ -85,7 +87,7 @@
                         <?php endif; ?>
 
                         </select>
-
+                        <div id="errorParcelas"></div>
                         <div class="mt-3 d-flex">
                             <label for="inputPorcentaje" class="form-label">Porcentaje: </label>
                             <input type="range" class="form-range form-control" min="0" max="100" step="10" id="inputPorcentaje" name="porcentaje"
@@ -104,24 +106,27 @@
                                 <label for="finalizadoNo">No</label>
                             </div>
                         </div>
+                        <div id="errorFinalizado"></div>
                         <div class="mt-3">
                             <label for="inputHorario">Horario: </label>
-                            <input type="time" class="form-control" id="inputHorario" name="hora_inicio"
+                            <input type="time" class="form-control" id="horaIni" name="hora_inicio"
                                 value="<?php echo isset($trabajo) ? $trabajo->getHoraInicio() : ''; ?>" required>
-                            <input type="time" class="form-control" name="hora_fin"
+                            <input type="time" class="form-control" id="horaFin" name="hora_fin"
                                 value="<?php echo isset($trabajo) ? $trabajo->getHoraFin() : ''; ?>" required>
                         </div>
+                        <div id="errorHorario"></div>
                         <div class="mt-3">
                             <label for="inputFecha">Fecha: </label>
                             <input type="date" class="form-control" id="inputFecha" name="fecha"
                                 value="<?php echo isset($trabajo) ? $trabajo->getFecha() : ''; ?>" required>
                         </div>
+                        <div id="errorFecha"></div>
                             <div class="mt-3">
                             <label for="inputGrupo">Grupo: </label>
                             <select class="form-control form-select" id="inputGrupo" name="grupo" required onchange="handleSelectChange(this)">
                                  <?php if (isset($grupos)): ?>
                                     <?php if ($trabajoId == null): ?>
-                                        <option selected disabled>Selecciona un grupo de trabajo</option>
+                                        <option value="noSeleccion" selected disabled>Selecciona un grupo de trabajo</option>
                                     <?php endif; ?>
                                     <?php foreach ($grupos as $grupo): ?>
                                         <option value="<?php echo $grupo->getId(); ?>"
@@ -137,7 +142,7 @@
                                 <?php endif; ?>
                             </select>
                         </div>
-
+                        <div id="errorGrupoTrabajo"></div>
                         <div class="checkbox mt-3">
                             <label for="inputAnotaciones" style="display:block">Anotaciones: </label>
                             <textarea class="form-control" id="inputAnotaciones"
