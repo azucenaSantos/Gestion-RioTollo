@@ -123,10 +123,16 @@ main {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.containerTable #formTrabajo,
+.containerTable #formGrupo {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-end;
+}
 
 .formEdits .form-control {
   display: inline;
-  width: 32.5%;
 }
 .formEdits .form-range {
   width: 25%;
@@ -171,6 +177,17 @@ main {
 .formEdits input[type=time] {
   width: 16.2%;
 }
+.formEdits .form-inputs {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  flex-wrap: wrap;
+}
+.formEdits .form-inputs .mt-3 {
+  display: flex;
+  width: 100%;
+  gap: 10%;
+}
 .formEdits .form-inputs input {
   font-size: 14px !important;
 }
@@ -191,6 +208,9 @@ main {
   font-size: 12px;
   width: 80%;
   text-align: center;
+}
+.formEdits .error-container {
+  width: 50%;
 }
 .formEdits .buttons {
   display: flex;
@@ -213,15 +233,13 @@ main {
   background-color: #558B2F;
 }
 
-.estado {
-  width: 200px;
-}
 .estado .finalizado {
   background: #8BC34A;
   padding: 5px 10px;
   border-radius: 5px;
   color: #FFFFFF;
-  width: 50%;
+  width: -moz-fit-content;
+  width: fit-content;
   margin: 0 auto;
 }
 .estado .pendiente {
@@ -229,6 +247,15 @@ main {
   padding: 5px 10px;
   border-radius: 5px;
   color: #FFFFFF;
-  width: 50%;
+  width: -moz-fit-content;
+  width: fit-content;
   margin: 0 auto;
+}
+
+.roles .trabajador {
+  color: #333333;
+}
+.roles .coordinador {
+  color: #333333;
+  text-decoration: underline;
 }/*# sourceMappingURL=user-styles.css.map */

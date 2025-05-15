@@ -5,7 +5,7 @@
 function validarCampoVacio($campo, $nombreCampo)
 {
     if (empty($campo)) {
-        return "El campo $nombreCampo no puede estar vacío.";
+        return "El campo <strong> $nombreCampo </strong> no puede estar vacío.";
     }
     return false;
 }
@@ -14,8 +14,45 @@ function validarCampoVacio($campo, $nombreCampo)
 function validarLongitudCampo($campo, $nombreCampo, $longitudMinima, $longitudMaxima)
 {
     if (strlen($campo) < $longitudMinima || strlen($campo) > $longitudMaxima) {
-        return "El campo $nombreCampo debe tener entre $longitudMinima y $longitudMaxima caracteres.";
+        return "El campo" . $nombreCampo . " debe tener entre $longitudMinima y $longitudMaxima caracteres.";
     }
     return false;
 }
+
+//Validar un campo null
+function validarCampoNull($campo, $nombreCampo)
+{
+    if ($campo == null) {
+        return "No se ha seleccionado el campo <strong>$nombreCampo.</strong>";
+    }
+    return false;
+}
+
+//Validar un array vacio
+function validarArrayVacio($array, $nombreCampo)
+{
+    if (empty($array)) {
+        return "El campo <strong>$nombreCampo </strong> debe tener al menos 1 elemento seleccionado.";
+    }
+    return false;
+}
+
+//Validar una fecha válida
+function validarFecha($fecha, $nombreCampo)
+{
+    $fechaFormateada = DateTime::createFromFormat('Y-m-d', $fecha);
+    if (!$fechaFormateada || $fechaFormateada->format('Y-m-d') !== $fecha) {
+        return "El campo <strong>$nombreCampo</strong> no es una fecha válida.";
+    }
+    return false;
+}
+
+// //Validar un numero entero
+// function validarNumeroEntero($numero, $nombreCampo)
+// {
+//     if (!is_numeric($numero) || intval($numero) != $numero) {
+//         return "El campo $nombreCampo debe ser un número entero.";
+//     }
+//     return false;
+// }
 ?>

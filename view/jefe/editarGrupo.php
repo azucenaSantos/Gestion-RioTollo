@@ -36,23 +36,26 @@
         <!--Contenedor principal, donde se cargan los contenidos del apartado seleccionado -->
         <main>
             <div class="info-container">
-                <?php if (isset($_GET['id'])): ?>
+                <?php if (isset($grupo) && $grupo->getId()): ?>
                     <h1>Editar Grupo</h1>
                 <?php else: ?>
                     <h1>Crear Grupo</h1>
                 <?php endif; ?>
             </div>
             <div class="container containerTable">
-                <form method="post" class="mx-auto p-5 shadow-sm formEdits" action="?c=Jefe&a=guardarGrupo" id="formGrupo" novalidate>
+                <form method="post" class="mx-auto p-5 shadow-sm formEdits" action="?c=Jefe&a=guardarGrupo"
+                    id="formGrupo" novalidate>
                     <!--campo vacio para el id del grupo-->
-                    <input type="hidden" name="id" value="<?php echo isset($grupo) ? $grupo->getId() : ''; ?>"> <!--campo oculto para el id del grupo-->
+                    <input type="hidden" name="id" value="<?php echo isset($grupo) ? $grupo->getId() : ''; ?>">
+                    <!--campo oculto para el id del grupo-->
                     <div class="form-inputs">
                         <div class="mt-3">
                             <label for="inputGrupo">Nombre: </label>
                             <input type="text" class="form-control" id="inputGrupo" name="grupo"
-                                value="<?php echo isset($grupo) ? $grupo->getNombre() : ''; ?>" required>
+                                value="<?php echo isset($grupo) ? $grupo->getNombre() : (isset($nombreGrupo) ? $nombreGrupo : ''); ?>"
+                                required>
                         </div>
-                        <div id="errorGrupo"></div>
+
                         <div class="mt-3">
                             <label for="inputCoordinador">Coordinador(a): </label>
                             <select class="form-control form-select" id="inputCoordinador" name="coordinador" required>
@@ -61,8 +64,8 @@
                                         <option value="noSeleccion" selected disabled>Selecciona un coordinador(a)</option>
                                     <?php endif; ?>
                                     <?php foreach ($coordinadores as $coordinador): ?>
-                                        <option value="<?php echo $coordinador->getId(); ?>"
-                                            <?php echo isset($coordinadorId) && $coordinador->getId() == $coordinadorId ? 'selected' : ''; ?>>
+                                        <option value="<?php echo $coordinador->getId(); ?>" <?php echo (isset($coordinadorId) && $coordinador->getId() == $coordinadorId)
+                                               || (isset($coordinadorSeleccionado) && $coordinadorSeleccionado == $coordinador->getId()) ? 'selected' : ''; ?>>
                                             <?php echo $coordinador->getNombreApellidos(); ?>
                                         </option>
                                     <?php endforeach; ?>
@@ -71,32 +74,48 @@
                                 <?php endif; ?>
                             </select>
                         </div>
-                        <div id="errorCoordinador"></div>
+
                         <!--Select multiple plugin-->
                         <label>Integrantes: </label>
                         <select class="js-sidebysidemultiselect" id="selectMultiple" multiple="multiple"
                             name="integrantesSeleccionados[]">
                             <?php if (isset($trabajadores)): ?>
                                 <?php foreach ($trabajadores as $trabajador): ?>
-                                    <option value="<?php echo $trabajador->getId(); ?>"
-                                        <?php echo (in_array($trabajador->getId(), $integrantesIds)) ? 'selected' : ''; ?>>
+                                    <option value="<?php echo $trabajador->getId(); ?>" <?php
+                                       echo in_array($trabajador->getId(), $integrantesSeleccionados) ? 'selected' : ''; ?>>
                                         <?php echo $trabajador->getNombreApellidos(); ?>
                                     </option>
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <option value="">No hay integrante disponibles</option>
                             <?php endif; ?>
-                        </select>                    
+                        </select>
+
+                    </div>
+                    <div class="error-container">
+                        <!--contenedores errores cliente-->
+                        <div id="errorGrupo"></div>
+                        <div id="errorCoordinador"></div>
                         <div id="errorIntegrantes"></div>
-                        <div class="btn-container">
-                            <button type="submit" class="buttonAdd">
-                                <?php if (isset($_GET['id'])): ?>
-                                    Editar
-                                <?php else: ?>
-                                    Crear
-                                <?php endif; ?>
-                            </button>
-                        </div>
+                        <!--contenedor errores servidor-->
+                        <?php if (!empty($cadenaErrores)): ?>
+                            <ul style="list-style: none;">
+                                <?php foreach ($cadenaErrores as $error): ?>
+                                    <div class="alert alert-danger">
+                                        <li><?php echo $error; ?></li>
+                                    </div>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
+                    </div>
+                    <div class="btn-container">
+                        <button type="submit" class="buttonAdd">
+                            <?php if (isset($grupo) && $grupo->getId()): ?>
+                                Editar
+                            <?php else: ?>
+                                Crear
+                            <?php endif; ?>
+                        </button>
                     </div>
                 </form>
             </div>

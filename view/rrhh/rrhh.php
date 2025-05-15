@@ -22,36 +22,35 @@
 </head>
 
 <body>
-    <div class="content">
-        <header> <!-- Header, comun a todos los usuarios -->
-            <?php
-            session_start();
-            //print_r($_SESSION);
-            $pagina = "jefe";
-            ?>
-            <div class="welcome">
-                <img class="mt-4" src="../../assets/img/logo.jpg" alt="Logotipo Rio Tollo" width="140px" height="140px">
-                <div class="welcome-text d-flex align-items-center">
-                    <i class="las la-user iconUser"></i>
-                    <h2 style="margin-bottom: 18px;">
-                        <?php if (isset($_SESSION['name']))
-                            echo $_SESSION['name'] ?> <strong
-                                style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name'] ?></strong>
-                    </h2>
-                </div>
-                <div class="nav-container">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item active">Inicio</a></li>
-                        </ol>
-                    </nav>
-                </div>
-                <button class="buttonLogout" data-toggle="modal" data-target="#exampleModal">
-                    <i class="las la-sign-out-alt iconLogout"></i>
-                </button>
+    <header>
+        <?php
+        session_start();
+        //print_r($_SESSION);
+        $pagina = "rrhh";
+        ?>
+        <div class="welcome">
+            <img class="mt-4" src="../../assets/img/logo.jpg" alt="Logotipo Rio Tollo" width="140px" height="140px">
+            <div class="welcome-text d-flex align-items-center">
+                <i class="las la-user iconUser"></i>
+                <h2 style="margin-bottom: 18px;">
+                    <?php if (isset($_SESSION['name']))
+                        echo $_SESSION['name'] ?> <strong
+                            style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name'] ?></strong>
+                </h2>
             </div>
-        </header>
-
+            <div class="nav-container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">Inicio</a></li>
+                    </ol>
+                </nav>
+            </div>
+            <button class="buttonLogout" data-toggle="modal" data-target="#exampleModal">
+                <i class="las la-sign-out-alt iconLogout"></i>
+            </button>
+        </div>
+    </header>
+    <div class="content d-flex flex-row">
         <!-- Modal bootstrap -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -68,74 +67,83 @@
                             data-bs-dismiss="modal">Cancelar</button>
                         <button id="buttonModal" class="btn btn-primary">
                             <a href="../../public/index.php?c=User&a=logout">Cerrar
-                                sesión</a> <!--Cerramos sesion y redirigimos al inicio de sesion (pagina principal) -->
+                                sesión</a>
+                            <!--Cerramos sesion y redirigimos al inicio de sesion (pagina principal) -->
 
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="section d-flex flex-row">
-            <!--Menu lateral, comun a todos los usuarios (con más o menos apartados) -->
-            <div class="d-flex flex-column p-3 lateral-menu">
-                <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item">
-                        <a href="../../public/index.php?c=Rrhh&a=gestionTrabajos" class="nav-section">
-                            <i class="las la-user-edit"></i>
-                            <h3>Gestionar Trabajadores</h3>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../../public/index.php?c=Rrhh&a=gestionJefes" class="nav-section">
-                            <i class="las la-user-shield"></i>
-                            <h3>Gestionar Jefes</h3>
-                        </a>
-                    </li>
-                </ul>
+        <!-- Menú hamburguesa -->
+        <nav class="navbar navbar-expand-lg navbar-light" style="width: 400px;">
+            <div class="container-fluid lateral-menu">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-item">
+                            <a href="../../public/index.php?c=Rrhh&a=gestionTrabajadores" class="nav-section">
+                                <i class="las la-user-edit"></i>
+                                <h3>Gestionar Trabajadores</h3>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../public/index.php?c=Rrhh&a=gestionJefes" class="nav-section">
+                                <i class="las la-user-shield"></i>
+                                <h3>Gestionar Jefes</h3>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <!--Contenedor principal, donde se cargan los contenidos del apartado seleccionado -->
-            <main class="d-flex flex-column align-items-center">
-                <div class="info-container">
-                    <h1 class="text-center">Bienvenido al Panel de Administrador (RRHH)</h1>
-                    <p class="text-center">Desde aquí podrás gestionar trabajadores y jefes que están registrados en la
-                        empresa.
-                    </p>
-                    <p class="text-center">Podrás añadir, crear y modificar datos de jefes y trabajadores del vivero.
-                    </p>
-                </div>
-                <div class="container mt-5">
-                    <div class="row text-center">
-                        <div class="col-md-6">
-                            <div class="card shadow-sm">
-                                <div class="card-body">
-                                    <i class="las la-user-edit display-4 mb-3"></i>
-                                    <h5 class="card-title">Gestión de Trabajador</h5>
-                                    <p class="card-text">Crea, edita y elimina trabajadores de la empresa.</p>
-                                    <!-- <a href="../../public/index.php?c=Jefe&a=gestionTrabajos" class="btn btn-primary">Ir a
+        </nav>
+        <!--Contenedor principal, donde se cargan los contenidos del apartado seleccionado -->
+        <main class="d-flex flex-column align-items-center">
+            <div class="info-container">
+                <h1 class="text-center">Bienvenido al Panel de Administrador (RRHH)</h1>
+                <p class="text-center">Desde aquí podrás gestionar trabajadores y jefes que están registrados en
+                    la
+                    empresa.
+                </p>
+                <p class="text-center">Podrás añadir, crear y modificar datos de jefes y trabajadores del
+                    vivero.
+                </p>
+            </div>
+            <div class="container mt-5">
+                <div class="row text-center">
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <i class="las la-user-edit display-4 mb-3"></i>
+                                <h5 class="card-title">Gestión de Trabajador</h5>
+                                <p class="card-text">Crea, edita y elimina trabajadores de la empresa.</p>
+                                <!-- <a href="../../public/index.php?c=Jefe&a=gestionTrabajos" class="btn btn-primary">Ir a
                                         Trabajos</a> -->
-                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="card shadow-sm">
-                                <div class="card-body">
-                                    <i class="las la-user-shield display-4 mb-3"></i>
-                                    <h5 class="card-title">Gestión de Jefes</h5>
-                                    <p class="card-text">Crea, edita y elimina jefes de la empresa.</p>
-                                    <!-- <a href="../../public/index.php?c=Jefe&a=gestionGrupos" class="btn btn-primary">Ir a
-                                        Grupos</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-center mt-5">Navega por el menu lateral para acceder a los diferentes apartados
-                            del
-                            panel.</p>
-
                     </div>
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <i class="las la-user-shield display-4 mb-3"></i>
+                                <h5 class="card-title">Gestión de Jefes</h5>
+                                <p class="card-text">Crea, edita y elimina jefes de la empresa.</p>
+                                <!-- <a href="../../public/index.php?c=Jefe&a=gestionGrupos" class="btn btn-primary">Ir a
+                                        Grupos</a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center mt-5">Navega por el menu lateral para acceder a los diferentes
+                        apartados
+                        del
+                        panel.</p>
+
                 </div>
-            </main>
-        </div>
+            </div>
+        </main>
     </div>
     <div class="line"></div>
     <footer class="d-flex justify-content-center align-items-center">

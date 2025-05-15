@@ -49,6 +49,10 @@ document.addEventListener('DOMContentLoaded', function () {
             selectMultiple.innerHTML = ''; //Vaciar el select
             cargarParcelas(this.value);
         });
+        // //Si hay una zona seleccionada al cargar la página, carga las parcelas de esa zona
+        // if (inputZona.value) {
+        //     cargarParcelas(inputZona.value);
+        // }
     }
 
 

@@ -22,36 +22,35 @@
 </head>
 
 <body>
-   
-        <header> <!-- Header, comun a todos los usuarios -->
-            <?php
-            session_start();
-            //print_r($_SESSION);
-            $pagina = "jefe";
-            ?>
-            <div class="welcome">
-                <img class="mt-4" src="../../assets/img/logo.jpg" alt="Logotipo Rio Tollo" width="140px" height="140px">
-                <div class="welcome-text d-flex align-items-center">
-                    <i class="las la-user iconUser"></i>
-                    <h2 style="margin-bottom: 18px;">
-                        <?php if (isset($_SESSION['name']))
-                            echo $_SESSION['name'] ?> <strong
-                                style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name'] ?></strong>
-                    </h2>
-                </div>
-                <div class="nav-container">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item active">Inicio</a></li>
-                        </ol>
-                    </nav>
-                </div>
-                <button class="buttonLogout" data-toggle="modal" data-target="#exampleModal">
-                    <i class="las la-sign-out-alt iconLogout"></i>
-                </button>
+    <header>
+        <?php
+        session_start();
+        //print_r($_SESSION);
+        $pagina = "jefe";
+        ?>
+        <div class="welcome">
+            <img class="mt-4" src="../../assets/img/logo.jpg" alt="Logotipo Rio Tollo" width="140px" height="140px">
+            <div class="welcome-text d-flex align-items-center">
+                <i class="las la-user iconUser"></i>
+                <h2 style="margin-bottom: 18px;">
+                    <?php if (isset($_SESSION['name']))
+                        echo $_SESSION['name'] ?> <strong
+                            style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name'] ?></strong>
+                </h2>
             </div>
-        </header>
-        <div class="content d-flex flex-row">
+            <div class="nav-container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">Inicio</a></li>
+                    </ol>
+                </nav>
+            </div>
+            <button class="buttonLogout" data-toggle="modal" data-target="#exampleModal">
+                <i class="las la-sign-out-alt iconLogout"></i>
+            </button>
+        </div>
+    </header>
+    <div class="content d-flex flex-row">
         <!-- Modal bootstrap -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -74,7 +73,7 @@
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>
         <!-- Menú hamburguesa -->
         <nav class="navbar navbar-expand-lg navbar-light" style="width: 400px;">
             <div class="container-fluid lateral-menu">
@@ -86,19 +85,19 @@
                     <ul class="navbar-nav flex-column">
                         <li class="nav-item">
                             <a class="nav-section" href="../../public/index.php?c=Jefe&a=gestionTrabajos">
-                                <i class="las la-briefcase"></i> 
+                                <i class="las la-briefcase"></i>
                                 <h3>Gestión de Trabajos</h3>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-section" href="../../public/index.php?c=Jefe&a=gestionGrupos">
-                                <i class="las la-object-group"></i> 
+                                <i class="las la-object-group"></i>
                                 <h3>Gestión de Grupos</h3>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-section" href="../../public/index.php?c=Jefe&a=visualizarProcesos">
-                                <i class="las la-chart-bar"></i> 
+                                <i class="las la-chart-bar"></i>
                                 <h3>Visualizar Procesos</h3>
                             </a>
                         </li>
@@ -161,7 +160,6 @@
                 </div>
             </div>
         </main>
-    </div>
     </div>
     <div class="line"></div>
     <footer class="d-flex justify-content-center align-items-center">

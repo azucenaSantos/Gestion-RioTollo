@@ -67,7 +67,6 @@
                             <li class="breadcrumb-item active" aria-current="page">Editar Grupo</a>
                             </li>
 
-
                         <?php elseif ($pagina == "eliminar-grupo"): ?>
                             <li class="breadcrumb-item active" aria-current="page">Listado Grupos</li>
                             </li>
@@ -77,7 +76,25 @@
                         <?php elseif ($pagina == "visualizar-procesos"): ?>
                             <li class="breadcrumb-item active" aria-current="page">Mapa</li>
 
+                            <!--rrhh, trabajadores-->
+                        <?php elseif ($pagina == "gestion-trabajadores"): ?>
+                            <li class="breadcrumb-item active">Listado Trabajadores</li>
 
+                        <?php elseif ($pagina == "editar-trabajador"): ?>
+                            <li class="breadcrumb-item"><a href="?c=Rrhh&a=gestionTrabajadores">Listado Trabajadores</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Editar Trabajador</a>
+                            </li>
+
+                            <!--rrhh, jefes-->
+                        <?php elseif ($pagina == "gestion-jefes"): ?>
+                            <li class="breadcrumb-item active">Listado Jefes</li>
+
+                        <?php elseif ($pagina == "editar-jefes"): ?>
+                            <li class="breadcrumb-item"><a href="?c=Rrhh&a=gestionJefes">Listado Jefes</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Editar Jefe</a>
+                            </li>
 
                         <?php elseif ($pagina == "reportar-trabajos"): ?>
                             <li class="breadcrumb-item active">Reportar Trabajo

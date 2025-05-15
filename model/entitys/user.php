@@ -10,7 +10,7 @@ class User
     protected $passwordChanged;
     protected $rol;
 
-    public function __construct($id, $name, $surname,$username, $password, $passwordChanged, $rol)
+    public function __construct($id, $name, $surname, $username, $password, $passwordChanged, $rol)
     {
         $this->id = $id;
         $this->name = $name;

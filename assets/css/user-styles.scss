@@ -134,20 +134,28 @@ main {
       }
     }
   }
+
+  #formTrabajo,
+  #formGrupo {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
 }
 
 .formEdits {
   .form-control {
     display: inline;
-    width: 32.5%;
+    // width: 32.5%;
   }
   .form-range {
-    width:25%;
+    width: 25%;
     margin-right: 10px;
     border: 0px;
   }
 
-  .form-number{
+  .form-number {
     width: 7%;
   }
 
@@ -193,6 +201,16 @@ main {
   }
 
   .form-inputs {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    flex-wrap: wrap;
+
+    .mt-3 {
+      display: flex;
+      width: 100%;
+      gap: 10%;
+    }
     input {
       font-size: 14px !important;
     }
@@ -214,6 +232,9 @@ main {
         }
       }
     }
+  }
+  .error-container {
+    width: 50%;
   }
   .buttons {
     display: flex;
@@ -238,13 +259,13 @@ main {
 }
 
 .estado {
-  width: 200px;
+  // width: 200px;
   .finalizado {
     background: $primary-color;
     padding: 5px 10px;
     border-radius: 5px;
     color: $color-white;
-    width: 50%;
+    width: fit-content;
     margin: 0 auto;
   }
   .pendiente {
@@ -252,7 +273,17 @@ main {
     padding: 5px 10px;
     border-radius: 5px;
     color: $color-white;
-    width: 50%;
+    width: fit-content;
     margin: 0 auto;
+  }
+}
+
+.roles {
+  .trabajador {
+    color: $color-grey;
+  }
+  .coordinador {
+    color: $color-grey;
+    text-decoration: underline;
   }
 }

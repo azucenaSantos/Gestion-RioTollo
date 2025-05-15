@@ -43,7 +43,7 @@ class JefeController
         if ($trabajoId) {
             $trabajo = $this->model->getTrabajoById($trabajoId); //obtenemos el trabajo, para mostrarlo en el form
             $grupoNombre = $this->model->getGrupoByTrabajoId($trabajoId); //obtenemos el grupo al que pertenece el trabajo
-            $trabajo->setGrupoNombre($grupoNombre); // Asignar el nombre del grupo al trabajo
+            $trabajo->setGrupoNombre($grupoNombre); //Asignar el nombre del grupo al trabajo
             $parcelas = $this->model->getParcelasByZona($trabajo->getIdZona());
             $parcelasSeleccionadas = $this->model->getParcelasByTrabajo($trabajoId); //array de ids de las parcelas
         } else {
@@ -60,28 +60,77 @@ class JefeController
     public function guardarTrabajo()
     {
         $id_trabajo = $_POST['id'] ?? null; //Trabajo a editar
-        $id_grupo = $_POST['grupo']; //Id del grupo seleccionado
-        $nombre = $_POST['trabajo'];
-        $zona = $this->model->getNameOfZona($_POST['zona']); //obtener nombre de la zona por id
-        $parcelasArray = $_POST['opcionesSeleccionadas'] ?? []; //Ids de las parcelas
-
+        $nombre = htmlspecialchars(trim(strip_tags($_POST['trabajo'])), ENT_QUOTES, "ISO-8859-1");
+        $zona = isset($_POST['zona']) ? $this->model->getNameOfZona(id_zona: $_POST['zona']) : null;
+        $parcelasSeleccionadas = $_POST['opcionesSeleccionadas'] ?? []; //Ids de las parcelas
         //Obtengo el nombre de cada una de las parcelas
         $parcelasNumeros = [];
-        foreach ($parcelasArray as $parcela) {
+        foreach ($parcelasSeleccionadas as $parcela) {
             $parcelasNumeros[] = $this->model->getNumerosParcela($parcela);
         }
         $parcelas = implode(", ", $parcelasNumeros);
-
         $porcentaje = $_POST['porcentaje'];
-        $finalizado = $_POST['finalizado']; //0 o 1
-        $hora_inicio = $_POST['hora_inicio'];
-        $hora_fin = $_POST['hora_fin'];
+        $finalizado = isset($_POST['finalizado']) ? $_POST['finalizado'] : null;
+        $hora_inicio = htmlspecialchars(trim(strip_tags($_POST['hora_inicio'])), ENT_QUOTES, "ISO-8859-1");
+        $hora_fin = htmlspecialchars(trim(strip_tags($_POST['hora_fin'])), ENT_QUOTES, "ISO-8859-1");
         $fecha = $_POST['fecha'];
-        $anotaciones = $_POST['anotaciones'];
-        //Validar campos:
-        //...
+        $id_grupo = $_POST['grupo'] ?? null; //Id del grupo seleccionado o null si no existe
+        $anotaciones = htmlspecialchars(trim(strip_tags($_POST['anotaciones'])), ENT_QUOTES, "ISO-8859-1");
 
-        //Si son validos creamos el trabajo 
+        //Validar campos:
+        $cadenaErrores = [];
+        if (validarCampoVacio($nombre, "Trabajo")) {
+            $cadenaErrores[] = validarCampoVacio($nombre, "Trabajo");
+            $nombre = "";
+        } else {
+            $nombre = htmlspecialchars(trim(strip_tags($nombre)), ENT_QUOTES, "ISO-8859-1");
+        }
+
+        if (validarCampoNull($zona, "Zona")) {
+            $cadenaErrores[] = validarCampoNull($zona, "Zona");
+            $zonaSeleccionar = null;
+        } else {
+            $zonaSeleccionar = htmlspecialchars(trim(strip_tags($zona)), ENT_QUOTES, "ISO-8859-1");
+        }
+
+        if (validarArrayVacio($parcelasSeleccionadas, "Parcelas")) {
+            $cadenaErrores[] = validarArrayVacio($parcelasSeleccionadas, "Parcelas");
+        }
+
+        if (validarCampoNull($finalizado, "Finalizado")) {
+            $cadenaErrores[] = validarCampoNull($finalizado, "Finalizado");
+        } else {
+            $finalizado = htmlspecialchars(trim(strip_tags($finalizado)), ENT_QUOTES, "ISO-8859-1");
+        }
+
+        if (validarCampoVacio($hora_inicio, "Hora Inicio")) {
+            $cadenaErrores[] = validarCampoVacio($hora_inicio, "Hora Inicio");
+            $hora_inicio = "";
+        } else {
+            $hora_inicio = htmlspecialchars(trim(strip_tags($hora_inicio)), ENT_QUOTES, "ISO-8859-1");
+        }
+
+        if (validarCampoVacio($hora_fin, "Hora Fin")) {
+            $cadenaErrores[] = validarCampoVacio($hora_fin, "Hora Fin");
+            $hora_fin = "";
+        } else {
+            $hora_fin = htmlspecialchars(trim(strip_tags($hora_fin)), ENT_QUOTES, "ISO-8859-1");
+        }
+
+        if (validarFecha($fecha, "Fecha")) {
+            $cadenaErrores[] = validarFecha($fecha, "Fecha");
+            $fecha = "";
+        } else {
+            $fecha = htmlspecialchars(trim(strip_tags($fecha)), ENT_QUOTES, "ISO-8859-1");
+        }
+
+        if (validarCampoNull($id_grupo, "Grupo")) {
+            $cadenaErrores[] = validarCampoNull($id_grupo, "Grupo");
+            $id_grupo = null;
+        } else {
+            $id_grupo = htmlspecialchars(trim(strip_tags($id_grupo)), ENT_QUOTES, "ISO-8859-1");
+        }
+
         $trabajo = new Trabajo(
             $id_trabajo,
             $nombre,
@@ -95,13 +144,39 @@ class JefeController
             $anotaciones,
             $_POST['zona']
         );
+     
+
+
+        //Si hay errores se muestran en el formulario
+        if (!empty($cadenaErrores)) {
+            $rol = "jefe";
+            
+            $pagina = "editar-trabajo";
+            
+            $trabajoId = $_POST['id'] ?? null;
+            
+            if ($trabajoId) {
+                $grupoNombre = $this->model->getGrupoByTrabajoId($trabajoId); //obtenemos el grupo al que pertenece el trabajo
+                $trabajo->setGrupoNombre($grupoNombre); // Asignar el nombre del grupo al trabajo
+                $parcelas = $this->model->getParcelasByZona($trabajo->getIdZona());
+            } else {
+                $trabajo = null; //si no se ha pasado el id, no hay trabajo a editar
+            }
+            $grupos = $this->model->getAllGrupos();
+            $zonas = $this->model->getAllZonas();
+            require_once '../view/header.php';
+            require_once '../view/jefe/editarTrabajo.php';
+            require_once '../view/footer.php';
+            return;
+        }
+
         //Guardar o updatear el trabajo en la base de datos
         try {
             $this->model->getPdo()->beginTransaction(); //Iniciar transacción
             if (isset($_POST['id']) && !empty($_POST['id'])) {
                 $this->model->updateTrabajo($trabajo);
                 $this->model->actualizarGrupoTrabajo($trabajo->getId(), $id_grupo);
-                $this->model->actualizarParcelasTrabajo($trabajo->getId(), $parcelasArray);
+                $this->model->actualizarParcelasTrabajo($trabajo->getId(), $parcelasSeleccionadas);
             } else {
                 $id_trabajo = $this->model->guardarTrabajo($trabajo);
                 $trabajo->setId($id_trabajo);
@@ -110,7 +185,7 @@ class JefeController
                     throw new Exception("Error al guardar el trabajo. ID no generado.");
                 }
                 $this->model->asignarGrupoTrabajo($id_trabajo, $id_grupo);
-                $this->model->actualizarParcelasTrabajo($trabajo->getId(), $parcelasArray);
+                $this->model->actualizarParcelasTrabajo($trabajo->getId(), $parcelasSeleccionadas);
             }
             $this->model->getPdo()->commit();
             header('Location: ?c=Jefe&a=gestionTrabajos');
@@ -177,10 +252,10 @@ class JefeController
         if ($grupoId) {
             $grupo = $this->model->getGrupoById($grupoId);
             $trabajadores = $this->model->geTrabajadores();
-            $integrantesIds = $this->model->getIntegrantesByGrupoId($grupoId); //integrantes de un grupo 
+            $integrantesSeleccionados = $this->model->getIntegrantesByGrupoId($grupoId); //integrantes de un grupo 
             $coordinadorId = $grupo->getIdCoordinador();
         } else {
-            $integrantesIds = [];
+            $integrantesSeleccionados = [];
             $trabajadores = $this->model->geTrabajadores();
             $trabajo = null; //si no se ha pasado el id, no hay trabajo a editar
         }
@@ -194,13 +269,25 @@ class JefeController
         $id_grupo = $_POST['id'] ?? null; //Trabajo a editar
         $nombre = htmlspecialchars(trim(strip_tags($_POST['grupo'])), ENT_QUOTES, "ISO-8859-1");
         $integrantesSeleccionados = $_POST['integrantesSeleccionados'] ?? []; //Ids de los integrantes seleccionados
-        $coordinador = $_POST['coordinador']; //id
+        $coordinador = $_POST['coordinador'] ?? null; //Id
         //Validar campos:
+
         $cadenaErrores = []; //array para almacenar los errores
-        if(!validarCampoVacio($nombre, "Grupo")){
+        if (validarCampoVacio($nombre, "Grupo")) {
             $cadenaErrores[] = validarCampoVacio($nombre, "Grupo");
+        } else {
+            $nombreGrupo = htmlspecialchars(trim(strip_tags($nombre)), ENT_QUOTES, "ISO-8859-1");
         }
-        
+
+        if (validarCampoNull($coordinador, "Coordinador")) {
+            $cadenaErrores[] = validarCampoNull($coordinador, "Coordinador");
+        } else {
+            $coordinadorSeleccionado = htmlspecialchars(trim(strip_tags($coordinador)), ENT_QUOTES, "ISO-8859-1");
+        }
+
+        if (validarArrayVacio($integrantesSeleccionados, "Integrantes")) {
+            $cadenaErrores[] = validarArrayVacio($integrantesSeleccionados, "Integrantes");
+        }
 
         //Si son validos creamos el grupo 
         $grupo = new Grupo(
@@ -208,6 +295,22 @@ class JefeController
             $nombre,
             $coordinador
         );
+
+        if (!empty($cadenaErrores)) {
+            $rol = "jefe";
+            $pagina = "editar-grupo";
+            //Datos necesarios para visualizar el formulario en caso de errores
+            $grupoId = $_POST['id'] ?? null;
+            $coordinadores = $this->model->getCoordinadores();
+            $trabajadores = $this->model->geTrabajadores();
+            $integrantesIds = $grupoId ? $this->model->getIntegrantesByGrupoId($grupoId) : [];
+            $coordinadorId = $grupoId ? $this->model->getGrupoById($grupoId)->getIdCoordinador() : null;
+            require_once '../view/header.php';
+            require_once '../view/jefe/editarGrupo.php';
+            require_once '../view/footer.php';
+            return; //Salir de la funcion en caso de errores
+        }
+
         //Guardar o updatear el grupo en la base de datos
         try {
             $this->model->getPdo()->beginTransaction(); //Iniciar transacción
@@ -245,8 +348,6 @@ class JefeController
         require_once '../view/jefe/gestionGrupos.php'; //mostramos la vista de trabajos
         require_once '../view/footer.php';
     }
-
-
 
     //Procesos
     public function visualizarProcesos()
