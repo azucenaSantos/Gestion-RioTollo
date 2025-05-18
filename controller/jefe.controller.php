@@ -6,6 +6,8 @@ require_once '../model/entitys/zona.php';
 require_once '../model/entitys/parcela.php';
 require_once '../model/entitys/trabajador.php';
 require_once 'functions/formFunctions.php';
+require_once 'functions/roleSesionValidation.php';
+
 
 class JefeController
 {
@@ -26,17 +28,19 @@ class JefeController
     //Trabajos
     public function gestionTrabajos()
     {
+        comprobarAcceso(rol: 10);
         $rol = "jefe";
         $pagina = "gestion-trabajos";
         require_once '../view/header.php';
         $trabajosInfo = $this->model->getAllTrabajos(); //almacenamos los trabajos para pasarlos a la vista
         require_once '../view/jefe/gestionTrabajos.php';
         require_once '../view/footer.php';
-
     }
 
     public function editarTrabajo()
     {
+        comprobarAcceso(rol: 10);
+
         $rol = "jefe";
         $pagina = "editar-trabajo";
         $trabajoId = $_GET['id'] ?? null; //obtenemos el id del trabajo a editar si se ha pasado por la URL
@@ -59,6 +63,8 @@ class JefeController
 
     public function guardarTrabajo()
     {
+        comprobarAcceso(rol: 10);
+
         $id_trabajo = $_POST['id'] ?? null; //Trabajo a editar
         $nombre = htmlspecialchars(trim(strip_tags($_POST['trabajo'])), ENT_QUOTES, "ISO-8859-1");
         $zona = isset($_POST['zona']) ? $this->model->getNameOfZona(id_zona: $_POST['zona']) : null;
@@ -144,17 +150,17 @@ class JefeController
             $anotaciones,
             $_POST['zona']
         );
-     
+
 
 
         //Si hay errores se muestran en el formulario
         if (!empty($cadenaErrores)) {
             $rol = "jefe";
-            
+
             $pagina = "editar-trabajo";
-            
+
             $trabajoId = $_POST['id'] ?? null;
-            
+
             if ($trabajoId) {
                 $grupoNombre = $this->model->getGrupoByTrabajoId($trabajoId); //obtenemos el grupo al que pertenece el trabajo
                 $trabajo->setGrupoNombre($grupoNombre); // Asignar el nombre del grupo al trabajo
@@ -201,6 +207,8 @@ class JefeController
 
     public function eliminarTrabajo()
     {
+        comprobarAcceso(rol: 10);
+
         $rol = "jefe";
         $pagina = "eliminar-trabajo";
         $trabajoId = $_GET['id']; //obtener id por la url
@@ -234,6 +242,8 @@ class JefeController
     //Grupos
     public function gestionGrupos()
     {
+        comprobarAcceso(rol: 10);
+
         $rol = "jefe";
         $pagina = "gestion-grupos";
         $gruposInfo = $this->model->getAllGruposConNumeroIntegrantes();
@@ -245,6 +255,8 @@ class JefeController
 
     public function editarGrupo()
     {
+        comprobarAcceso(rol: 10);
+
         $rol = "jefe";
         $pagina = "editar-grupo";
         $grupoId = $_GET['id'] ?? null;
@@ -266,6 +278,8 @@ class JefeController
 
     public function guardarGrupo()
     {
+        comprobarAcceso(rol: 10);
+
         $id_grupo = $_POST['id'] ?? null; //Trabajo a editar
         $nombre = htmlspecialchars(trim(strip_tags($_POST['grupo'])), ENT_QUOTES, "ISO-8859-1");
         $integrantesSeleccionados = $_POST['integrantesSeleccionados'] ?? []; //Ids de los integrantes seleccionados
@@ -339,6 +353,8 @@ class JefeController
 
     public function eliminarGrupo()
     {
+        comprobarAcceso(rol: 10);
+
         $rol = "jefe";
         $pagina = "eliminar-grupo";
         $grupoId = $_GET['id']; //obtener id por la url
@@ -352,6 +368,8 @@ class JefeController
     //Procesos
     public function visualizarProcesos()
     {
+        comprobarAcceso(rol: 10);
+
         $rol = "jefe";
         $pagina = "visualizar-procesos";
         require_once '../view/header.php';

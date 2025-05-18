@@ -84,22 +84,6 @@ class UserDAO
         return $result;
     }
 
-    /*public function setPasswordChanged($user_id)
-    {
-        $sql = "UPDATE usuarios SET contrasena_cambiada = 1 WHERE id = :id";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id', $user_id);
-        return $stmt->execute();
-    }*/
-
-    /*public function updatePasswordChanged($user_id, $password_changed)
-    {
-        $sql = "UPDATE usuarios SET contrasena_cambiada = :contrasena_cambiada WHERE id = :id";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':contrasena_cambiada', $password_changed);
-        $stmt->bindParam(':id', $user_id);
-        return $stmt->execute();
-    }*/
 
     //Funcion para obtener el nombre del rol de un usuario
     public function getRolFromUser($user_rol)

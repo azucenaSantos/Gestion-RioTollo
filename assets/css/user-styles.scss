@@ -2,6 +2,22 @@
 main {
   width: 100%;
   margin-left: 75px;
+  @media #{$tablet} {
+    margin-left: 0px;
+    margin-top: 40px;
+  }
+
+  @media #{$mobile2} {
+    margin-left: 0px;
+    margin-top: 30px;
+  }
+}
+
+nav {
+  width: 400px !important;
+  @media #{$tablet} {
+    width: 360px !important;
+  }
 }
 
 .alert {
@@ -17,6 +33,10 @@ main {
 .btn-container {
   display: flex;
   justify-content: flex-end;
+  @media #{$mobile2} {
+    justify-content: center;
+    margin-top: 30px;
+  }
   .buttonAdd {
     width: 225px;
     height: 52px;
@@ -31,13 +51,23 @@ main {
     &:hover {
       background-color: $primary-color;
     }
+
+    @media #{$mobile2} {
+      width: 190px;
+      height: 50px;
+      font-size: 18px;
+    }
   }
 }
 
 .containerTable {
   margin-left: 0px !important;
   padding-left: 0px !important;
-  //height: 100vh; //alto de la pantalla
+
+  @media #{$mobile2} {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 
   table {
     border-collapse: separate;
@@ -88,7 +118,7 @@ main {
           border-bottom: 1px solid $color-lightgrey;
           .iconDelete {
             color: $red;
-            font-size: 40px;
+            font-size: 40px !important;
             i {
               border: 1px solid $color-lightgrey;
               border-radius: 10px;
@@ -102,7 +132,7 @@ main {
           }
           .iconModify {
             color: $secondary-color;
-            font-size: 40px;
+            font-size: 40px !important;
             i {
               border: 1px solid $color-lightgrey;
               border-radius: 10px;
@@ -136,11 +166,25 @@ main {
   }
 
   #formTrabajo,
-  #formGrupo {
+  #formGrupo,
+  #formTrabajador {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: flex-end;
+    padding: 20px 40px !important;
+
+    @media #{$mobile2} {
+      flex-direction: column;
+      padding: 15px !important;
+      margin: 0px !important;
+    }
+  }
+
+  #tablaOrdenar_wrapper {
+    @media #{$mobile2} {
+      display: none;
+    }
   }
 }
 
@@ -150,13 +194,27 @@ main {
     // width: 32.5%;
   }
   .form-range {
-    width: 25%;
+    width: 65%;
     margin-right: 10px;
     border: 0px;
+    @media #{$mobile2} {
+      width: 55%;
+    }
   }
 
   .form-number {
-    width: 7%;
+    width: 12%;
+    @media #{$mobile2} {
+      width: 16%;
+    }
+  }
+
+  .inputRadio {
+    width: 10% !important;
+
+    @media #{$mobile2} {
+      width: 15% !important; 
+    }
   }
 
   .side-by-side-multiselect__option {
@@ -166,7 +224,7 @@ main {
   }
 
   .side-by-side-multiselect {
-    width: 43%;
+    width: 101%;
   }
   .side-by-side-multiselectfilter__label {
     width: 100%;
@@ -183,7 +241,7 @@ main {
   }
 
   textarea {
-    width: 43% !important;
+    width: 100% !important;
     height: 80px;
     font-size: 14px;
     font-family: $font-Mont;
@@ -192,12 +250,23 @@ main {
   label {
     font-family: $font-Mont;
     font-size: 16px;
-    width: 10%;
+    width: 25%;
     font-weight: 500;
+    margin-bottom: 0px !important;
+
+    @media #{$mobile2} {
+      width: 30%;
+    }
+  }
+
+  .coordinador{
+    @media #{$mobile2} {
+      width: 70%;
+    }
   }
 
   input[type="time"] {
-    width: 16.2%;
+    width: 50%;
   }
 
   .form-inputs {
@@ -206,10 +275,23 @@ main {
     width: 50%;
     flex-wrap: wrap;
 
+    @media #{$mobile2} {
+      width: 100%;
+    }
+
     .mt-3 {
       display: flex;
+      align-items: center;
       width: 100%;
-      gap: 10%;
+      // gap: 10%;
+    }
+
+    .anotaciones {
+      @media #{$mobile2} {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
     input {
       font-size: 14px !important;
@@ -235,6 +317,9 @@ main {
   }
   .error-container {
     width: 50%;
+    @media #{$mobile2} {
+      width: 100%;
+    }
   }
   .buttons {
     display: flex;
@@ -279,10 +364,12 @@ main {
 }
 
 .roles {
-  .trabajador {
+  .trabajador,
+  .rrhh {
     color: $color-grey;
   }
-  .coordinador {
+  .coordinador,
+  .jefe {
     color: $color-grey;
     text-decoration: underline;
   }

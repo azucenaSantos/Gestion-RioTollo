@@ -2,10 +2,38 @@ document.addEventListener("DOMContentLoaded", function () {
     //Formularios á validar
     const formGrupo = document.getElementById("formGrupo");
     const formTrabajo = document.getElementById("formTrabajo");
+    const formTrabajador = document.getElementById("formTrabajador");
 
     //Funcion de validacion de campos vacios
     function validarCampo(campo) {
         if (campo.value.trim() === "") {
+            campo.classList.add("is-invalid");
+            campo.classList.remove("is-valid");
+            return false;
+        } else {
+            campo.classList.remove("is-invalid");
+            campo.classList.add("is-valid");
+            return true;
+        }
+    }
+    //Funcion para validar campo solo letras
+    function validarCampoLetras(campo) {
+        const regex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+        if (campo.value.trim() === "" || !regex.test(campo.value)) {
+            campo.classList.add("is-invalid");
+            campo.classList.remove("is-valid");
+            return false;
+        } else {
+            campo.classList.remove("is-invalid");
+            campo.classList.add("is-valid");
+            return true;
+        }
+    }
+
+    //Funcion para validar campo letras y numeros
+    function validarCampoLetrasNumeros(campo) {
+        const regex = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s]+$/;
+        if (campo.value.trim() === "" || !regex.test(campo.value)) {
             campo.classList.add("is-invalid");
             campo.classList.remove("is-valid");
             return false;
@@ -112,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
             errorZona.textContent = "";
         }
         //Parcelas
-        const parcelasSeleccionadas = Array.from(parcelas.selectedOptions).map(option => option.value); 
+        const parcelasSeleccionadas = Array.from(parcelas.selectedOptions).map(option => option.value);
         if (parcelasSeleccionadas.length === 0) {
             isValid = false;
             errorParcelas.classList.add("alert", "alert-danger");
@@ -151,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
             errorFecha.textContent = "";
             errorFecha.classList.remove("alert", "alert-danger");
 
-        }   
+        }
         //Grupo
         if (grupo.value == "noSeleccion") {
             isValid = false;
@@ -162,13 +190,94 @@ document.addEventListener("DOMContentLoaded", function () {
             grupo.classList.remove("input-error");
             errorGrupo.classList.remove("alert", "alert-danger");
             errorGrupo.textContent = "";
-        }        
+        }
         if (!isValid) {
             console.log("Formulario no válido. Evitando envío.");
             event.preventDefault(); //Evitar envio del formulario
         }
 
     }
+
+    //Funcion validar formularioTrabajador + formularioJefe (son iguales)
+    function validarFormularioTrabajador(event) {
+        const nombreTrabajador = document.getElementById("inputNombre");
+        const apellidosTrabajador = document.getElementById("inputApellidos");
+        const nombreUsuario = document.getElementById("inputUsuario");
+        const rol = document.getElementById("inputRol");
+        const errorTrabajador = document.getElementById("errorNombre");
+        const errorApellidos = document.getElementById("errorApellidos");
+        const errorUsuario = document.getElementById("errorUsuario");
+        const errorRol = document.getElementById("errorRol");
+
+        let isValid = true;
+        //Nombre
+        if (!validarCampo(nombreTrabajador)) {
+            isValid = false;
+            nombreTrabajador.classList.add("input-error");
+            errorTrabajador.classList.add("alert", "alert-danger");
+            errorTrabajador.textContent = "El nombre del trabajador no puede estar vacío.";
+        } else if (!validarCampoLetras(nombreTrabajador)) {
+            isValid = false;
+            nombreTrabajador.classList.add("input-error");
+            errorTrabajador.classList.add("alert", "alert-danger");
+            errorTrabajador.textContent = "El nombre del trabajador solo puede contener letras.";
+        } else {
+            nombreTrabajador.classList.remove("input-error");
+            errorTrabajador.classList.remove("alert", "alert-danger");
+            errorTrabajador.textContent = "";
+        }
+
+        //Apellidos
+        if (!validarCampo(apellidosTrabajador)) {
+            isValid = false;
+            apellidosTrabajador.classList.add("input-error");
+            errorApellidos.classList.add("alert", "alert-danger");
+            errorApellidos.textContent = "Los apellidos del trabajador no pueden estar vacíos.";
+        } else if (!validarCampoLetras(apellidosTrabajador)) {
+            isValid = false;
+            apellidosTrabajador.classList.add("input-error");
+            errorApellidos.classList.add("alert", "alert-danger");
+            errorApellidos.textContent = "Los apellidos del trabajador solo pueden contener letras.";
+        } else {
+            apellidosTrabajador.classList.remove("input-error");
+            errorApellidos.classList.remove("alert", "alert-danger");
+            errorApellidos.textContent = "";
+        }
+
+        //Nombre de usuario
+        if (!validarCampo(nombreUsuario)) {
+            isValid = false;
+            nombreUsuario.classList.add("input-error");
+            errorUsuario.classList.add("alert", "alert-danger");
+            errorUsuario.textContent = "El nombre de usuario no puede estar vacío.";
+        } else if (!validarCampoLetrasNumeros(nombreUsuario)) {
+            isValid = false;
+            nombreUsuario.classList.add("input-error");
+            errorUsuario.classList.add("alert", "alert-danger");
+            errorUsuario.textContent = "El nombre de usuario solo puede contener letras y números.";
+        } else {
+            nombreUsuario.classList.remove("input-error");
+            errorUsuario.classList.remove("alert", "alert-danger");
+            errorUsuario.textContent = "";
+        }
+
+        //Rol
+        if (rol.value == "noSeleccion") {
+            isValid = false;
+            rol.classList.add("input-error");
+            errorRol.classList.add("alert", "alert-danger");
+            errorRol.textContent = "Debes seleccionar un rol.";
+        } else {
+            rol.classList.remove("input-error");
+            errorRol.classList.remove("alert", "alert-danger");
+            errorRol.textContent = "";
+        }
+
+        if (!isValid) {
+            event.preventDefault();
+        }
+    }
+
 
     //Añadir las funciones de validacion a cada formulario cuando se envíen
     if (formGrupo) {
@@ -177,5 +286,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (formTrabajo) {
         formTrabajo.addEventListener("submit", validarFormularioTrabajo);
     }
-
+    if (formTrabajador) {
+        formTrabajador.addEventListener("submit", validarFormularioTrabajador);
+    }
 });

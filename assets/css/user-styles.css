@@ -3,6 +3,27 @@ main {
   width: 100%;
   margin-left: 75px;
 }
+@media (max-width: 1024px) {
+  main {
+    margin-left: 0px;
+    margin-top: 40px;
+  }
+}
+@media (max-width: 576px) {
+  main {
+    margin-left: 0px;
+    margin-top: 30px;
+  }
+}
+
+nav {
+  width: 400px !important;
+}
+@media (max-width: 1024px) {
+  nav {
+    width: 360px !important;
+  }
+}
 
 .alert {
   width: -moz-fit-content;
@@ -19,37 +40,56 @@ main {
   display: flex;
   justify-content: flex-end;
 }
+@media (max-width: 576px) {
+  .btn-container {
+    justify-content: center;
+    margin-top: 30px;
+  }
+}
 .btn-container .buttonAdd {
   width: 225px;
   height: 52px;
-  background-color: #558B2F;
+  background-color: #558b2f;
   border-radius: 10px;
   border: none;
   font-size: 20px;
   font-family: "Montserrat", sans-serif;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 35px;
   transition: background-color 0.3s ease-in-out;
 }
 .btn-container .buttonAdd:hover {
-  background-color: #8BC34A;
+  background-color: #8bc34a;
+}
+@media (max-width: 576px) {
+  .btn-container .buttonAdd {
+    width: 190px;
+    height: 50px;
+    font-size: 18px;
+  }
 }
 
 .containerTable {
   margin-left: 0px !important;
   padding-left: 0px !important;
 }
+@media (max-width: 576px) {
+  .containerTable {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
 .containerTable table {
   border-collapse: separate;
   border-spacing: 0;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 .containerTable table thead {
-  background-color: #DCEDC8;
+  background-color: #dcedc8;
   height: 75px;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
 }
 .containerTable table thead tr th {
   text-align: center;
@@ -78,35 +118,35 @@ main {
   color: #333333;
   text-align: center;
   padding: 10px 0px;
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #e0e0e0;
 }
 .containerTable table tbody tr td .iconDelete {
   color: #d82515;
-  font-size: 40px;
+  font-size: 40px !important;
 }
 .containerTable table tbody tr td .iconDelete i {
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   border-radius: 10px;
   padding: 4px 4px;
 }
 .containerTable table tbody tr td .iconDelete :hover {
   transition: background-color 0.3s ease-in-out;
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: #d82515;
 }
 .containerTable table tbody tr td .iconModify {
-  color: #558B2F;
-  font-size: 40px;
+  color: #558b2f;
+  font-size: 40px !important;
 }
 .containerTable table tbody tr td .iconModify i {
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   border-radius: 10px;
   padding: 4px 4px;
 }
 .containerTable table tbody tr td .iconModify :hover {
   transition: background-color 0.3s ease-in-out;
-  color: #FFFFFF;
-  background-color: #558B2F;
+  color: #ffffff;
+  background-color: #558b2f;
 }
 .containerTable table tbody tr td:first-child {
   font-weight: bold;
@@ -124,23 +164,57 @@ main {
   text-overflow: ellipsis;
 }
 .containerTable #formTrabajo,
-.containerTable #formGrupo {
+.containerTable #formGrupo,
+.containerTable #formTrabajador {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: flex-end;
+  padding: 20px 40px !important;
+}
+@media (max-width: 576px) {
+  .containerTable #formTrabajo,
+  .containerTable #formGrupo,
+  .containerTable #formTrabajador {
+    flex-direction: column;
+    padding: 15px !important;
+    margin: 0px !important;
+  }
+}
+@media (max-width: 576px) {
+  .containerTable #tablaOrdenar_wrapper {
+    display: none;
+  }
 }
 
 .formEdits .form-control {
   display: inline;
 }
 .formEdits .form-range {
-  width: 25%;
+  width: 65%;
   margin-right: 10px;
   border: 0px;
 }
+@media (max-width: 576px) {
+  .formEdits .form-range {
+    width: 55%;
+  }
+}
 .formEdits .form-number {
-  width: 7%;
+  width: 12%;
+}
+@media (max-width: 576px) {
+  .formEdits .form-number {
+    width: 16%;
+  }
+}
+.formEdits .inputRadio {
+  width: 10% !important;
+}
+@media (max-width: 576px) {
+  .formEdits .inputRadio {
+    width: 15% !important;
+  }
 }
 .formEdits .side-by-side-multiselect__option {
   font-style: italic;
@@ -148,7 +222,7 @@ main {
   font-size: 13px;
 }
 .formEdits .side-by-side-multiselect {
-  width: 43%;
+  width: 101%;
 }
 .formEdits .side-by-side-multiselectfilter__label {
   width: 100%;
@@ -157,13 +231,13 @@ main {
 }
 .formEdits .side-by-side-multiselect__inner {
   padding: 5px;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   max-height: 50px;
   overflow-y: auto;
   padding: 5px;
 }
 .formEdits textarea {
-  width: 43% !important;
+  width: 100% !important;
   height: 80px;
   font-size: 14px;
   font-family: "Montserrat", sans-serif;
@@ -171,11 +245,22 @@ main {
 .formEdits label {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
-  width: 10%;
+  width: 25%;
   font-weight: 500;
+  margin-bottom: 0px !important;
+}
+@media (max-width: 576px) {
+  .formEdits label {
+    width: 30%;
+  }
+}
+@media (max-width: 576px) {
+  .formEdits .coordinador {
+    width: 70%;
+  }
 }
 .formEdits input[type=time] {
-  width: 16.2%;
+  width: 50%;
 }
 .formEdits .form-inputs {
   display: flex;
@@ -183,10 +268,22 @@ main {
   width: 50%;
   flex-wrap: wrap;
 }
+@media (max-width: 576px) {
+  .formEdits .form-inputs {
+    width: 100%;
+  }
+}
 .formEdits .form-inputs .mt-3 {
   display: flex;
+  align-items: center;
   width: 100%;
-  gap: 10%;
+}
+@media (max-width: 576px) {
+  .formEdits .form-inputs .anotaciones {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 .formEdits .form-inputs input {
   font-size: 14px !important;
@@ -212,6 +309,11 @@ main {
 .formEdits .error-container {
   width: 50%;
 }
+@media (max-width: 576px) {
+  .formEdits .error-container {
+    width: 100%;
+  }
+}
 .formEdits .buttons {
   display: flex;
   justify-content: center;
@@ -220,7 +322,7 @@ main {
 .formEdits .buttons button {
   width: 80px;
   height: 30px;
-  background-color: #8BC34A;
+  background-color: #8bc34a;
   border-radius: 10px;
   border: none;
   margin-left: 10px;
@@ -230,14 +332,14 @@ main {
   transition: background-color 0.1s ease-in-out;
 }
 .formEdits .buttons button:active {
-  background-color: #558B2F;
+  background-color: #558b2f;
 }
 
 .estado .finalizado {
-  background: #8BC34A;
+  background: #8bc34a;
   padding: 5px 10px;
   border-radius: 5px;
-  color: #FFFFFF;
+  color: #ffffff;
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto;
@@ -246,16 +348,18 @@ main {
   background: #d82515;
   padding: 5px 10px;
   border-radius: 5px;
-  color: #FFFFFF;
+  color: #ffffff;
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto;
 }
 
-.roles .trabajador {
+.roles .trabajador,
+.roles .rrhh {
   color: #333333;
 }
-.roles .coordinador {
+.roles .coordinador,
+.roles .jefe {
   color: #333333;
   text-decoration: underline;
 }/*# sourceMappingURL=user-styles.css.map */

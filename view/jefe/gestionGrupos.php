@@ -42,7 +42,7 @@
                 <form class="btn-container" action="?c=Jefe&a=editarGrupo" method="post">
                     <button type="submit" class="buttonAdd">Añadir Grupo</button>
                 </form>
-                <table class="table table-hover mx-auto shadow-sm">
+                <table class="table table-hover mx-auto shadow-sm" id="tablaOrdenar">
                     <thead>
                         <tr>
                             <th>Grupo</th>
@@ -52,10 +52,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        if (empty($gruposInfo)) {
-                            echo "<tr><td colspan='7' class='text-center'>No hay grupos registrados</td></tr>";
-                        } ?>
                         <?php foreach ($gruposInfo as $grupo): ?>
                             <tr onclick="location.href='?c=Jefe&a=editarGrupo&id=<?php echo $grupo->getId(); ?>'">
                                 <td><?php echo $grupo->getNombre(); ?></td>
@@ -69,38 +65,64 @@
                                         data-bs-target="#deleteModal-<?php echo $grupo->getId(); ?>"
                                         onclick="event.stopPropagation();">
                                         <i class="las la-trash-alt"></i></a>
-
-                                    <!-- Modal eliminar-->
-                                    <div class="modal fade" id="deleteModal-<?php echo $grupo->getId(); ?>" tabindex="-1"
-                                        aria-labelledby="deleteModalLabel-<?php echo $grupo->getId(); ?>"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Confirmar eliminación</h5>
-                                                    <a href="?c=Jefe&a=gestionGrupos" class="btn-close"></a>
-                                                </div>
-                                                <div class="modal-body">
-                                                    ¿Estás seguro de que deseas eliminar
-                                                    "<?php echo $grupo->getNombre(); ?>"?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <a href="?c=Jefe&a=gestionGrupos" class="btn btn-secondary">Cancelar</a>
-
-                                                    <a href="?c=Jefe&a=eliminarGrupo&id=<?php echo $grupo->getId(); ?>"
-                                                        class="btn btn-danger">Eliminar</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+                <!--acordeon que se muestra por cada grupo en resolucion movil-->
+                <div class="accordion mobile-accordion" id="accordionTable">
+                    <?php foreach ($gruposInfo as $grupo): ?>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading-<?php echo $grupo->getId(); ?>">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse-<?php echo $grupo->getId(); ?>">
+                                    <?php echo $grupo->getNombre(); ?>
+                                </button>
+                            </h2>
+                            <div id="collapse-<?php echo $grupo->getId(); ?>" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <p><strong>Grupo:</strong> <?php echo $grupo->getNombre(); ?></p>
+                                    <p><strong>Coordinador(a):</strong> <?php echo $grupo->getNombreCoordinador(); ?></p>
+                                    <p><strong>Integrantes:</strong> <?php echo $grupo->getIntegrantes(); ?></p>
+                                    <p>
+                                        <a href="?c=Jefe&a=editarGrupo&id=<?php echo $grupo->getId(); ?>"
+                                            class="iconModify"><i class="las la-edit"></i></a>
+                                        <a href="?c=Jefe&a=gestionGrupos" class="iconDelete" data-bs-toggle="modal"
+                                            data-bs-target="#deleteModal-<?php echo $grupo->getId(); ?>"><i
+                                                class="las la-trash-alt"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </main>
     </div>
-    </main>
     </div>
+    <!-- Modal eliminar-->
+    <?php foreach ($gruposInfo as $grupo): ?>
+        <div class="modal fade" id="deleteModal-<?php echo $grupo->getId(); ?>" tabindex="-1"
+            aria-labelledby="deleteModalLabel-<?php echo $grupo->getId(); ?>" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmar eliminación</h5>
+                        <a href="?c=Jefe&a=gestionGrupos" class="btn-close"></a>
+                    </div>
+                    <div class="modal-body">
+                        ¿Estás seguro de que deseas eliminar el grupo
+                        "<?php echo $grupo->getNombre(); ?>"?
+                    </div>
+                    <div class="modal-footer">
+                        <a href="?c=Jefe&a=gestionGrupos" class="btn btn-secondary">Cancelar</a>
+
+                        <a href="?c=Jefe&a=eliminarGrupo&id=<?php echo $grupo->getId(); ?>"
+                            class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
     <div class="line"></div>

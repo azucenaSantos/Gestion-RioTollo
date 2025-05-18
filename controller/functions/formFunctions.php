@@ -47,12 +47,22 @@ function validarFecha($fecha, $nombreCampo)
     return false;
 }
 
-// //Validar un numero entero
-// function validarNumeroEntero($numero, $nombreCampo)
-// {
-//     if (!is_numeric($numero) || intval($numero) != $numero) {
-//         return "El campo $nombreCampo debe ser un número entero.";
-//     }
-//     return false;
-// }
+//Funcion validar campo de solo letras
+function validarCampoLetras($campo, $nombreCampo)
+{
+    if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]*$/", $campo)) {
+        return "El campo <strong>$nombreCampo</strong> solo puede contener letras.";
+    }
+    return false;
+}
+
+//Funcion para validar un campo de solo letras y numeros
+function validarCampoLetrasNumeros($campo, $nombreCampo)
+{
+    if (!preg_match("/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]*$/", $campo)) {
+        return "El campo <strong>$nombreCampo</strong> solo puede contener letras y números.";
+    }
+    return false;
+}
+
 ?>

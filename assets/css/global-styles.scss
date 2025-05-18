@@ -5,9 +5,9 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  @media (max-width: 600px) {
-    //width: 100vh !important;
-  }
+  // @media #{$mobile2} {
+  //   height: 100vh;
+  // }
 }
 
 .content {
@@ -33,6 +33,10 @@ main {
 h1 {
   font-family: $font-Merri;
   font-size: 35px;
+
+  @media #{$mobile2} {
+    font-size: 30px;
+  }
 }
 
 h2 {
@@ -47,6 +51,35 @@ h3 {
 
 a {
   font-size: 14px;
+}
+
+.buttonPassword {
+  width: fit-content;
+  height: 30px;
+  background-color: $color-grey;
+  border-radius: 10px;
+  border: none;
+  font-size: 12px;
+  font-family: $font-Mont;
+  color: $color-white;
+  margin-top: 20px;
+  transition: background-color 0.3s ease-in-out;
+  &:hover {
+    background-color: $color-lightgrey;
+    color: $color-grey;
+  }
+}
+
+.buttonPassword2 {
+  width: fit-content;
+  height: 30px;
+  background-color: $red;
+  border-radius: 10px;
+  border: none;
+  font-size: 12px;
+  font-family: $font-Mont;
+  color: $color-white;
+  margin-top: 20px;
 }
 
 .breadcrumb {
@@ -69,9 +102,24 @@ a {
   }
 }
 
+tbody {
+  tr {
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background-color: $color-lightgrey !important;
+    }
+  }
+}
+
 footer {
   position: relative;
   bottom: 0;
+  
+  // @media #{$mobile2} {
+  //   position: absolute;
+  //   bottom: 0;
+  // }
+      
   background-color: $color-grey;
   height: 54px;
   width: 100%;
@@ -89,8 +137,12 @@ footer {
 .welcome {
   display: flex;
   align-items: baseline;
-  //width: 485px;
   margin-left: 48px;
+
+  @media #{$mobile2} {
+    margin-left: 20px;
+    flex-wrap: wrap;
+  }
 
   .welcome-text {
     display: flex;
@@ -101,6 +153,14 @@ footer {
   }
   .nav-container {
     margin-left: 175px;
+
+    @media #{$tablet} {
+      margin-left: 100px;
+    }
+
+    @media #{$mobile2} {
+      margin-left: 0px;
+    }
   }
 
   .buttonLogout {
@@ -123,6 +183,16 @@ footer {
   }
 }
 
+.section,
+.content {
+  @media #{$mobile2} {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
 .lateral-menu {
   display: block !important;
   //background-color: $third-color;
@@ -138,6 +208,11 @@ footer {
     top: 0px;
   }
 
+  @media #{$mobile2} {
+    height: unset;
+    padding-top: 10px !important;
+  }
+
   .nav-item {
     width: 389px;
   }
@@ -145,6 +220,10 @@ footer {
     display: flex;
     align-items: center;
     height: 60px !important;
+    @media #{$mobile2} {
+      height: 50px !important;
+      padding-left: 0px;
+    }
     padding-left: 10px;
     margin-top: 20px;
     transition: background-color 0.4s ease-in-out;
@@ -176,5 +255,79 @@ footer {
   text-align: center;
   padding: 20px;
   font-size: 18px;
-  z-index: -1; /* Asegura que el div esté por debajo de todo el contenido */
+  z-index: -1; /*Asegura que el div este por debajo de todo el contenido*/
+
+  // @media #{$tablet} {
+  //   width: 330px;
+  // }
+
+  @media #{$mobile2} {
+    display: none;
+  }
+}
+
+//Control del acordeon y tabla
+.desktop-table {
+  @media #{$mobile2} {
+    display: none;
+  }
+}
+
+.mobile-accordion {
+  @media #{$mobile2} {
+    display: block;
+  }
+}
+
+.desktop-table {
+  @media #{$mobile2} {
+    display: table;
+  }
+}
+
+.mobile-accordion {
+  @media #{$mobile2} {
+    display: none;
+  }
+}
+
+.accordion {
+  .accordion-item {
+    h2 {
+      font-family: $font-Mont;
+      font-size: 25px;
+      button {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.iconDelete {
+  color: $red;
+  font-size: 40px;
+  i {
+    border: 1px solid $color-lightgrey;
+    border-radius: 10px;
+    padding: 4px 4px;
+  }
+  :hover {
+    transition: background-color 0.3s ease-in-out;
+    color: $color-white;
+    background-color: $red;
+  }
+}
+.iconModify {
+  color: $secondary-color;
+  font-size: 40px;
+  i {
+    border: 1px solid $color-lightgrey;
+    border-radius: 10px;
+    padding: 4px 4px;
+  }
+  :hover {
+    transition: background-color 0.3s ease-in-out;
+    color: $color-white;
+    background-color: $secondary-color;
+  }
 }

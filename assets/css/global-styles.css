@@ -5,6 +5,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .content {
   z-index: 10;
 }
@@ -29,6 +30,11 @@ h1 {
   font-family: "Merriweather", serif;
   font-size: 35px;
 }
+@media (max-width: 576px) {
+  h1 {
+    font-size: 30px;
+  }
+}
 
 h2 {
   font-family: "Merriweather", serif;
@@ -44,8 +50,39 @@ a {
   font-size: 14px;
 }
 
+.buttonPassword {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 30px;
+  background-color: #333333;
+  border-radius: 10px;
+  border: none;
+  font-size: 12px;
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+  margin-top: 20px;
+  transition: background-color 0.3s ease-in-out;
+}
+.buttonPassword:hover {
+  background-color: #e0e0e0;
+  color: #333333;
+}
+
+.buttonPassword2 {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 30px;
+  background-color: #d82515;
+  border-radius: 10px;
+  border: none;
+  font-size: 12px;
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+  margin-top: 20px;
+}
+
 .breadcrumb .active {
-  color: #8BC34A;
+  color: #8bc34a;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   text-decoration: underline;
@@ -58,8 +95,15 @@ a {
   font-size: 16px;
 }
 .breadcrumb li a:hover {
-  color: #8BC34A;
+  color: #8bc34a;
   text-decoration: underline;
+}
+
+tbody tr {
+  transition: all 0.2s ease-in-out;
+}
+tbody tr:hover {
+  background-color: #e0e0e0 !important;
 }
 
 footer {
@@ -72,7 +116,7 @@ footer {
 footer p {
   font-size: 15px;
   font-family: "Montserrat", sans-serif;
-  color: #E0E0E0;
+  color: #e0e0e0;
 }
 
 .input-error {
@@ -84,6 +128,12 @@ footer p {
   align-items: baseline;
   margin-left: 48px;
 }
+@media (max-width: 576px) {
+  .welcome {
+    margin-left: 20px;
+    flex-wrap: wrap;
+  }
+}
 .welcome .welcome-text {
   display: flex;
   align-items: baseline;
@@ -93,6 +143,16 @@ footer p {
 }
 .welcome .nav-container {
   margin-left: 175px;
+}
+@media (max-width: 1024px) {
+  .welcome .nav-container {
+    margin-left: 100px;
+  }
+}
+@media (max-width: 576px) {
+  .welcome .nav-container {
+    margin-left: 0px;
+  }
 }
 .welcome .buttonLogout {
   background: none;
@@ -111,6 +171,16 @@ footer p {
   color: red;
 }
 
+@media (max-width: 576px) {
+  .section,
+  .content {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
 .lateral-menu {
   display: block !important;
   width: 400px;
@@ -126,6 +196,12 @@ footer p {
     top: 0px;
   }
 }
+@media (max-width: 576px) {
+  .lateral-menu {
+    height: unset;
+    padding-top: 10px !important;
+  }
+}
 .lateral-menu .nav-item {
   width: 389px;
 }
@@ -137,8 +213,14 @@ footer p {
   margin-top: 20px;
   transition: background-color 0.4s ease-in-out;
 }
+@media (max-width: 576px) {
+  .lateral-menu li {
+    height: 50px !important;
+    padding-left: 0px;
+  }
+}
 .lateral-menu li:hover {
-  background-color: #8BC34A;
+  background-color: #8bc34a;
 }
 .lateral-menu .nav-section {
   text-decoration: none;
@@ -162,5 +244,72 @@ footer p {
   text-align: center;
   padding: 20px;
   font-size: 18px;
-  z-index: -1; /* Asegura que el div esté por debajo de todo el contenido */
+  z-index: -1; /*Asegura que el div este por debajo de todo el contenido*/
+}
+@media (max-width: 576px) {
+  .line {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .desktop-table {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .mobile-accordion {
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .desktop-table {
+    display: table;
+  }
+}
+
+@media (max-width: 576px) {
+  .mobile-accordion {
+    display: none;
+  }
+}
+
+.accordion .accordion-item h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 25px;
+}
+.accordion .accordion-item h2 button {
+  font-weight: 500;
+}
+
+.iconDelete {
+  color: #d82515;
+  font-size: 40px;
+}
+.iconDelete i {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 4px 4px;
+}
+.iconDelete :hover {
+  transition: background-color 0.3s ease-in-out;
+  color: #ffffff;
+  background-color: #d82515;
+}
+
+.iconModify {
+  color: #558b2f;
+  font-size: 40px;
+}
+.iconModify i {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 4px 4px;
+}
+.iconModify :hover {
+  transition: background-color 0.3s ease-in-out;
+  color: #ffffff;
+  background-color: #558b2f;
 }/*# sourceMappingURL=global-styles.css.map */

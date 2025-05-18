@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="mt-3">
-                            <label for="inputCoordinador">Coordinador(a): </label>
+                            <label class="coordinador" for="inputCoordinador">Coordinador(a): </label>
                             <select class="form-control form-select" id="inputCoordinador" name="coordinador" required>
                                 <?php if (isset($coordinadores)): ?>
                                     <?php if ($grupoId == null): ?>

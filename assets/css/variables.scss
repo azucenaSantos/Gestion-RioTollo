@@ -1,20 +1,23 @@
-
 //Green
-$primary-color: #8BC34A;
-$secondary-color: #558B2F;
-$third-color: #DCEDC8;
+$primary-color: #8bc34a;
+$secondary-color: #558b2f;
+$third-color: #dcedc8;
 
 //Red
-$red: #d82515; 
-
+$red: #d82515;
 
 //Base
-$color-white: #FFFFFF;
+$color-white: #ffffff;
 $color-grey: #333333;
-$color-lightgrey: #E0E0E0;
+$color-lightgrey: #e0e0e0;
 
 //Typography
 $font-Mont: "Montserrat", sans-serif;
 $font-Merri: "Merriweather", serif;
 
-
+//Media Queries
+$mobile2: "(max-width: 576px)";
+$mobile: "(max-width: 768px)";
+$tablet: "(max-width: 1024px)";
+$desktop: "(min-width: 1024px)";
+$large-desktop: "(min-width: 1920px)";

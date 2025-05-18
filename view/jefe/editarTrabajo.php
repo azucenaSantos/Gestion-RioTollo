@@ -74,21 +74,23 @@
                             </select>
                         </div>
                         <!--Select multiple plugin-->
-                        <label>Parcelas: </label>
-                        <select class="js-sidebysidemultiselect" id="selectMultipleParcelas" multiple="multiple"
-                            name="opcionesSeleccionadas[]" required>
-                            <?php if (isset($parcelas)): ?>
-                                <?php foreach ($parcelas as $parcela): ?>
-                                    <option value="<?php echo $parcela->getId(); ?>" <?php echo
-                                           (in_array($parcela->getId(), $parcelasSeleccionadas)) ? 'selected' : ''; ?>>
-                                        <?php echo $parcela->getNumParcela(); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            <?php else: ?>
-                                <option value="">No hay parcelas disponibles</option>
-                            <?php endif; ?>
+                        <div>
+                            <label>Parcelas: </label>
+                            <select class="js-sidebysidemultiselect" id="selectMultipleParcelas" multiple="multiple"
+                                name="opcionesSeleccionadas[]" required>
+                                <?php if (isset($parcelas)): ?>
+                                    <?php foreach ($parcelas as $parcela): ?>
+                                        <option value="<?php echo $parcela->getId(); ?>" <?php echo
+                                               (in_array($parcela->getId(), $parcelasSeleccionadas)) ? 'selected' : ''; ?>>
+                                            <?php echo $parcela->getNumParcela(); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <option value="">No hay parcelas disponibles</option>
+                                <?php endif; ?>
 
-                        </select>
+                            </select>
+                        </div>
                         <div class="mt-3 d-flex">
                             <label for="inputPorcentaje" class="form-label">Porcentaje: </label>
                             <input type="range" class="form-range form-control" min="0" max="100" step="10"
@@ -149,7 +151,7 @@
                             </select>
                         </div>
 
-                        <div class="checkbox mt-3">
+                        <div class="mt-3 anotaciones">
                             <label for="inputAnotaciones" style="display:block">Anotaciones: </label>
                             <textarea class="form-control" id="inputAnotaciones"
                                 name="anotaciones"><?php echo isset($trabajo) ? htmlspecialchars($trabajo->getAnotaciones()) : ''; ?></textarea>

@@ -34,7 +34,7 @@
                 <form class="btn-container" action="?c=Rrhh&a=editarTrabajador" method="post">
                     <button type="submit" class="buttonAdd">Añadir Trabajador</button>
                 </form>
-                <table class="table table-hover mx-auto shadow-sm">
+                <table class="table table-hover mx-auto shadow-sm" id="tablaOrdenar">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -46,11 +46,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        if (empty($trabajadoresInfo)) {
-                            echo "<tr><td colspan='7' class='text-center'>No hay trabajadores registrados</td></tr>";
-                        }
-                        ?>
                         <?php foreach ($trabajadoresInfo as $trabajador): ?>
                             <tr onclick="location.href='?c=Rrhh&a=editarTrabajador&id=<?php echo $trabajador->getId(); ?>'">
                                 <td><?php echo $trabajador->getName(); ?></td>
@@ -64,9 +59,9 @@
                                     <?php endif; ?>
                                 </td>
                                 <td class="roles">
-                                    <?php if ($trabajador->getRol()=="30"): ?>
+                                    <?php if ($trabajador->getRol() == "40"): ?>
                                         <p class="trabajador">Trabajador</p>
-                                    <?php else: ?>
+                                    <?php elseif ($trabajador->getRol() == "30"): ?>
                                         <p class="coordinador">Coordiandor(a)</p>
                                     <?php endif; ?>
                                 </td>
@@ -79,38 +74,63 @@
                                         data-bs-target="#deleteModal-<?php echo $trabajador->getId(); ?>"
                                         onclick="event.stopPropagation();">
                                         <i class="las la-trash-alt"></i></a>
-
-                                    <!-- Modal eliminar-->
-                                    <div class="modal fade" id="deleteModal-<?php echo $trabajador->getId(); ?>"
-                                        tabindex="-1" aria-labelledby="deleteModalLabel-<?php echo $trabajador->getId(); ?>"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Confirmar eliminación</h5>
-                                                    <a href="?c=Rrhh&a=gestionTrabajadores" class="btn-close"></a>
-                                                </div>
-                                                <div class="modal-body">
-                                                    ¿Estás seguro de que deseas eliminar
-                                                    "<?php echo $trabajador->getNombreApellidos(); ?>"?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <a href="?c=Rrhh&a=gestionTrabajadores"
-                                                        class="btn btn-secondary">Cancelar</a>
-
-                                                    <a href="?c=Rrhh&a=eliminarTrabajador&id=<?php echo $trabajador->getId(); ?>"
-                                                        class="btn btn-danger">Eliminar</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </td>
-                            <?php endforeach; ?>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
+                <!--acordeon que se muestra por cada trabajador en resolucion movil-->
+                <div class="accordion mobile-accordion" id="accordionTable">
+                    <?php foreach ($trabajadoresInfo as $trabajador): ?>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading-<?php echo $trabajador->getId(); ?>">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse-<?php echo $trabajador->getId(); ?>">
+                                    <?php echo $trabajador->getName(); ?>
+                                </button>
+                            </h2>
+                            <div id="collapse-<?php echo $trabajador->getId(); ?>" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <p><strong>Nombre:</strong> <?php echo $trabajador->getName(); ?></p>
+                                    <p><strong>Apellidos:</strong> <?php echo $trabajador->getSurname(); ?></p>
+                                    <p><strong>Usuario:</strong> <?php echo $trabajador->getUsername(); ?></p>
+                                    <p>
+                                        <a href="?c=Rrhh&a=editarTrabajador&id=<?php echo $trabajador->getId(); ?>"
+                                            class="iconModify"><i class="las la-edit"></i></a>
+                                        <a href="?c=Rrhh&a=gestionTrabajadores" class="iconDelete" data-bs-toggle="modal"
+                                            data-bs-target="#deleteModal-<?php echo $trabajador->getId(); ?>"><i
+                                                class="las la-trash-alt"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </main>
-
-
     </div>
+    </div>
+    <!-- Modal eliminar-->
+    <?php foreach ($trabajadoresInfo as $trabajador): ?>
+        <div class="modal fade" id="deleteModal-<?php echo $trabajador->getId(); ?>" tabindex="-1"
+            aria-labelledby="deleteModalLabel-<?php echo $trabajador->getId(); ?>" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmar eliminación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Estás seguro de que deseas eliminar
+                        "<?php echo $trabajador->getName() . ' ' . $trabajador->getSurname(); ?>"?
+                    </div>
+                    <div class="modal-footer">
+                        <a href="?c=Rrhh&a=gestionTrabajadores" class="btn btn-secondary">Cancelar</a>
+                        <a href="?c=Rrhh&a=eliminarTrabajador&id=<?php echo $trabajador->getId(); ?>"
+                            class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
     <div class="line"></div>

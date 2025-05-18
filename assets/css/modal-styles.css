@@ -1,21 +1,21 @@
 #buttonModal {
   width: 35%;
   height: 40px;
-  background-color: #558B2F;
+  background-color: #558b2f;
   border-radius: 10px;
   border: none;
   font-size: 15px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-top: 20px;
   transition: background-color 0.3s ease-in-out;
 }
 #buttonModal:hover {
-  background-color: #8BC34A;
+  background-color: #8bc34a;
 }
 #buttonModal a {
   font-size: 15px;
   text-decoration: none;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 #buttonModalCancel {
@@ -25,12 +25,12 @@
   border-radius: 10px;
   border: none;
   font-size: 15px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-top: 20px;
   transition: background-color 0.3s ease-in-out;
 }
 #buttonModalCancel:hover {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #333333;
   border: 1px solid #333333;
 }/*# sourceMappingURL=modal-styles.css.map */

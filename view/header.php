@@ -23,13 +23,41 @@
     <script src="../assets/js/take-parcelas.js" defer></script>
     <script src="../assets/js/percent-change.js" defer></script>
     <script src="../assets/js/form-validation.js" defer></script>
+    <script src="../assets/js/assign-password.js" defer></script>
+    <script src="../assets/js/datatables.js" defer></script>
     <script src="../assets/lib/side-by-side-multiselect/js/side-by-side-multiselect.umd.min.js"></script>
+    <!--jQuery para DataTables-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!--CSS y JS de DataTables con soporte de Boostrap-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <style>
+        @media (max-width: 768px) {
+            .desktop-table {
+                display: none;
+            }
+            .mobile-accordion {
+                display: block;
+            }
+        }
+        @media (min-width: 769px) {
+            .desktop-table {
+                display: table;
+            }
+            .mobile-accordion {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header> <!-- Header, comun a todos los usuarios -->
         <?php
-        session_start();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         //print_r($_SESSION);
         ?>
         <div class="welcome">

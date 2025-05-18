@@ -1,5 +1,7 @@
 <?php
 
+require_once 'functions/roleSesionValidation.php';
+
 class CoordinadorController
 {
     private $model;
@@ -18,6 +20,7 @@ class CoordinadorController
 
     public function reportarTrabajos()
     {
+        comprobarAcceso(rol: 30);
         $rol = "coordinador";
         $pagina = "reportar-trabajos";
         require_once '../view/header.php';
@@ -28,6 +31,7 @@ class CoordinadorController
 
     public function verParte()
     {
+        comprobarAcceso(rol: 30);
         $rol = "coordinador";
         $pagina = "verParte";
         require_once '../view/header.php';
