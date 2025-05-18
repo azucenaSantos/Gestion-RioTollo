@@ -19,12 +19,19 @@
     <link rel="stylesheet" href="../assets/lib/side-by-side-multiselect/css/side-by-side-multiselect.min.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <!--css leafletjs-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!--js leafletjs-->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="../assets/js/logout.js" defer></script>
     <script src="../assets/js/take-parcelas.js" defer></script>
     <script src="../assets/js/percent-change.js" defer></script>
     <script src="../assets/js/form-validation.js" defer></script>
     <script src="../assets/js/assign-password.js" defer></script>
     <script src="../assets/js/datatables.js" defer></script>
+    <script src="../assets/js/map-leaflet.js" defer></script>
     <script src="../assets/lib/side-by-side-multiselect/js/side-by-side-multiselect.umd.min.js"></script>
     <!--jQuery para DataTables-->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -37,14 +44,17 @@
             .desktop-table {
                 display: none;
             }
+
             .mobile-accordion {
                 display: block;
             }
         }
+
         @media (min-width: 769px) {
             .desktop-table {
                 display: table;
             }
+
             .mobile-accordion {
                 display: none;
             }

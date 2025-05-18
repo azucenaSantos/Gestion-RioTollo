@@ -180,6 +180,12 @@ nav {
       margin: 0px !important;
     }
   }
+  #formProcesos {
+    @media #{$mobile2} {      
+      padding: 15px !important;
+      margin: 0px !important;
+    }
+  }
 
   #tablaOrdenar_wrapper {
     @media #{$mobile2} {
@@ -213,7 +219,7 @@ nav {
     width: 10% !important;
 
     @media #{$mobile2} {
-      width: 15% !important; 
+      width: 15% !important;
     }
   }
 
@@ -259,7 +265,7 @@ nav {
     }
   }
 
-  .coordinador{
+  .coordinador {
     @media #{$mobile2} {
       width: 70%;
     }

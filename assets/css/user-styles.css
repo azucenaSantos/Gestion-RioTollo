@@ -182,6 +182,12 @@ nav {
   }
 }
 @media (max-width: 576px) {
+  .containerTable #formProcesos {
+    padding: 15px !important;
+    margin: 0px !important;
+  }
+}
+@media (max-width: 576px) {
   .containerTable #tablaOrdenar_wrapper {
     display: none;
   }

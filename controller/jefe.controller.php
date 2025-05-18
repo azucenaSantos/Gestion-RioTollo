@@ -239,6 +239,79 @@ class JefeController
         }
     }
 
+    //Zonas
+    public function getZonas()
+    {
+        try {
+            require_once '../db/database.php';
+            $db = Database::connect();
+            // Consulta SQL para obtener las zonas y sus parcelas
+            // y el porcentaje de trabajo total de cada parcela
+            $query = $db->prepare("SELECT 
+                    z.id, z.nombre, z.limites,
+                    zp.id AS parcela_id, zp.num_parcela, zp.descripcion,
+                    COALESCE(SUM(t.porcentaje), 0) AS porcentaje_total
+                FROM zonas z
+                LEFT JOIN zonas_parcelas zp ON zp.id_zona = z.id
+                LEFT JOIN trabajos_parcelas tp ON tp.id_parcela = zp.id
+                LEFT JOIN trabajos t ON t.id = tp.id_trabajo
+                GROUP BY z.id, zp.id
+                ORDER BY z.id, zp.num_parcela");
+
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            //Agrupar info por zona
+            $zonas = [];
+
+            foreach ($result as $row) {
+                $zonaId = $row['id'];
+                if (!isset($zonas[$zonaId])) {
+                    $zonas[$zonaId] = [
+                        'id' => $zonaId,
+                        'nombre' => $row['nombre'],
+                        'limites' => $row['limites'],
+                        'parcelas' => [],
+                        'porcentaje_total' => 0,
+                        'parcelas_count' => 0 //Contamos cuantas parcelas tiene la zona
+                    ];
+                }
+                if ($row['parcela_id']) {
+                    $porcParcela = intval($row['porcentaje_total']);
+                    $zonas[$zonaId]['parcelas'][] = [
+                        'id' => $row['parcela_id'],
+                        'num_parcela' => $row['num_parcela'],
+                        'descripcion' => $row['descripcion'],
+                        'porcentaje_total' => $porcParcela
+                    ];
+                    //Sumamos el porcentaje y luego calculamos el promedio
+                    $zonas[$zonaId]['porcentaje_total'] += $porcParcela;
+                    $zonas[$zonaId]['parcelas_count']++;
+                }
+            }
+
+            //Calculamos el porcentaje total de la zona como promedio
+            foreach ($zonas as $zonaId => &$zona) {
+                if ($zona['parcelas_count'] > 0) {
+                    $zona['porcentaje_total'] = round($zona['porcentaje_total'] / $zona['parcelas_count']);
+                } else {
+                    //Si no hay parcelas el porcentaje es 0
+                    $zona['porcentaje_total'] = 0;
+                }
+                //Eliminamos el contador
+                unset($zona['parcelas_count']);
+            }
+            unset($zona);
+
+            echo json_encode(array_values($zonas));
+
+
+        } catch (PDOException $e) {
+            echo json_encode(['error' => 'Error en la consulta: ' . $e->getMessage()]);
+        }
+    }
+
+
     //Grupos
     public function gestionGrupos()
     {
@@ -372,6 +445,7 @@ class JefeController
 
         $rol = "jefe";
         $pagina = "visualizar-procesos";
+        $zonas = $this->model->getAllZonas();
         require_once '../view/header.php';
         require_once '../view/jefe/visualizarProcesos.php';
         require_once '../view/footer.php';
