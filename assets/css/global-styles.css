@@ -1,11 +1,4 @@
 @charset "UTF-8";
-body {
-  position: relative;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 #map {
   height: 500px;
   margin-top: 40px;
@@ -86,6 +79,9 @@ a {
   margin-top: 20px;
 }
 
+.breadcrumb {
+  align-items: flex-end;
+}
 .breadcrumb .active {
   color: #8bc34a;
   font-family: "Montserrat", sans-serif;
@@ -93,11 +89,21 @@ a {
   text-decoration: underline;
   font-style: italic;
 }
+@media (max-width: 576px) {
+  .breadcrumb .active {
+    font-size: 14px;
+  }
+}
 .breadcrumb li a {
   text-decoration: none;
   color: #333333;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
+}
+@media (max-width: 576px) {
+  .breadcrumb li a {
+    font-size: 14px;
+  }
 }
 .breadcrumb li a:hover {
   color: #8bc34a;
@@ -112,8 +118,6 @@ tbody tr:hover {
 }
 
 footer {
-  position: relative;
-  bottom: 0;
   background-color: #333333;
   height: 54px;
   width: 100%;
@@ -176,11 +180,18 @@ footer p {
   color: red;
 }
 
+.section,
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 @media (max-width: 576px) {
   .section,
   .content {
-    display: flex !important;
-    flex-wrap: wrap !important;
+    display: grid;
+    min-height: 100dvh;
+    grid-template-rows: auto 1fr auto;
     margin-left: 20px;
     margin-right: 20px;
   }
@@ -239,7 +250,8 @@ footer p {
 }
 
 .line {
-  position: absolute; /* Lo coloca en la parte inferior de la página */
+  position: absolute;
+  /* Lo coloca en la parte inferior de la página */
   top: 0;
   left: 0;
   height: 100vh;
@@ -249,7 +261,8 @@ footer p {
   text-align: center;
   padding: 20px;
   font-size: 18px;
-  z-index: -1; /*Asegura que el div este por debajo de todo el contenido*/
+  z-index: -1;
+  /*Asegura que el div este por debajo de todo el contenido*/
 }
 @media (max-width: 576px) {
   .line {
@@ -287,6 +300,18 @@ footer p {
 }
 .accordion .accordion-item h2 button {
   font-weight: 500;
+}
+.accordion .accordion-item h2 button.collapsed {
+  color: inherit;
+  background-color: inherit;
+}
+.accordion .accordion-item h2 button:not(.collapsed) {
+  color: #333333 !important;
+  background-color: #dcedc8 !important;
+}
+.accordion .accordion-item h2 button:focus {
+  border-color: #8bc34a !important;
+  box-shadow: 0 0 0 0.2rem rgba(5, 103, 24, 0.25) !important;
 }
 
 .iconDelete {

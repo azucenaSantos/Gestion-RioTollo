@@ -1,7 +1,7 @@
 <html lang="en" data-bs-theme="dark">
 
 <body>
-    <div class="section d-flex flex-row">
+    <div class="section">
         <nav class="navbar navbar-expand-lg navbar-light" style="width: 400px;">
             <div class="container-fluid lateral-menu">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

@@ -1,18 +1,8 @@
 @import "variables.scss";
 
-body {
-  position: relative;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  // @media #{$mobile2} {
-  //   height: 100vh;
-  // }
-}
-
 #map {
   height: 500px;
-  margin-top: 40px
+  margin-top: 40px;
 }
 
 .content {
@@ -69,6 +59,7 @@ a {
   color: $color-white;
   margin-top: 20px;
   transition: background-color 0.3s ease-in-out;
+
   &:hover {
     background-color: $color-lightgrey;
     color: $color-grey;
@@ -88,18 +79,29 @@ a {
 }
 
 .breadcrumb {
+  align-items: flex-end;
   .active {
     color: $primary-color;
     font-family: $font-Mont;
     font-size: 16px;
     text-decoration: underline;
     font-style: italic;
+
+    @media #{$mobile2} {
+      font-size: 14px;
+    }
   }
+
   li a {
     text-decoration: none;
     color: $color-grey;
     font-family: $font-Mont;
     font-size: 16px;
+
+    @media #{$mobile2} {
+      font-size: 14px;
+    }
+
     &:hover {
       color: $primary-color;
       text-decoration: underline;
@@ -110,6 +112,7 @@ a {
 tbody {
   tr {
     transition: all 0.2s ease-in-out;
+
     &:hover {
       background-color: $color-lightgrey !important;
     }
@@ -117,8 +120,8 @@ tbody {
 }
 
 footer {
-  position: relative;
-  bottom: 0;
+  // position: relative;
+  // bottom: 0;
 
   // @media #{$mobile2} {
   //   position: absolute;
@@ -128,6 +131,7 @@ footer {
   background-color: $color-grey;
   height: 54px;
   width: 100%;
+
   p {
     font-size: 15px;
     font-family: $font-Mont;
@@ -152,10 +156,12 @@ footer {
   .welcome-text {
     display: flex;
     align-items: baseline;
+
     .iconUser {
       font-size: 42px;
     }
   }
+
   .nav-container {
     margin-left: 175px;
 
@@ -174,6 +180,7 @@ footer {
     border: none;
     padding: 0;
     margin: 0;
+
     .iconLogout {
       font-size: 42px;
 
@@ -181,6 +188,7 @@ footer {
       top: 30px;
       right: 30px;
       transition: color 0.2s ease-in-out;
+
       &:hover {
         color: red;
       }
@@ -190,9 +198,14 @@ footer {
 
 .section,
 .content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
   @media #{$mobile2} {
-    display: flex !important;
-    flex-wrap: wrap !important;
+    display: grid;
+    min-height: 100dvh;
+    grid-template-rows: auto 1fr auto;
     margin-left: 20px;
     margin-right: 20px;
   }
@@ -208,6 +221,7 @@ footer {
   padding-right: 0px !important;
   position: relative;
   top: -40px;
+
   @media (max-width: 990px) {
     position: relative;
     top: 0px;
@@ -221,26 +235,32 @@ footer {
   .nav-item {
     width: 389px;
   }
+
   li {
     display: flex;
     align-items: center;
     height: 60px !important;
+
     @media #{$mobile2} {
       height: 50px !important;
       padding-left: 0px;
     }
+
     padding-left: 10px;
     margin-top: 20px;
     transition: background-color 0.4s ease-in-out;
+
     &:hover {
       background-color: $primary-color;
     }
   }
+
   .nav-section {
     text-decoration: none;
     color: $color-grey;
     display: flex;
     align-items: baseline;
+
     i {
       font-size: 21px;
       margin-right: 10px;
@@ -249,7 +269,8 @@ footer {
 }
 
 .line {
-  position: absolute; /* Lo coloca en la parte inferior de la página */
+  position: absolute;
+  /* Lo coloca en la parte inferior de la página */
   top: 0;
   left: 0;
   height: 100vh;
@@ -260,7 +281,8 @@ footer {
   text-align: center;
   padding: 20px;
   font-size: 18px;
-  z-index: -1; /*Asegura que el div este por debajo de todo el contenido*/
+  z-index: -1;
+  /*Asegura que el div este por debajo de todo el contenido*/
 
   // @media #{$tablet} {
   //   width: 330px;
@@ -301,8 +323,23 @@ footer {
     h2 {
       font-family: $font-Mont;
       font-size: 25px;
+
       button {
         font-weight: 500;
+
+        &.collapsed {
+          color: inherit;
+          background-color: inherit;
+        }
+
+        &:not(.collapsed) {
+          color: $color-grey !important;
+          background-color: $third-color !important;
+        }
+        &:focus {
+          border-color: $primary-color !important;
+          box-shadow: 0 0 0 0.2rem rgba(5, 103, 24, 0.25) !important;
+        }
       }
     }
   }
@@ -311,25 +348,30 @@ footer {
 .iconDelete {
   color: $red;
   font-size: 40px;
+
   i {
     border: 1px solid $color-lightgrey;
     border-radius: 10px;
     padding: 4px 4px;
   }
+
   :hover {
     transition: background-color 0.3s ease-in-out;
     color: $color-white;
     background-color: $red;
   }
 }
+
 .iconModify {
   color: $secondary-color;
   font-size: 40px;
+
   i {
     border: 1px solid $color-lightgrey;
     border-radius: 10px;
     padding: 4px 4px;
   }
+
   :hover {
     transition: background-color 0.3s ease-in-out;
     color: $color-white;

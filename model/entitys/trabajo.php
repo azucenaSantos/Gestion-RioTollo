@@ -30,7 +30,7 @@ class Trabajo
         $this->anotaciones = $anotaciones;
         $this->id_zona = $id_zona;
         // $this->nombre_grupo = ""; // Inicializar el nombre del grupo
-    }
+    }    
 
     // Getters
     public function getId()
@@ -84,9 +84,9 @@ class Trabajo
     public function getIdGrupo()
     {
         return $this->id_grupo;
-    } // NUEVO
+    } 
 
-    // Setters
+    
     public function setId($id)
     {
         $this->id = $id;

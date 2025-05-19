@@ -22,36 +22,36 @@
 </head>
 
 <body>
-    <div class="content">
-        <header> <!-- Header, comun a todos los usuarios -->
-            <?php
-            session_start();
-            //print_r($_SESSION);
-            $pagina = "coordinador";
-            ?>
-            <div class="welcome">
-                <img class="mt-4" src="../../assets/img/logo.jpg" alt="Logotipo Rio Tollo" width="140px" height="140px">
-                <div class="welcome-text d-flex align-items-center">
-                    <i class="las la-user iconUser"></i>
-                    <h2 style="margin-bottom: 18px;">
-                        <?php if (isset($_SESSION['name']))
-                            echo $_SESSION['name'] ?> <strong
-                                style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name'] ?></strong>
-                    </h2>
-                </div>
-                <div class="nav-container">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item active">Inicio</a></li>
-                        </ol>
-                    </nav>
-                </div>
-                <button class="buttonLogout" data-toggle="modal" data-target="#exampleModal">
-                    <i class="las la-sign-out-alt iconLogout"></i>
-                </button>
+    <header> <!-- Header, comun a todos los usuarios -->
+        <?php
+        session_start();
+        //print_r($_SESSION);
+        $pagina = "coordinador";
+        ?>
+        <div class="welcome">
+            <img class="mt-4" src="../../assets/img/logo.jpg" alt="Logotipo Rio Tollo" width="140px" height="140px">
+            <div class="welcome-text d-flex align-items-center">
+                <i class="las la-user iconUser"></i>
+                <h2 style="margin-bottom: 18px;">
+                    <?php if (isset($_SESSION['name']))
+                        echo $_SESSION['name'] ?> <strong
+                            style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name'] ?></strong>
+                </h2>
             </div>
-        </header>
+            <div class="nav-container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">Inicio</a></li>
+                    </ol>
+                </nav>
+            </div>
+            <button class="buttonLogout" data-toggle="modal" data-target="#exampleModal">
+                <i class="las la-sign-out-alt iconLogout"></i>
+            </button>
+        </div>
+    </header>
 
+    <div class="content">
         <!-- Modal bootstrap -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -76,76 +76,76 @@
             </div>
         </div>
 
-        <div class="section d-flex flex-row">
-            <!--Menu lateral, comun a todos los usuarios (con más o menos apartados) -->
-            <nav class="navbar navbar-expand-lg navbar-light" style="width: 400px;">
-                <div class="container-fluid lateral-menu">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav flex-column">
-                            <li class="nav-item">
-                                <a href="../../public/index.php?c=Coordinador&a=reportarTrabajos" class="nav-section">
-                                    <i class="las la-pen-alt"></i>
-                                    <h3>Reportar Trabajo</h3>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../../public/index.php?c=Coordinador&a=verParte" class="nav-section">
-                                    <i class="las la-file"></i>
-                                    <h3>Visualizar Parte</h3>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <!--Contenedor principal, donde se cargan los contenidos del apartado seleccionado -->
-            <main class="d-flex flex-column align-items-center">
-                <div class="info-container">
-                    <h1 class="text-center">Bienvenido al Panel de Coordinador</h1>
-                    <p class="text-center">Desde aquí podrás gestionar los reportar los trabajos realizados.</p>
-                    <p class="text-center">Además de visualizar los partes de los trabajos que debes realizar.
-                        del vivero.</p>
-                </div>
-                <div class="container mt-5">
-                    <div class="row text-center">
-                        <div class="col-md-6">
-                            <div class="card shadow-sm">
-                                <div class="card-body">
-                                    <i class="las la-briefcase display-4 mb-3"></i>
-                                    <h5 class="card-title">Reportar Trabajo</h5>
-                                    <p class="card-text">Reporta un trabajo realizado añadiendo comentarios en caso de
-                                        que
-                                        sea necesario.</p>
-                                    <!-- <a href="../../public/index.php?c=Jefe&a=gestionTrabajos" class="btn btn-primary">Ir a
-                                        Trabajos</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card shadow-sm">
-                                <div class="card-body">
-                                    <i class="las la-object-group display-4 mb-3"></i>
-                                    <h5 class="card-title">Visualizar Parte</h5>
-                                    <p class="card-text">Visualiza y/o descarga el parte de trabajos que debes realizar
-                                        cada
-                                        día.</p>
-                                    <!-- <a href="../../public/index.php?c=Jefe&a=gestionGrupos" class="btn btn-primary">Ir a
-                                        Grupos</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-center mt-5">Navega por el menu lateral para acceder a los diferentes apartados
-                            del
-                            panel.</p>
 
-                    </div>
+        <!--Menu lateral, comun a todos los usuarios (con más o menos apartados) -->
+        <nav class="navbar navbar-expand-lg navbar-light" style="width: 400px;">
+            <div class="container-fluid lateral-menu">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-item">
+                            <a href="../../public/index.php?c=Coordinador&a=reportarTrabajos" class="nav-section">
+                                <i class="las la-pen-alt"></i>
+                                <h3>Reportar Trabajo</h3>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../public/index.php?c=Coordinador&a=verParte" class="nav-section">
+                                <i class="las la-file"></i>
+                                <h3>Visualizar Parte</h3>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-            </main>
-        </div>
+            </div>
+        </nav>
+        <!--Contenedor principal, donde se cargan los contenidos del apartado seleccionado -->
+        <main class="d-flex flex-column align-items-center">
+            <div class="info-container">
+                <h1 class="text-center">Bienvenido al Panel de Coordinador</h1>
+                <p class="text-center">Desde aquí podrás gestionar los reportar los trabajos realizados.</p>
+                <p class="text-center">Además de visualizar los partes de los trabajos que debes realizar.
+                    del vivero.</p>
+            </div>
+            <div class="container mt-5">
+                <div class="row text-center">
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <i class="las la-briefcase display-4 mb-3"></i>
+                                <h5 class="card-title">Reportar Trabajo</h5>
+                                <p class="card-text">Reporta un trabajo realizado añadiendo comentarios en caso de
+                                    que
+                                    sea necesario.</p>
+                                <!-- <a href="../../public/index.php?c=Jefe&a=gestionTrabajos" class="btn btn-primary">Ir a
+                                        Trabajos</a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <i class="las la-object-group display-4 mb-3"></i>
+                                <h5 class="card-title">Visualizar Parte</h5>
+                                <p class="card-text">Visualiza y/o descarga el parte de trabajos que debes realizar
+                                    cada
+                                    día.</p>
+                                <!-- <a href="../../public/index.php?c=Jefe&a=gestionGrupos" class="btn btn-primary">Ir a
+                                        Grupos</a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center mt-5">Navega por el menu lateral para acceder a los diferentes apartados
+                        del
+                        panel.</p>
+
+                </div>
+
+        </main>
+    </div>
     </div>
     <div class="line"></div>
 

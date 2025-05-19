@@ -165,7 +165,8 @@ nav {
 }
 .containerTable #formTrabajo,
 .containerTable #formGrupo,
-.containerTable #formTrabajador {
+.containerTable #formTrabajador,
+.containerTable #formCoordinador {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -175,7 +176,8 @@ nav {
 @media (max-width: 576px) {
   .containerTable #formTrabajo,
   .containerTable #formGrupo,
-  .containerTable #formTrabajador {
+  .containerTable #formTrabajador,
+  .containerTable #formCoordinador {
     flex-direction: column;
     padding: 15px !important;
     margin: 0px !important;

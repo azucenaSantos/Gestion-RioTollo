@@ -1,7 +1,7 @@
 <html lang="en" data-bs-theme="dark">
 
 <body>
-    <div class="section d-flex flex-row">
+    <div class="section">
         <!--Menu lateral, comun a todos los usuarios (con más o menos apartados) -->
         <nav class="navbar navbar-expand-lg navbar-light" style="width: 400px;">
             <div class="container-fluid lateral-menu">

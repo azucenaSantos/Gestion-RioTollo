@@ -1,7 +1,7 @@
 <html lang="en" data-bs-theme="dark">
 
 <body>
-    <div class="section d-flex flex-row">
+    <div class="section">
         <!--Menu lateral, comun a todos los usuarios (con más o menos apartados) -->
         <nav class="navbar navbar-expand-lg navbar-light" style="width: 400px;">
             <div class="container-fluid lateral-menu">
@@ -29,7 +29,12 @@
         </nav>
         <!--Contenido de la página-->
         <main>
-            <div class="info-container"><h1>Reportar Trabajo</h1></div>
+            <div class="info-container">
+                <h1>Visualizar Parte</h1>
+            </div>
+            <div class="container">
+                
+            </div>
         </main>
     </div>
     <div class="line"></div>

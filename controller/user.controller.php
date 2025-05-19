@@ -64,11 +64,11 @@ class UserController
                             case '30': //coordinador
                                 header('Location: ../view/coordinador/coordinador.php');
                                 break;
-                            case '40': //traabajador
-                                //header('Location: ../view/user/dashboard.php');
+                            case '40': //trabajador
+                                // header('Location: ../view/user/dashboard.php');
                                 break;
                             default:
-                                //header('Location: ../view/sesion/sesion.php');
+                                header('Location: ../view/sesion/sesion.php');
                                 break;
                         }
                         exit();

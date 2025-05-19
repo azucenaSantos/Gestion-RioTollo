@@ -50,7 +50,7 @@
             </button>
         </div>
     </header>
-    <div class="content d-flex flex-row">
+    <div class="content">
         <!-- Modal bootstrap -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

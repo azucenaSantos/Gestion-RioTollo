@@ -32,6 +32,7 @@
     <script src="../assets/js/assign-password.js" defer></script>
     <script src="../assets/js/datatables.js" defer></script>
     <script src="../assets/js/map-leaflet.js" defer></script>
+    <script src="../assets/js/report-content.js" defer></script>
     <script src="../assets/lib/side-by-side-multiselect/js/side-by-side-multiselect.umd.min.js"></script>
     <!--jQuery para DataTables-->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

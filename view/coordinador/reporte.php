@@ -1,7 +1,7 @@
 <html lang="en" data-bs-theme="dark">
 
 <body>
-    <div class="section d-flex flex-row">
+    <div class="section">
         <!--Menu lateral, comun a todos los usuarios (con más o menos apartados) -->
         <nav class="navbar navbar-expand-lg navbar-light" style="width: 400px;">
             <div class="container-fluid lateral-menu">
@@ -30,7 +30,64 @@
         <!--Contenido de la página-->
         <main>
             <div class="info-container">
-                <h1>Visualizar Parte</h1>
+                <h1>Reportar Trabajo</h1>
+            </div>
+            <div class="container">
+                <form method="post" class="mx-auto p-5 shadow-sm formEdits" action="?c=Coordinador&a=registrarReporte"
+                    id="formCoordinador" novalidate>
+                    <div class="form-inputs">
+                        <div class="mt-3">
+                            <label for="selectorTrabajos">Trabajo: </label>
+                            <select class="form-control form-select" id="selectorTrabajos" name="trabajoSelect"
+                                required>
+                                <?php if (isset($trabajosCoordinador)): ?>
+                                    <?php foreach ($trabajosCoordinador as $trabajo): ?>
+                                        <option value="<?php echo $trabajo->getId(); ?>">
+                                            <?php echo $trabajo->getNombre(); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <option value="">No hay trabajos asociados</option>
+                                <?php endif; ?>
+                            </select>
+                        </div>
+                        <div class="mt-3">
+                            <label for="inputGrupo">Grupo: </label>
+                            <input type="text" class="form-control" id="inputGrupo" name="grupo" value="" required
+                                readonly>
+                            <!--readonly para no permitir editar el nombre por parte del coordinador-->
+                        </div>
+                        <!--campo oculto para recoger el id del grupo-->
+                        <input type="hidden" name="idGrupo" id="idGrupo" value="">
+
+                        <div class="mt-3 d-flex">
+                            <label for="inputPorcentaje" class="form-label">Porcentaje: </label>
+                            <input type="range" class="form-range form-control" min="0" max="100" step="10"
+                                id="inputPorcentaje" name="porcentaje"
+                                value="<?php echo isset($trabajo) ? $trabajo->getPorcentaje() : ''; ?>" required>
+                            <input type="number" class="form-control form-number" name="porcentaje"
+                                id="inputPorcentajeNum" min="0" max="100" step="10"
+                                value="<?php echo isset($trabajo) ? $trabajo->getPorcentaje() : ''; ?>" required>
+                        </div>
+                        <div class="mt-3">
+                            <label for="inputHorario">Horario: </label>
+                            <input type="time" class="form-control" id="horaIni" name="hora_inicio"
+                                value="<?php echo isset($trabajo) ? $trabajo->getHoraInicio() : ''; ?>" required>
+                            <input type="time" class="form-control" id="horaFin" name="hora_fin"
+                                value="<?php echo isset($trabajo) ? $trabajo->getHoraFin() : ''; ?>" required>
+                        </div>
+                        <div class="mt-3">
+                            <label for="inputFecha">Fecha: </label>
+                            <input type="date" class="form-control" id="inputFecha" name="fecha"
+                                value="<?php echo isset($trabajo) ? $trabajo->getFecha() : ''; ?>" required>
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <button type="submit" class="buttonAdd">
+                            Reportar Trabajo
+                        </button>
+                    </div>
+                </form>
             </div>
         </main>
     </div>
