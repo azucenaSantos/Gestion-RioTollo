@@ -1,27 +1,39 @@
-@charset "UTF-8";
 main {
   width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
   margin-left: 75px;
+  margin-right: 75px;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px #e0e0e0;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1680px) {
   main {
-    margin-left: 0px;
-    margin-top: 40px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding: 20px;
   }
 }
 @media (max-width: 576px) {
   main {
     margin-left: 0px;
-    margin-top: 30px;
+    padding: 20px;
   }
 }
 
 nav {
-  width: 400px !important;
+  width: 356px !important;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1680px) {
   nav {
-    width: 360px !important;
+    width: 313px !important;
+  }
+}
+@media (max-width: 576px) {
+  nav {
+    margin-bottom: 20px;
   }
 }
 
@@ -72,11 +84,13 @@ nav {
 .containerTable {
   margin-left: 0px !important;
   padding-left: 0px !important;
+  padding-right: 0px !important;
 }
-@media (max-width: 576px) {
+@media (max-width: 1220px) {
   .containerTable {
     display: flex;
     flex-direction: column-reverse;
+    row-gap: 25px;
   }
 }
 .containerTable table {
@@ -158,7 +172,7 @@ nav {
   gap: 10px;
 }
 .containerTable table tbody tr .anotaciones {
-  max-width: 50px; /* Ajusta el ancho según sea necesario */
+  max-width: 50px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -172,6 +186,8 @@ nav {
   flex-direction: row;
   justify-content: flex-end;
   padding: 20px 40px !important;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
 }
 @media (max-width: 576px) {
   .containerTable #formTrabajo,
@@ -179,8 +195,9 @@ nav {
   .containerTable #formTrabajador,
   .containerTable #formCoordinador {
     flex-direction: column;
-    padding: 15px !important;
+    padding: 5px !important;
     margin: 0px !important;
+    row-gap: 40px;
   }
 }
 @media (max-width: 576px) {
@@ -189,7 +206,7 @@ nav {
     margin: 0px !important;
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 1220px) {
   .containerTable #tablaOrdenar_wrapper {
     display: none;
   }
@@ -273,10 +290,10 @@ nav {
 .formEdits .form-inputs {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 55%;
   flex-wrap: wrap;
 }
-@media (max-width: 576px) {
+@media (max-width: 1680px) {
   .formEdits .form-inputs {
     width: 100%;
   }
@@ -315,10 +332,11 @@ nav {
   text-align: center;
 }
 .formEdits .error-container {
-  width: 50%;
+  width: 40%;
 }
-@media (max-width: 576px) {
+@media (max-width: 1680px) {
   .formEdits .error-container {
+    margin-top: 50px;
     width: 100%;
   }
 }

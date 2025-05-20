@@ -106,9 +106,8 @@
         <main class="d-flex flex-column align-items-center">
             <div class="info-container">
                 <h1 class="text-center">Bienvenido al Panel de Coordinador</h1>
-                <p class="text-center">Desde aquí podrás gestionar los reportar los trabajos realizados.</p>
-                <p class="text-center">Además de visualizar los partes de los trabajos que debes realizar.
-                    del vivero.</p>
+                <p class="text-center">Desde aquí podrás gestionar los reportar de los trabajos realizados, además de
+                    visualizar los partes de los trabajos que debe realizar.</p>
             </div>
             <div class="container mt-5">
                 <div class="row text-center">
@@ -138,7 +137,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="text-center mt-5">Navega por el menu lateral para acceder a los diferentes apartados
+                    <p class="text-center mt-5">Navega por el <span>menu lateral</span> para acceder a los diferentes apartados
                         del
                         panel.</p>
 

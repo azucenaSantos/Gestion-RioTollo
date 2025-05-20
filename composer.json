@@ -1,0 +1,17 @@
+{
+    "name": "practicas/gestion-rio-tollo",
+    "autoload": {
+        "psr-4": {
+            "Practicas\\GestionRioTollo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "azu",
+            "email": "azu.santos.ete@gmail.com"
+        }
+    ],
+    "require": {
+        "dompdf/dompdf": "^3.1"
+    }
+}

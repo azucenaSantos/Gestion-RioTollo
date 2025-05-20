@@ -107,56 +107,60 @@
         </nav>
         <!--Contenedor principal, donde se cargan los contenidos del apartado seleccionado -->
         <main class="d-flex flex-column align-items-center">
-            <div class="info-container">
-                <h1 class="text-center">Bienvenido al Panel de Jefe</h1>
-                <p class="text-center">Desde aquí podrás gestionar los trabajos y grupos de trabajo de la empresa.
-                </p>
-                <p class="text-center">Además de visualizar los proceso de los trabajos realizados en diferentes
-                    zonas
-                    del vivero.</p>
-            </div>
-            <div class="container mt-5">
-                <div class="row text-center">
-                    <div class="col-md-4">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <i class="las la-briefcase display-4 mb-3"></i>
-                                <h5 class="card-title">Gestión de Trabajos</h5>
-                                <p class="card-text">Crea, edita y supervisa los trabajos asignados a los empleados.
-                                </p>
-                                <!-- <a href="../../public/index.php?c=Jefe&a=gestionTrabajos" class="btn btn-primary">Ir a
+            <div class="info-inicio">
+                <div class="info-container">
+                    <h1 class="text-center">Bienvenido al Panel de Jefe</h1>
+                    <p class="text-center">Desde aquí podrás gestionar los trabajos y grupos de trabajo de la empresa
+                        además de visualizar los procesos de los trabajos realizados en las diferentes zonas del Vivero.
+                    </p>
+                    <!-- <p class="text-center">Además de visualizar los proceso de los trabajos realizados en diferentes
+                        zonas
+                        del vivero.</p> -->
+                </div>
+                <div class="container mt-5">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <i class="las la-briefcase display-4 mb-3"></i>
+                                    <h5 class="card-title">Gestión de Trabajos</h5>
+                                    <p class="card-text">Crea, edita y supervisa los trabajos asignados a los empleados.
+                                    </p>
+                                    <!-- <a href="../../public/index.php?c=Jefe&a=gestionTrabajos" class="btn btn-primary">Ir a
                                         Trabajos</a> -->
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <i class="las la-object-group display-4 mb-3"></i>
-                                <h5 class="card-title">Gestión de Grupos</h5>
-                                <p class="card-text">Organiza y administra los grupos de trabajo de la empresa.</p>
-                                <!-- <a href="../../public/index.php?c=Jefe&a=gestionGrupos" class="btn btn-primary">Ir a
+                        <div class="col-md-4">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <i class="las la-object-group display-4 mb-3"></i>
+                                    <h5 class="card-title">Gestión de Grupos</h5>
+                                    <p class="card-text">Organiza y administra los grupos de trabajo de la empresa.</p>
+                                    <!-- <a href="../../public/index.php?c=Jefe&a=gestionGrupos" class="btn btn-primary">Ir a
                                         Grupos</a> -->
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <i class="las la-chart-bar display-4 mb-3"></i>
-                                <h5 class="card-title">Visualizar Procesos</h5>
-                                <p class="card-text">Consulta el progreso y los resultados de los trabajos
-                                    realizados en
-                                    el vivero.</p>
-                                <!-- <a href="../../public/index.php?c=Jefe&a=visualizarProcesos" class="btn btn-primary">Ir
+                        <div class="col-md-4">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <i class="las la-chart-bar display-4 mb-3"></i>
+                                    <h5 class="card-title">Visualizar Procesos</h5>
+                                    <p class="card-text">Consulta el progreso y los resultados de los trabajos
+                                        realizados en
+                                        el vivero.</p>
+                                    <!-- <a href="../../public/index.php?c=Jefe&a=visualizarProcesos" class="btn btn-primary">Ir
                                         a Procesos</a> -->
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <p class="text-center mt-5">Navega por el menu lateral para acceder a los diferentes apartados
-                        del
-                        panel.</p>
+                        <p class="text-center mt-5">Navega por el <span>menu lateral</span> para acceder a los
+                            diferentes apartados
+                            del
+                            panel.</p>
 
+                    </div>
                 </div>
             </div>
         </main>

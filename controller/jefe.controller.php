@@ -52,6 +52,7 @@ class JefeController
             $parcelasSeleccionadas = $this->model->getParcelasByTrabajo($trabajoId); //array de ids de las parcelas
         } else {
             $trabajo = null; //si no se ha pasado el id, no hay trabajo a editar
+            $fecha = date('Y-m-d', strtotime('+1 day')); //si no hay trabajo, la fecha es mañana
         }
         //Obtenemos los grupos/zonas para mostrarlos en el select del formulario
         $grupos = $this->model->getAllGrupos();
@@ -83,6 +84,7 @@ class JefeController
         $id_grupo = $_POST['grupo'] ?? null; //Id del grupo seleccionado o null si no existe
         $anotaciones = htmlspecialchars(trim(strip_tags($_POST['anotaciones'])), ENT_QUOTES, "ISO-8859-1");
 
+  
         //Validar campos:
         $cadenaErrores = [];
         if (validarCampoVacio($nombre, "Trabajo")) {

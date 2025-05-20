@@ -32,9 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
           inputPorcentaje.value = data.trabajos[0].porcentaje;
           inputPorcentajeNum.value = data.trabajos[0].porcentaje;
         } else {
-          console.log("No hay trabajos en esta zona");
           const option = document.createElement("option");
-          option.textContent = "No hay trabajos en esta zona";
+          option.textContent = "No tiene trabajos asociados";
+          option.selected = true;
           option.disabled = true;
           select.appendChild(option);
         }

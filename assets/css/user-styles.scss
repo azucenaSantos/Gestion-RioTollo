@@ -1,22 +1,36 @@
 @import "variables.scss";
+
 main {
   width: 100%;
+  height: fit-content;
   margin-left: 75px;
+  margin-right: 75px;
+  background-color: $color-white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px $color-lightgrey;
+
   @media #{$tablet} {
-    margin-left: 0px;
-    margin-top: 40px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding: 20px;
   }
 
   @media #{$mobile2} {
     margin-left: 0px;
-    margin-top: 30px;
+    padding: 20px;
   }
 }
 
 nav {
-  width: 400px !important;
+  width: 356px !important;
+
   @media #{$tablet} {
-    width: 360px !important;
+    width: 313px !important;
+  }
+
+  @media #{$mobile2} {
+    margin-bottom: 20px;
   }
 }
 
@@ -33,10 +47,12 @@ nav {
 .btn-container {
   display: flex;
   justify-content: flex-end;
+
   @media #{$mobile2} {
     justify-content: center;
     margin-top: 30px;
   }
+
   .buttonAdd {
     width: 225px;
     height: 52px;
@@ -48,6 +64,7 @@ nav {
     color: $color-white;
     margin-bottom: 35px;
     transition: background-color 0.3s ease-in-out;
+
     &:hover {
       background-color: $primary-color;
     }
@@ -63,11 +80,14 @@ nav {
 .containerTable {
   margin-left: 0px !important;
   padding-left: 0px !important;
+  padding-right: 0px !important;
 
-  @media #{$mobile2} {
+  @media #{$tablet2} {
     display: flex;
     flex-direction: column-reverse;
+    row-gap: 25px;
   }
+
 
   table {
     border-collapse: separate;
@@ -75,6 +95,7 @@ nav {
     border: 1px solid $color-lightgrey;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+
     // height: 100%;
     thead {
       background-color: $third-color;
@@ -92,11 +113,13 @@ nav {
           text-align: center;
         }
       }
+
       //Bordes del thead redondeados
       tr:first-child {
         th:first-child {
           border-top-left-radius: 10px;
         }
+
         th:last-child {
           border-top-right-radius: 10px;
         }
@@ -106,6 +129,7 @@ nav {
     tbody {
       tr {
         height: 70px;
+
         td {
           text-align: center;
           vertical-align: middle;
@@ -116,28 +140,34 @@ nav {
           text-align: center;
           padding: 10px 0px;
           border-bottom: 1px solid $color-lightgrey;
+
           .iconDelete {
             color: $red;
             font-size: 40px !important;
+
             i {
               border: 1px solid $color-lightgrey;
               border-radius: 10px;
               padding: 4px 4px;
             }
+
             :hover {
               transition: background-color 0.3s ease-in-out;
               color: $color-white;
               background-color: $red;
             }
           }
+
           .iconModify {
             color: $secondary-color;
             font-size: 40px !important;
+
             i {
               border: 1px solid $color-lightgrey;
               border-radius: 10px;
               padding: 4px 4px;
             }
+
             :hover {
               transition: background-color 0.3s ease-in-out;
               color: $color-white;
@@ -145,6 +175,7 @@ nav {
             }
           }
         }
+
         td:first-child {
           font-weight: bold;
         }
@@ -155,8 +186,9 @@ nav {
           align-items: center;
           gap: 10px;
         }
+
         .anotaciones {
-          max-width: 50px; /* Ajusta el ancho según sea necesario */
+          max-width: 50px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -167,29 +199,32 @@ nav {
 
   #formTrabajo,
   #formGrupo,
-  #formTrabajador, 
-  #formCoordinador{
+  #formTrabajador,
+  #formCoordinador {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: flex-end;
     padding: 20px 40px !important;
+    column-gap: 30px;
 
     @media #{$mobile2} {
       flex-direction: column;
-      padding: 15px !important;
+      padding: 5px !important;
       margin: 0px !important;
+      row-gap: 40px;
     }
   }
+
   #formProcesos {
-    @media #{$mobile2} {      
+    @media #{$mobile2} {
       padding: 15px !important;
       margin: 0px !important;
     }
   }
 
   #tablaOrdenar_wrapper {
-    @media #{$mobile2} {
+    @media #{$tablet2} {
       display: none;
     }
   }
@@ -200,10 +235,12 @@ nav {
     display: inline;
     // width: 32.5%;
   }
+
   .form-range {
     width: 65%;
     margin-right: 10px;
     border: 0px;
+
     @media #{$mobile2} {
       width: 55%;
     }
@@ -211,6 +248,7 @@ nav {
 
   .form-number {
     width: 12%;
+
     @media #{$mobile2} {
       width: 16%;
     }
@@ -233,11 +271,13 @@ nav {
   .side-by-side-multiselect {
     width: 101%;
   }
+
   .side-by-side-multiselectfilter__label {
     width: 100%;
     font-size: 13px;
     padding-left: 0px;
   }
+
   .side-by-side-multiselect__inner {
     padding: 5px;
     border: 1px solid $color-lightgrey;
@@ -279,12 +319,14 @@ nav {
   .form-inputs {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 55%;
     flex-wrap: wrap;
 
-    @media #{$mobile2} {
+    @media #{$tablet} {
       width: 100%;
     }
+
+ 
 
     .mt-3 {
       display: flex;
@@ -300,19 +342,25 @@ nav {
         align-items: flex-start;
       }
     }
+
     input {
       font-size: 14px !important;
     }
+
     .form-select {
       font-size: 14px !important;
     }
+
     .listBox {
       display: flex;
+
       .opcionesList {
         width: 24%;
+
         select {
           width: 79%;
         }
+
         p {
           font-family: $font-Mont;
           font-size: 12px;
@@ -322,16 +370,21 @@ nav {
       }
     }
   }
+
   .error-container {
-    width: 50%;
-    @media #{$mobile2} {
+    width: 40%;
+
+    @media #{$tablet} {
+      margin-top: 50px;
       width: 100%;
     }
   }
+
   .buttons {
     display: flex;
     justify-content: center;
     width: 43%;
+
     button {
       width: 80px;
       height: 30px;
@@ -343,6 +396,7 @@ nav {
       font-family: "Montserrat", sans-serif;
       color: #ffffff;
       transition: background-color 0.1s ease-in-out;
+
       &:active {
         background-color: $secondary-color;
       }
@@ -351,6 +405,7 @@ nav {
 }
 
 .estado {
+
   // width: 200px;
   .finalizado {
     background: $primary-color;
@@ -360,6 +415,7 @@ nav {
     width: fit-content;
     margin: 0 auto;
   }
+
   .pendiente {
     background: $red;
     padding: 5px 10px;
@@ -371,10 +427,12 @@ nav {
 }
 
 .roles {
+
   .trabajador,
   .rrhh {
     color: $color-grey;
   }
+
   .coordinador,
   .jefe {
     color: $color-grey;

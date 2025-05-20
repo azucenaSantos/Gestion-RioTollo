@@ -104,12 +104,8 @@
         <main class="d-flex flex-column align-items-center">
             <div class="info-container">
                 <h1 class="text-center">Bienvenido al Panel de Administrador (RRHH)</h1>
-                <p class="text-center">Desde aquí podrás gestionar trabajadores y jefes que están registrados en
-                    la
-                    empresa.
-                </p>
-                <p class="text-center">Podrás añadir, crear y modificar datos de jefes y trabajadores del
-                    vivero.
+                <p class="text-center">Desde aquí podrás gestionar trabajadores y jefes que están registrados en la
+                    empresa. Podrás añadir, crear y modificar datos de jefes y trabajadores del vivero.
                 </p>
             </div>
             <div class="container mt-5">

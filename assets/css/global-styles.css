@@ -1,4 +1,9 @@
 @charset "UTF-8";
+body {
+  background-color: #f5f3e7 !important;
+  padding: 0px !important;
+}
+
 #map {
   height: 500px;
   margin-top: 40px;
@@ -6,6 +11,10 @@
 
 .content {
   z-index: 10;
+}
+
+iframe {
+  width: 100% !important;
 }
 
 input,
@@ -23,6 +32,11 @@ textarea {
 main {
   flex: 1;
 }
+@media (max-width: 576px) {
+  main {
+    margin-top: 20px !important;
+  }
+}
 
 h1 {
   font-family: "Merriweather", serif;
@@ -36,16 +50,80 @@ h1 {
 
 h2 {
   font-family: "Merriweather", serif;
-  font-size: 25px;
+  font-size: 22px;
+  margin-bottom: 12px !important;
+}
+h2 strong {
+  font-size: 18px !important;
+}
+
+#erroresCliente h2 {
+  color: #842029;
+  font-size: 20px;
+  font-family: "Merriweather", serif;
+  font-weight: 600;
 }
 
 h3 {
   font-family: "Montserrat", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 a {
   font-size: 14px;
+}
+
+h1.text-center {
+  margin-bottom: 30px;
+}
+
+p.text-center {
+  font-family: "Montserrat", sans-serif;
+  font-size: 17px;
+  color: #333333;
+  margin-bottom: 5px !important;
+  margin-top: 0px;
+  width: 60%;
+  margin: 0 auto;
+}
+@media (max-width: 576px) {
+  p.text-center {
+    width: 90%;
+  }
+}
+
+p.mt-5 {
+  font-style: italic;
+  font-size: 16px;
+}
+p.mt-5 span {
+  font-weight: 600;
+}
+@media (max-width: 576px) {
+  p.mt-5 {
+    display: none;
+  }
+}
+
+p.card-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: #333333;
+}
+
+.card-title {
+  font-family: "Merriweather", serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #333333;
+}
+
+.card-body i {
+  color: #558b2f;
+  transition: transform 0.4s ease;
+}
+.card-body i:hover {
+  transform: rotate(360deg) scale(1.2);
 }
 
 .buttonPassword {
@@ -88,6 +166,7 @@ a {
   font-size: 16px;
   text-decoration: underline;
   font-style: italic;
+  font-weight: 500;
 }
 @media (max-width: 576px) {
   .breadcrumb .active {
@@ -99,6 +178,7 @@ a {
   color: #333333;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
+  font-weight: 500;
 }
 @media (max-width: 576px) {
   .breadcrumb li a {
@@ -135,7 +215,7 @@ footer p {
 .welcome {
   display: flex;
   align-items: baseline;
-  margin-left: 48px;
+  margin-left: 30px;
 }
 @media (max-width: 576px) {
   .welcome {
@@ -146,16 +226,22 @@ footer p {
 .welcome .welcome-text {
   display: flex;
   align-items: baseline;
+  width: 13%;
 }
 .welcome .welcome-text .iconUser {
   font-size: 42px;
 }
 .welcome .nav-container {
-  margin-left: 175px;
+  margin-left: 20px;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1220px) {
   .welcome .nav-container {
-    margin-left: 100px;
+    margin-left: 36px;
+  }
+}
+@media (max-width: 1220px) {
+  .welcome .nav-container {
+    margin-left: 80px;
   }
 }
 @media (max-width: 576px) {
@@ -197,11 +283,22 @@ footer p {
   }
 }
 
+.navbar-expand-lg {
+  position: relative !important;
+  top: 0px;
+  background-color: #558b2f;
+}
+@media (max-width: 576px) {
+  .navbar-expand-lg {
+    background-color: unset;
+  }
+}
+
 .lateral-menu {
   display: block !important;
-  width: 400px;
-  height: 77vh;
+  height: 100vh;
   padding-top: 36px !important;
+  padding-left: 0px !important;
   padding-right: 0px !important;
   position: relative;
   top: -40px;
@@ -219,12 +316,15 @@ footer p {
   }
 }
 .lateral-menu .nav-item {
-  width: 389px;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+}
+.lateral-menu .navbar-nav {
+  width: 100%;
 }
 .lateral-menu li {
   display: flex;
   align-items: center;
-  height: 60px !important;
+  height: 50px !important;
   padding-left: 10px;
   margin-top: 20px;
   transition: background-color 0.4s ease-in-out;
@@ -255,14 +355,19 @@ footer p {
   top: 0;
   left: 0;
   height: 100vh;
-  width: 400px;
+  width: 357px;
   border-right: 1px solid #e0e0e0;
   color: white;
   text-align: center;
   padding: 20px;
   font-size: 18px;
   z-index: -1;
-  /*Asegura que el div este por debajo de todo el contenido*/
+  background-color: #558b2f;
+}
+@media (max-width: 1680px) {
+  .line {
+    width: 315px;
+  }
 }
 @media (max-width: 576px) {
   .line {

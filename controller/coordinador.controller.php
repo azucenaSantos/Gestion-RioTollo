@@ -4,6 +4,7 @@ require_once 'functions/roleSesionValidation.php';
 require_once '../model/coordiDAO.php';
 require_once '../model/entitys/trabajo.php';
 require_once '../model/entitys/trabajoRegistro.php';
+require_once '../model/entitys/trabajador.php';
 
 
 class CoordinadorController
@@ -72,9 +73,7 @@ class CoordinadorController
             $infoTrabajoAnterior->getIdZona()
         );
         $infoTrabajoRegistro->setIdGrupo($grupo);
-
         try {
-
             //Registramos el reporte
             $this->model->registrarReporte($infoTrabajoRegistro);
             //Actualizamos el estado del trabajo
@@ -134,6 +133,15 @@ class CoordinadorController
         comprobarAcceso(rol: 30);
         $rol = "coordinador";
         $pagina = "verParte";
+        //Para mostrar el parte de trabajo, se obtienen diferentes datos según el trabajador que lo solicita
+        $idCoordinador = $_SESSION['user_id'];
+        //Datos del trabajador
+        $trabajador = $this->model->getTrabajador($idCoordinador); //obj trabajador
+        //Trabajos asociados
+        $trabajosAsociados = $this->model->getTrabajosCoordinador($idCoordinador); //obj trabajo
+        $fechaTrabajos = date("d-m-Y", strtotime($trabajosAsociados[0]->getFecha()));
+        //Vista para crear el PDF del parte de trabajo
+        require_once '../view/coordinador/generadorParte.php';
         require_once '../view/header.php';
         require_once '../view/coordinador/parte.php';
         require_once '../view/footer.php';

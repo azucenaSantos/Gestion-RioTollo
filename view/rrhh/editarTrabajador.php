@@ -96,6 +96,7 @@
                     </div>
                     <div class="error-container">
                         <!--contenedores errores cliente-->
+                        <div id="erroresCliente"></div>
                         <div id="errorNombre"></div>
                         <!--validar que solo sean letras y no estén  vacios !! en php y js-->
                         <div id="errorApellidos"></div>

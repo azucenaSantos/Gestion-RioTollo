@@ -94,6 +94,7 @@
                     </div>
                     <div class="error-container">
                         <!--contenedores errores cliente-->
+                        <div id="erroresCliente"></div>
                         <div id="errorGrupo"></div>
                         <div id="errorCoordinador"></div>
                         <div id="errorIntegrantes"></div>

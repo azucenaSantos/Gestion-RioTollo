@@ -55,7 +55,7 @@
                                 <td><?php echo $trabajo->getZona(); ?></td>
                                 <td><?php echo $trabajo->getHoraInicio() . " - " . $trabajo->getHoraFin(); ?></td>
                                 <td><?php echo $trabajo->getGrupoNombre(); ?></td>
-                                <td><?php echo $trabajo->getAnotaciones(); ?></td>
+                                <td class="anotaciones"><?php echo $trabajo->getAnotaciones(); ?></td>
                                 <td class="estado">
                                     <?php if ($trabajo->getFinalizado()): ?>
                                         <p class="finalizado">Finalizado</p>

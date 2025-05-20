@@ -11,7 +11,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav flex-column">
-                        <li class="nav-item">
+                        <li class="nav-item li-active">
                             <a class="nav-section" href="?c=Jefe&a=gestionTrabajos">
                                 <i class="las la-briefcase"></i>
                                 <h3>Gestión de Trabajos</h3>
@@ -159,6 +159,7 @@
                     </div>
                     <div class="error-container">
                         <!--contenedores errores cliente-->
+                        <div id="erroresCliente"></div>
                         <div id="errorTrabajo"></div>
                         <div id="errorZona"></div>
                         <div id="errorParcelas"></div>

@@ -33,7 +33,8 @@
                 <h1>Visualizar Parte</h1>
             </div>
             <div class="container">
-                
+                <!--iframe donde se carga el PDF en modo previsualizacion-->
+                <iframe src="ParteDiario.pdf" width="90%" height="600px"></iframe>
             </div>
         </main>
     </div>

@@ -1,5 +1,10 @@
 @import "variables.scss";
 
+body {
+  background-color: $crema !important;
+  padding: 0px !important;
+}
+
 #map {
   height: 500px;
   margin-top: 40px;
@@ -7,6 +12,10 @@
 
 .content {
   z-index: 10;
+}
+
+iframe{
+  width: 100% !important;
 }
 
 input,
@@ -23,6 +32,10 @@ textarea {
 
 main {
   flex: 1;
+
+  @media #{$mobile2} {
+    margin-top: 20px !important;
+  }
 }
 
 h1 {
@@ -36,17 +49,88 @@ h1 {
 
 h2 {
   font-family: $font-Merri;
-  font-size: 25px;
+  font-size: 22px;
+  margin-bottom: 12px !important;
+
+  strong {
+    font-size: 18px !important;
+  }
+}
+
+#erroresCliente {
+  h2 {
+    color: #842029;
+    font-size: 20px;
+    font-family: $font-Merri;
+    font-weight: 600;
+  }
 }
 
 h3 {
   font-family: $font-Mont;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 a {
   font-size: 14px;
 }
+
+h1.text-center {
+  margin-bottom: 30px;
+}
+
+p.text-center {
+  font-family: $font-Mont;
+  font-size: 17px;
+  color: $color-grey;
+  margin-bottom: 5px !important;
+  margin-top: 0px;
+  width: 60%;
+  margin: 0 auto;
+
+  @media #{$mobile2} {
+    width: 90%;
+  }
+}
+
+p.mt-5 {
+  font-style: italic;
+  font-size: 16px;
+
+  span {
+    font-weight: 600;
+  }
+
+  @media #{$mobile2} {
+    display: none;
+  }
+}
+
+p.card-text {
+  font-family: $font-Mont;
+  font-size: 14px;
+  color: $color-grey;
+}
+
+.card-title {
+  font-family: $font-Merri;
+  font-weight: 600;
+  font-size: 20px;
+  color: $color-grey;
+}
+
+.card-body {
+  i {
+    color: $secondary-color;
+    transition: transform 0.4s ease;
+
+
+    &:hover {
+      transform: rotate(360deg) scale(1.2);
+    }
+  }
+}
+
 
 .buttonPassword {
   width: fit-content;
@@ -80,12 +164,14 @@ a {
 
 .breadcrumb {
   align-items: flex-end;
+
   .active {
     color: $primary-color;
     font-family: $font-Mont;
     font-size: 16px;
     text-decoration: underline;
     font-style: italic;
+    font-weight: 500;
 
     @media #{$mobile2} {
       font-size: 14px;
@@ -97,6 +183,7 @@ a {
     color: $color-grey;
     font-family: $font-Mont;
     font-size: 16px;
+    font-weight: 500;
 
     @media #{$mobile2} {
       font-size: 14px;
@@ -146,7 +233,7 @@ footer {
 .welcome {
   display: flex;
   align-items: baseline;
-  margin-left: 48px;
+  margin-left: 30px;
 
   @media #{$mobile2} {
     margin-left: 20px;
@@ -156,6 +243,7 @@ footer {
   .welcome-text {
     display: flex;
     align-items: baseline;
+    width: 13%;
 
     .iconUser {
       font-size: 42px;
@@ -163,11 +251,16 @@ footer {
   }
 
   .nav-container {
-    margin-left: 175px;
+    margin-left: 20px;
 
-    @media #{$tablet} {
-      margin-left: 100px;
+    @media #{$tablet2} {
+      margin-left: 36px;
     }
+
+    @media #{$tablet2} {
+      margin-left: 80px;
+    }
+
 
     @media #{$mobile2} {
       margin-left: 0px;
@@ -211,13 +304,25 @@ footer {
   }
 }
 
+.navbar-expand-lg {
+  position: relative !important;
+  top: 0px;
+  background-color: $secondary-color;
+  // opacity: 0.8;
+
+  @media #{$mobile2} {
+    background-color: unset;
+  }
+
+}
+
 .lateral-menu {
   display: block !important;
   //background-color: $third-color;
-  width: 400px;
-  height: 77vh;
+  // width: 400px;
+  height: 100vh;
   padding-top: 36px !important;
-  // padding-left: 0px !important;
+  padding-left: 0px !important;
   padding-right: 0px !important;
   position: relative;
   top: -40px;
@@ -233,13 +338,18 @@ footer {
   }
 
   .nav-item {
-    width: 389px;
+    // width: 389px;
+    border-bottom: 1px solid rgba($color-grey, 0.1);
+  }
+
+  .navbar-nav {
+    width: 100%;
   }
 
   li {
     display: flex;
     align-items: center;
-    height: 60px !important;
+    height: 50px !important;
 
     @media #{$mobile2} {
       height: 50px !important;
@@ -274,7 +384,7 @@ footer {
   top: 0;
   left: 0;
   height: 100vh;
-  width: 400px;
+  width: 357px;
   border-right: 1px solid #e0e0e0;
 
   color: white;
@@ -282,11 +392,12 @@ footer {
   padding: 20px;
   font-size: 18px;
   z-index: -1;
-  /*Asegura que el div este por debajo de todo el contenido*/
+  background-color: $secondary-color;
+  // opacity: 0.8;
 
-  // @media #{$tablet} {
-  //   width: 330px;
-  // }
+  @media #{$tablet} {
+    width: 315px;
+  }
 
   @media #{$mobile2} {
     display: none;
@@ -336,6 +447,7 @@ footer {
           color: $color-grey !important;
           background-color: $third-color !important;
         }
+
         &:focus {
           border-color: $primary-color !important;
           box-shadow: 0 0 0 0.2rem rgba(5, 103, 24, 0.25) !important;

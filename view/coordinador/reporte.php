@@ -32,7 +32,7 @@
             <div class="info-container">
                 <h1>Reportar Trabajo</h1>
             </div>
-            <div class="container">
+            <div class="container containerTable">
                 <form method="post" class="mx-auto p-5 shadow-sm formEdits" action="?c=Coordinador&a=registrarReporte"
                     id="formCoordinador" novalidate>
                     <div class="form-inputs">
@@ -82,14 +82,42 @@
                                 value="<?php echo isset($trabajo) ? $trabajo->getFecha() : ''; ?>" required>
                         </div>
                     </div>
+                    <div class="error-container">
+                        <!--Mensajes de error, hueco necesario -->
+                    </div>
                     <div class="btn-container">
-                        <button type="submit" class="buttonAdd">
+                        <button type="button" class="buttonAdd" data-bs-toggle="modal"
+                            data-bs-target="#reportModal-<?php echo $trabajo->getId(); ?>">
                             Reportar Trabajo
                         </button>
+                    </div>
+                    <!--Modal para avisar sobre el reporte-->
+                    <div class="modal fade" id="reportModal-<?php echo $trabajo->getId(); ?>" tabindex="-1"
+                        aria-labelledby="reportModalLabel-<?php echo $trabajo->getId(); ?>" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Confirmación de Reporte</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Se ha reportado:
+                                    "<?php echo $trabajo->getNombre(); ?>"
+                                </div>
+                                <!-- <div class="modal-footer">
+                                    <a href="?c=Coordinador&a=reportarTrabajos" class="btn btn-secondary">Cerrar</a>
+                                </div> -->
+                                <button type="submit" class="buttonAdd">
+                                    Reportar
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
         </main>
     </div>
+
     <div class="line"></div>
 </body>

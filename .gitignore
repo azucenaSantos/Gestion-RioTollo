@@ -1,3 +1,4 @@
 # .gitignore
 GestionRioTollo.code-workspace
 prueba.php
+/vendor/

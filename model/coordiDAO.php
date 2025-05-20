@@ -15,7 +15,7 @@ class CoordiDAO
     public function getTrabajosCoordinador($id_coordinador)
     {
         try {
-            $sql = "SELECT t.* 
+            $sql = "SELECT t.*, tg.id_grupo, g.nombre AS nombre_grupo
                     FROM trabajos t
                     INNER JOIN trabajos_grupos tg ON t.id = tg.id_trabajo
                     INNER JOIN grupos g ON tg.id_grupo = g.id
@@ -40,6 +40,8 @@ class CoordiDAO
                     $row['anotaciones'],
                     $row['id_zona']
                 );
+                $trabajo->setIdGrupo($row['id_grupo']);
+                $trabajo->setGrupoNombre($row['nombre_grupo']);
                 $trabajos[] = $trabajo;
             }
 
@@ -149,4 +151,33 @@ class CoordiDAO
         }
 
     }
+
+    //Consultas de datos para el parte PDF
+    public function getTrabajador($idTrabajador)
+    {
+        try {
+            $sql = "SELECT * FROM usuarios WHERE id = :idTrabajador";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':idTrabajador', $idTrabajador);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result) {
+                $trabajador = new Trabajador(
+                    $result['id'],
+                    $result['nombre'],
+                    $result['apellido'],
+                    $result['nombre_usuario'],
+                    $result['contrasena'],
+                    $result['contrasena_cambiada'],
+                    $result['id_rol']
+                );
+                return $trabajador;
+            } else {
+                return null;
+            }
+        } catch (Exception $e) {
+            echo "Error al obtener el trabajador: " . $e->getMessage();
+        }
+    }
+
 }

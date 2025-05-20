@@ -41,7 +41,7 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     <style>
-        @media (max-width: 768px) {
+        @media (max-width: 1220px) {
             .desktop-table {
                 display: none;
             }
@@ -51,7 +51,7 @@
             }
         }
 
-        @media (min-width: 769px) {
+        @media (min-width: 1220px) {
             .desktop-table {
                 display: table;
             }
