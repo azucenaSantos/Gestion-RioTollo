@@ -3,20 +3,18 @@
 El sistema web se desarrolla con la intención de facilitar el **seguimiento** y **gestión** de los trabajos realizados en un vivero de plantas. Mediante la asignación de roles a los usuarios de la aplicación, cada uno de los integrantes de la empresa puede realizar sus diferentes tareas de control o reporte.
 
 ## :pushpin: Índice
-* [Estado del Proyecto](#estado)
-* [Tecnologías Empleadas](#tecnologias)
-* [Instrucciones de Instalación](#instalacion)
-* [Funcionamiento  de la Aplicación](#funcionamiento)
-* [Estructura del Proyecto](#estructura)
-* [Derechos de Autor y Licencias](#derechos)
-* [Contacto](#contacto)
+* Estado del Proyecto
+* Tecnologías Empleadas
+* Instrucciones de Instalación
+* Funcionamiento  de la Aplicación
+* Estructura del Proyecto
+* Derechos de Autor y Licencias
+* Contacto
 
 ## :chart_with_downwards_trend: Estado del Proyecto
-<a name="estado"></a>
 :construction: Proyecto en construcción :construction:
 
 ## :computer: Tecnologías Empleadas
-<a name="tecnologias"></a>
 * **Front End:**
   * **HTML** - lenguaje de marcado para la estructura base de la web.
   * **SCSS** - preprocesador de CSS para la incoporación de estilos en la web.
@@ -32,10 +30,9 @@ El sistema web se desarrolla con la intención de facilitar el **seguimiento** y
   * **InfinityFree** - servicio de alojamiento web.
   * **Bootstrap** - framework que facilita la creación de páginas web _responsive_.
   * **Leaflet** - biblioteca de JavaScript para la creación de mapas web.
-  * **HTML2PDF** - conversor de HTML a PDF.
+  * **[DomPdf](https://github.com/dompdf/dompdf)** - compilador de HTML a PDF.
   
 ## :wrench: Instrucciones de Instalación
-<a name="instalacion"></a>
 El usuario puede ejecutar el proyecto de dos formas diferentes:
 1. Instalación del proyecto en una máquina **local**:
 Para ejecutar el proyecto de forma local (con la posibilidad de ver el código fuente del mismo), deben seguirse los siguientes pasos:
@@ -63,8 +60,7 @@ _Cuentas de usuario de prueba:_
 | RRHH  | fepatricia | patricia123. |
 | Coordinadora  | esrosa | rosa123. |
 
-## :interrobang: Funcionamento de la Aplicación 
-<a name="funcionamiento"></a>
+## :interrobang: Funcionamiento de la Aplicación 
 El sistema permite que los integrantes de la empresa inicien sesión y realicen dentro de la aplicación diferentes tareas dependiendo del rol asignado.
 ## Funcionalidades comunes
 * Inicio de Sesión.
@@ -92,7 +88,6 @@ El sistema permite que los integrantes de la empresa inicien sesión y realicen 
 * Cierre de sesión.
 
 ## :mag: Estructura del Proyecto
-<a name="estructura"></a>
 La organización de carpetas y archivos de este proyecto se realiza siguiendo el siguiente esquema:
 ```plaintext
 📁 Gestion-RioTollo/
@@ -113,6 +108,8 @@ La organización de carpetas y archivos de este proyecto se realiza siguiendo el
  ┃ ┗ 📄 database.php
  ┣ 📁 public/
  ┃ ┗ 📄 index.php
+ ┣ 📁 vendedor/
+ ┃ ┗ 📁 ... (contenido composser)
  ┣ 📁 view/
  ┃ ┣ 📁 coordinador/
  ┃ ┃ ┣ 📄 coordinador.php
@@ -134,11 +131,9 @@ La organización de carpetas y archivos de este proyecto se realiza siguiendo el
 En el esquema se contemplan las carpetas y los archivos suficientes para comprender la estructura del proyecto.
 
 ## :unlock: Derechos de Autor y Licencias
-<a name="derechos"></a>
 Este repositorio está sujeto a la licencia **MIT License**. Se permite el uso, copia, modificación y distribución del mismo.
 
 ## :iphone: Contacto
-<a name="contacto"></a>
 Para contactar conmigo puedes utilizar las siguientes redes sociales.
 ¡Estaré encantada de hablar contigo! :smile:
 * [Azu en LinkedIn](https://www.linkedin.com/in/azucenasantos/)
@@ -153,8 +148,3 @@ Para contactar conmigo puedes utilizar las siguientes redes sociales.
       <img src="assets/img/logo.jpg" alt="Imagen de ejemplo" width="70"/>  
   </a>
 </p>
-
-
-
-
-
