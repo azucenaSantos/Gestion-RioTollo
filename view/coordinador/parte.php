@@ -17,7 +17,7 @@
                                 <h3>Reportar Trabajo</h3>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item li-active">
                             <a class="nav-section" href="?c=Coordinador&a=verParte">
                                 <i class="las la-file"></i>
                                 <h3>Visualizar Parte</h3>
@@ -31,6 +31,7 @@
         <main>
             <div class="info-container">
                 <h1>Visualizar Parte</h1>
+                <hr>
             </div>
             <div class="container">
                 <!--iframe donde se carga el PDF en modo previsualizacion-->

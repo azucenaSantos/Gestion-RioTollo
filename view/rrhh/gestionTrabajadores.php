@@ -10,7 +10,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav flex-column">
-                        <li class="nav-item">
+                        <li class="nav-item li-active">
                             <a href="?c=Rrhh&a=gestionTrabajadores" class="nav-section">
                                 <i class="las la-user-edit"></i>
                                 <h3>Gestionar Trabajadores</h3>
@@ -60,7 +60,7 @@
                                 </td>
                                 <td class="roles">
                                     <?php if ($trabajador->getRol() == "40"): ?>
-                                        <p class="trabajador">Trabajador</p>
+                                        <p class="trabajador">Trabajador(a)</p>
                                     <?php elseif ($trabajador->getRol() == "30"): ?>
                                         <p class="coordinador">Coordiandor(a)</p>
                                     <?php endif; ?>

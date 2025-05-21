@@ -11,7 +11,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav flex-column">
-                        <li class="nav-item"><a class="nav-section" href="?c=Jefe&a=gestionTrabajos"><i
+                        <li class="nav-item li-active"><a class="nav-section" href="?c=Jefe&a=gestionTrabajos"><i
                                     class="las la-briefcase"></i>
                                 <h3>Gestión de Trabajos</h3>
                             </a></li>

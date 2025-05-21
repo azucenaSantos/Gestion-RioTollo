@@ -23,7 +23,7 @@
                                 <h3>Gestión de Grupos</h3>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item li-active">
                             <a class="nav-section" href="?c=Jefe&a=visualizarProcesos">
                                 <i class="las la-chart-bar"></i>
                                 <h3>Visualizar Procesos</h3>
@@ -53,7 +53,6 @@
                                     <?php foreach ($zonas as $zona): ?>
                                         <option value="<?php echo $zona->getId(); ?>" <?php echo (isset($trabajo) && $trabajo->getZona() == $zona->getNombre())
                                                || (isset($zonaSeleccionar) && $zonaSeleccionar == $zona->getNombre()) ? 'selected' : ''; ?>>
-
                                             <?php echo $zona->getNombre(); ?>
                                         </option>
                                     <?php endforeach; ?>
@@ -65,8 +64,6 @@
                     </div>
                     <div id="map"></div><!-- Mapa de Leaflet -->
                 </form>
-
-
             </div>
         </main>
     </div>

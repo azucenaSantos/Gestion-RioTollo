@@ -40,7 +40,11 @@ class JefeController
     public function editarTrabajo()
     {
         comprobarAcceso(rol: 10);
-
+        // if(empty($_POST) && isset($_GET['id'])){
+        //     //Quiere decir que venimos de "Más informacion" del apartado visualiar procesos
+        //     $trabajoId = $_GET['id'];
+        //     $trabajo = $this->model->getTrabajoById($trabajoId); //obtenemos el trabajo, para mostrarlo en el form            
+        // }
         $rol = "jefe";
         $pagina = "editar-trabajo";
         $trabajoId = $_GET['id'] ?? null; //obtenemos el id del trabajo a editar si se ha pasado por la URL
@@ -65,7 +69,8 @@ class JefeController
     public function guardarTrabajo()
     {
         comprobarAcceso(rol: 10);
-
+        $rol = "jefe";
+        $pagina = "guardar-trabajo";
         $id_trabajo = $_POST['id'] ?? null; //Trabajo a editar
         $nombre = htmlspecialchars(trim(strip_tags($_POST['trabajo'])), ENT_QUOTES, "ISO-8859-1");
         $zona = isset($_POST['zona']) ? $this->model->getNameOfZona(id_zona: $_POST['zona']) : null;
@@ -84,7 +89,7 @@ class JefeController
         $id_grupo = $_POST['grupo'] ?? null; //Id del grupo seleccionado o null si no existe
         $anotaciones = htmlspecialchars(trim(strip_tags($_POST['anotaciones'])), ENT_QUOTES, "ISO-8859-1");
 
-  
+
         //Validar campos:
         $cadenaErrores = [];
         if (validarCampoVacio($nombre, "Trabajo")) {
@@ -242,23 +247,21 @@ class JefeController
     }
 
     //Zonas
-    public function getZonas()
+    public function getTrabajosZonas()
     {
         try {
             require_once '../db/database.php';
             $db = Database::connect();
-            // Consulta SQL para obtener las zonas y sus parcelas
-            // y el porcentaje de trabajo total de cada parcela
+            //Consulta SQL para obtener os trabajos de cada zona y el porcentaje de cada trabajo realizado
             $query = $db->prepare("SELECT 
-                    z.id, z.nombre, z.limites,
-                    zp.id AS parcela_id, zp.num_parcela, zp.descripcion,
-                    COALESCE(SUM(t.porcentaje), 0) AS porcentaje_total
+                    z.id AS zona_id, z.nombre AS zona_nombre, z.limites AS zona_limites,
+                    t.id AS trabajo_id, t.nombre AS trabajo_nombre, t.porcentaje AS trabajo_porcentaje,
+                    zp.id AS parcela_id, zp.num_parcela AS parcela_numero, zp.descripcion AS parcela_descripcion
                 FROM zonas z
                 LEFT JOIN zonas_parcelas zp ON zp.id_zona = z.id
                 LEFT JOIN trabajos_parcelas tp ON tp.id_parcela = zp.id
                 LEFT JOIN trabajos t ON t.id = tp.id_trabajo
-                GROUP BY z.id, zp.id
-                ORDER BY z.id, zp.num_parcela");
+                ORDER BY z.id, t.id, zp.num_parcela");
 
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -267,27 +270,33 @@ class JefeController
             $zonas = [];
 
             foreach ($result as $row) {
-                $zonaId = $row['id'];
+                $zonaId = $row['zona_id'];
                 if (!isset($zonas[$zonaId])) {
                     $zonas[$zonaId] = [
                         'id' => $zonaId,
-                        'nombre' => $row['nombre'],
-                        'limites' => $row['limites'],
+                        'nombre' => $row['zona_nombre'],
+                        'limites' => $row['zona_limites'],
                         'parcelas' => [],
                         'porcentaje_total' => 0,
-                        'parcelas_count' => 0 //Contamos cuantas parcelas tiene la zona
+                        'parcelas_count' => 0
                     ];
                 }
                 if ($row['parcela_id']) {
-                    $porcParcela = intval($row['porcentaje_total']);
-                    $zonas[$zonaId]['parcelas'][] = [
-                        'id' => $row['parcela_id'],
-                        'num_parcela' => $row['num_parcela'],
-                        'descripcion' => $row['descripcion'],
-                        'porcentaje_total' => $porcParcela
+                    $parcelaId = $row['parcela_id'];
+                    if (!isset($zonas[$zonaId]['parcelas'][$parcelaId])) {
+                        $zonas[$zonaId]['parcelas'][$parcelaId] = [
+                            'id' => $parcelaId,
+                            'num_parcela' => $row['parcela_numero'],
+                            'descripcion' => $row['parcela_descripcion'],
+                            'trabajos' => []
+                        ];
+                    }
+                    $zonas[$zonaId]['parcelas'][$parcelaId]['trabajos'][] = [
+                        'trabajo' => $row['trabajo_nombre'],
+                        'porcentaje' => intval($row['trabajo_porcentaje'])
                     ];
-                    //Sumamos el porcentaje y luego calculamos el promedio
-                    $zonas[$zonaId]['porcentaje_total'] += $porcParcela;
+                    // Sumamos el porcentaje y luego calculamos el promedio
+                    $zonas[$zonaId]['porcentaje_total'] += intval($row['trabajo_porcentaje']);
                     $zonas[$zonaId]['parcelas_count']++;
                 }
             }

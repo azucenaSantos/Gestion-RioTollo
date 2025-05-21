@@ -101,7 +101,7 @@ class RrhhController
         }
         //Crear el objeto trabajador
         $trabajador = new Trabajador($id, $nombre, $apellidos, $usuario, null, null, $idRol);
-        
+
         //Comprobar si hay errores y mostrar el formulario de nuevo con los errores y campos erroneos vacios
         if (!empty($cadenaErrores)) {
             require_once '../view/header.php';
@@ -110,7 +110,7 @@ class RrhhController
             require_once '../view/footer.php';
             return;
         }
-        
+
         //Guardar o actualizar el trabajador
         if ($id) {
             $this->model->updateTrabajador($trabajador);
@@ -280,11 +280,13 @@ class RrhhController
 
         if (isset($_GET['usuarioId'])) {
             $usuarioId = intval($_GET['usuarioId']);
+            //El nombre puede estar compuesto de varias palabras, recogemos el primer nombre
+            $nombreFranccion = strtolower(trim(explode(' ', $_GET['nombre'])[0]));
             $nombre = strtolower(trim(preg_replace(
                 '/[^a-zA-Z]/',
                 '',
-                iconv('UTF-8', 'ASCII//TRANSLIT', $_GET['nombre'])
-            ))); //nombre sin tildes ni caracteres especiales
+                iconv('UTF-8', 'ASCII//TRANSLIT', $nombreFranccion)
+            ))); //primera parte del nombre sin tildes ni caracteres especiales
             $apellido = strtolower(substr(trim(preg_replace(
                 '/[^a-zA-Z]/',
                 '',
@@ -309,7 +311,10 @@ class RrhhController
 
             //Respuesta en JSON
             if ($stmt->rowCount() > 0) {
-                echo json_encode(['success' => true, 'message' => "Contraseña actualizada correctamente."]);
+                echo json_encode([
+                    'success' => true,
+                    'message' => "Contraseña actualizada correctamente."
+                ]);
             } else {
                 echo json_encode(['success' => false, 'message' => 'Error al actualizar la contraseña.']);
             }

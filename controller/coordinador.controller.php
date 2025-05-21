@@ -78,7 +78,6 @@ class CoordinadorController
             $this->model->registrarReporte($infoTrabajoRegistro);
             //Actualizamos el estado del trabajo
             $this->model->actualizarTrabajo($infoTrabajoRegistro);
-
             //Redirigir a la página de reportes
             $idCoordinador = $_SESSION['user_id'];
             //Busamos los trabajos asociados al coordinador por su id
@@ -90,6 +89,8 @@ class CoordinadorController
             // Manejar el error
             echo "Error al registrar el reporte: " . $e->getMessage();
         }
+
+
 
     }
 

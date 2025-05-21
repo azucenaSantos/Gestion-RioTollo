@@ -11,7 +11,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav flex-column">
-                        <li class="nav-item">
+                        <li class="nav-item li-active">
                             <a class="nav-section" href="?c=Coordinador&a=reportarTrabajos">
                                 <i class="las la-pen-alt"></i>
                                 <h3>Reportar Trabajo</h3>
@@ -31,6 +31,7 @@
         <main>
             <div class="info-container">
                 <h1>Reportar Trabajo</h1>
+                <hr>
             </div>
             <div class="container containerTable">
                 <form method="post" class="mx-auto p-5 shadow-sm formEdits" action="?c=Coordinador&a=registrarReporte"
@@ -72,28 +73,27 @@
                         <div class="mt-3">
                             <label for="inputHorario">Horario: </label>
                             <input type="time" class="form-control" id="horaIni" name="hora_inicio"
-                                value="<?php echo isset($trabajo) ? $trabajo->getHoraInicio() : ''; ?>" required>
+                                value="<?php echo isset($trabajo) ? $trabajo->getHoraInicio() : ''; ?>" required readonly>
                             <input type="time" class="form-control" id="horaFin" name="hora_fin"
-                                value="<?php echo isset($trabajo) ? $trabajo->getHoraFin() : ''; ?>" required>
+                                value="<?php echo isset($trabajo) ? $trabajo->getHoraFin() : ''; ?>" required readonly>
                         </div>
                         <div class="mt-3">
                             <label for="inputFecha">Fecha: </label>
                             <input type="date" class="form-control" id="inputFecha" name="fecha"
-                                value="<?php echo isset($trabajo) ? $trabajo->getFecha() : ''; ?>" required>
+                                value="<?php echo isset($trabajo) ? $trabajo->getFecha() : ''; ?>" required readonly>
                         </div>
                     </div>
                     <div class="error-container">
                         <!--Mensajes de error, hueco necesario -->
                     </div>
                     <div class="btn-container">
-                        <button type="button" class="buttonAdd" data-bs-toggle="modal"
-                            data-bs-target="#reportModal-<?php echo $trabajo->getId(); ?>">
+                        <button type="button" class="buttonAdd" data-bs-toggle="modal" id="botonModal"
+                            data-bs-target="#reportModal">
                             Reportar Trabajo
                         </button>
                     </div>
                     <!--Modal para avisar sobre el reporte-->
-                    <div class="modal fade" id="reportModal-<?php echo $trabajo->getId(); ?>" tabindex="-1"
-                        aria-labelledby="reportModalLabel-<?php echo $trabajo->getId(); ?>" aria-hidden="true">
+                    <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -101,16 +101,13 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                    Se ha reportado:
-                                    "<?php echo $trabajo->getNombre(); ?>"
+                                <div class="modal-body" id="modalBody">
                                 </div>
-                                <!-- <div class="modal-footer">
-                                    <a href="?c=Coordinador&a=reportarTrabajos" class="btn btn-secondary">Cerrar</a>
-                                </div> -->
-                                <button type="submit" class="buttonAdd">
-                                    Reportar
-                                </button>
+                                <div class="modal-footer">
+                                    <button type="submit" id="buttonModal">
+                                        Reportar
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

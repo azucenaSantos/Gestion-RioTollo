@@ -12,6 +12,10 @@ class UserController
         $this->model = new UserDAO();
     }
 
+    public function index(){
+        require_once '../view/sesion/sesion.php';
+    }
+
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

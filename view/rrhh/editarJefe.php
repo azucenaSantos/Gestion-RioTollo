@@ -17,7 +17,7 @@
                                 <h3>Gestionar Trabajadores</h3>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item li-active">
                             <a href="?c=Rrhh&a=gestionJefes" class="nav-section">
                                 <i class="las la-user-shield"></i>
                                 <h3>Gestionar Jefes</h3>

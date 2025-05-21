@@ -1,14 +1,18 @@
 //Archivo js para rellenar el formulario de reporte segun el valor del select seleccionado por el coordinador
 document.addEventListener("DOMContentLoaded", () => {
   const select = document.getElementById("selectorTrabajos");
+  const modalBody = document.getElementById("modalBody");
+
   if (select) {
     cargarTrabajos(select.value); //Carga por defecto del select seleccionado por defecto al cargar la pagina
+    actualizarModal(select);
   }
   //Asignamos el change solo si existe el select
   if (select) {
     select.addEventListener("change", () => {
       //Se cargan los trabajos segun la zona seleccionada
       cargarTrabajos(select.value);
+      actualizarModal(select);
     });
   }
 
@@ -24,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch(`?c=Coordinador&a=getInfoTrabajos&idTrabajo=${idTrabajo}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.trabajos && data.trabajos.length > 0) {
           inputGrupo.value = data.trabajos[0].nombre_grupo;
           hiddenIdGrupo.value = data.trabajos[0].id_grupo;
@@ -40,5 +44,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       })
       .catch((error) => console.error("Error al obtener los trabajos:", error));
+  }
+
+  function actualizarModal(selectElemento) {
+    const opcionSeleccionada =
+      selectElemento.options[selectElemento.selectedIndex];
+    const trabajoNombre = opcionSeleccionada.textContent;
+
+    if (modalBody) {
+      modalBody.textContent = `Se está reportando: "${trabajoNombre}"`;
+    }
   }
 });

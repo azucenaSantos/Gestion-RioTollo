@@ -1,5 +1,6 @@
 <?php
 require_once '../db/database.php';
+// require_once 'instalacion.php';
 
 
 // FrontController
@@ -9,6 +10,7 @@ if (!isset($_REQUEST['c'])) {
     session_unset(); // Elimina todas las variables de sesión
     session_destroy(); // Destruye la sesión
     require_once '../view/sesion/sesion.php';
+    // require_once 'instalacion.php';
 } else {
     // Obtenemos el controlador que queremos cargar
     //echo "Controlador: " . $_REQUEST['c'] . " - Acción: " . $_REQUEST['a'];

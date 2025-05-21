@@ -17,7 +17,7 @@
                                 <h3>Gestión de Trabajos</h3>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item li-active">
                             <a class="nav-section" href="?c=Jefe&a=gestionGrupos">
                                 <i class="las la-object-group"></i>
                                 <h3>Gestión de Grupos</h3>

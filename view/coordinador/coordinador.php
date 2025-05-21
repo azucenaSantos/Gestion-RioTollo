@@ -35,7 +35,7 @@
                 <h2 style="margin-bottom: 18px;">
                     <?php if (isset($_SESSION['name']))
                         echo $_SESSION['name'] ?> <strong
-                            style="font-size: 20px"><?php echo "<br> · " . $_SESSION['rol_name'] ?></strong>
+                            style="font-size: 20px"><?php echo "<br>" . $_SESSION['rol_name'] ?></strong>
                 </h2>
             </div>
             <div class="nav-container">

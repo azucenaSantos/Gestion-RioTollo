@@ -23,14 +23,6 @@ main {
   }
 }
 
-nav {
-  width: 356px !important;
-}
-@media (max-width: 1680px) {
-  nav {
-    width: 313px !important;
-  }
-}
 @media (max-width: 576px) {
   nav {
     margin-bottom: 20px;
@@ -109,7 +101,7 @@ nav {
   text-align: center;
   vertical-align: middle;
   font-family: "Montserrat", sans-serif;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 700;
   color: #333333;
   text-align: center;
@@ -127,40 +119,12 @@ nav {
   text-align: center;
   vertical-align: middle;
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   color: #333333;
   text-align: center;
   padding: 10px 0px;
   border-bottom: 1px solid #e0e0e0;
-}
-.containerTable table tbody tr td .iconDelete {
-  color: #d82515;
-  font-size: 40px !important;
-}
-.containerTable table tbody tr td .iconDelete i {
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  padding: 4px 4px;
-}
-.containerTable table tbody tr td .iconDelete :hover {
-  transition: background-color 0.3s ease-in-out;
-  color: #ffffff;
-  background-color: #d82515;
-}
-.containerTable table tbody tr td .iconModify {
-  color: #558b2f;
-  font-size: 40px !important;
-}
-.containerTable table tbody tr td .iconModify i {
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  padding: 4px 4px;
-}
-.containerTable table tbody tr td .iconModify :hover {
-  transition: background-color 0.3s ease-in-out;
-  color: #ffffff;
-  background-color: #558b2f;
 }
 .containerTable table tbody tr td:first-child {
   font-weight: bold;
@@ -196,11 +160,12 @@ nav {
   .containerTable #formCoordinador {
     flex-direction: column;
     padding: 5px !important;
-    margin: 0px !important;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
     row-gap: 40px;
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 1220px) {
   .containerTable #formProcesos {
     padding: 15px !important;
     margin: 0px !important;
@@ -245,6 +210,7 @@ nav {
   font-style: italic;
   color: #333333;
   font-size: 13px;
+  font-family: "Montserrat", sans-serif;
 }
 .formEdits .side-by-side-multiselect {
   width: 101%;
@@ -257,7 +223,8 @@ nav {
 .formEdits .side-by-side-multiselect__inner {
   padding: 5px;
   border: 1px solid #e0e0e0;
-  max-height: 50px;
+  max-height: 100px;
+  min-height: 70px;
   overflow-y: auto;
   padding: 5px;
 }
@@ -363,6 +330,7 @@ nav {
 
 .estado .finalizado {
   background: #8bc34a;
+  font-size: 14px;
   padding: 5px 10px;
   border-radius: 5px;
   color: #ffffff;
@@ -371,6 +339,7 @@ nav {
   margin: 0 auto;
 }
 .estado .pendiente {
+  font-size: 14px;
   background: #d82515;
   padding: 5px 10px;
   border-radius: 5px;
@@ -387,5 +356,11 @@ nav {
 .roles .coordinador,
 .roles .jefe {
   color: #333333;
+  font-weight: 500;
   text-decoration: underline;
+}
+
+.page-item.active .page-link {
+  background-color: #558b2f !important;
+  border-color: #8bc34a !important;
 }/*# sourceMappingURL=user-styles.css.map */

@@ -11,7 +11,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav flex-column">
-                        <li class="nav-item">
+                        <li class="nav-item li-active">
                             <a href="?c=Rrhh&a=gestionTrabajadores" class="nav-section">
                                 <i class="las la-user-edit"></i>
                                 <h3>Gestionar Trabajadores</h3>

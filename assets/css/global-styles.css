@@ -1,7 +1,11 @@
 @charset "UTF-8";
 body {
-  background-color: #f5f3e7 !important;
+  background-color: #f7f5ee !important;
   padding: 0px !important;
+}
+
+.li-active {
+  background-color: #aecb67 !important;
 }
 
 #map {
@@ -35,6 +39,7 @@ main {
 @media (max-width: 576px) {
   main {
     margin-top: 20px !important;
+    margin-bottom: 20px !important;
   }
 }
 
@@ -44,17 +49,32 @@ h1 {
 }
 @media (max-width: 576px) {
   h1 {
-    font-size: 30px;
+    font-size: 27px;
+    margin-bottom: 15px;
   }
 }
 
 h2 {
   font-family: "Merriweather", serif;
   font-size: 22px;
-  margin-bottom: 12px !important;
+  color: #333333;
+  font-weight: 600;
 }
 h2 strong {
-  font-size: 18px !important;
+  font-size: 17px !important;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: #333333;
+  margin-bottom: 10px !important;
+}
+@media (max-width: 1680px) {
+  p {
+    font-size: 14px;
+    margin-bottom: 15px !important;
+  }
 }
 
 #erroresCliente h2 {
@@ -67,6 +87,7 @@ h2 strong {
 h3 {
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
+  font-weight: 500;
 }
 
 a {
@@ -215,7 +236,10 @@ footer p {
 .welcome {
   display: flex;
   align-items: baseline;
-  margin-left: 30px;
+  margin-left: 25px;
+}
+.welcome img {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 @media (max-width: 576px) {
   .welcome {
@@ -223,13 +247,23 @@ footer p {
     flex-wrap: wrap;
   }
 }
+.welcome img {
+  width: 110px;
+  height: 110px;
+  margin-top: 25px;
+}
 .welcome .welcome-text {
   display: flex;
   align-items: baseline;
   width: 13%;
 }
+@media (max-width: 576px) {
+  .welcome .welcome-text {
+    width: 70%;
+  }
+}
 .welcome .welcome-text .iconUser {
-  font-size: 42px;
+  font-size: 32px;
 }
 .welcome .nav-container {
   margin-left: 20px;
@@ -245,6 +279,11 @@ footer p {
   }
 }
 @media (max-width: 576px) {
+  .welcome .nav-container {
+    margin-left: 0px;
+  }
+}
+@media (max-width: 990px) {
   .welcome .nav-container {
     margin-left: 0px;
   }
@@ -282,15 +321,37 @@ footer p {
     margin-right: 20px;
   }
 }
+@media (max-width: 990px) {
+  .section,
+  .content {
+    display: grid;
+    min-height: 100dvh;
+    grid-template-rows: auto 1fr auto;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
 
 .navbar-expand-lg {
+  width: 304px !important;
   position: relative !important;
   top: 0px;
-  background-color: #558b2f;
+  background: linear-gradient(to bottom, #f7f5ee, #6E932A);
 }
-@media (max-width: 576px) {
+@media (max-width: 1220px) {
   .navbar-expand-lg {
     background-color: unset;
+    background: unset;
+  }
+}
+@media (min-width: 994px) {
+  .navbar-expand-lg {
+    background: linear-gradient(to bottom, #f7f5ee, #6E932A);
+  }
+}
+@media (max-width: 1220px) {
+  .navbar-expand-lg {
+    width: 314px !important;
   }
 }
 
@@ -302,9 +363,11 @@ footer p {
   padding-right: 0px !important;
   position: relative;
   top: -40px;
+  margin-left: 25px;
 }
 @media (max-width: 990px) {
   .lateral-menu {
+    height: unset;
     position: relative;
     top: 0px;
   }
@@ -313,6 +376,7 @@ footer p {
   .lateral-menu {
     height: unset;
     padding-top: 10px !important;
+    margin-left: 0px;
   }
 }
 .lateral-menu .nav-item {
@@ -324,8 +388,7 @@ footer p {
 .lateral-menu li {
   display: flex;
   align-items: center;
-  height: 50px !important;
-  padding-left: 10px;
+  height: 55px !important;
   margin-top: 20px;
   transition: background-color 0.4s ease-in-out;
 }
@@ -336,17 +399,18 @@ footer p {
   }
 }
 .lateral-menu li:hover {
-  background-color: #8bc34a;
+  background-color: #aecb67;
 }
 .lateral-menu .nav-section {
   text-decoration: none;
   color: #333333;
   display: flex;
   align-items: baseline;
+  margin-left: 10px;
 }
 .lateral-menu .nav-section i {
   font-size: 21px;
-  margin-right: 10px;
+  margin-right: 6px;
 }
 
 .line {
@@ -355,21 +419,21 @@ footer p {
   top: 0;
   left: 0;
   height: 100vh;
-  width: 357px;
+  width: 305px;
   border-right: 1px solid #e0e0e0;
   color: white;
   text-align: center;
   padding: 20px;
   font-size: 18px;
   z-index: -1;
-  background-color: #558b2f;
+  background-color: #f7f5ee;
 }
 @media (max-width: 1680px) {
   .line {
     width: 315px;
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 1220px) {
   .line {
     display: none;
   }
@@ -424,7 +488,6 @@ footer p {
   font-size: 40px;
 }
 .iconDelete i {
-  border: 1px solid #e0e0e0;
   border-radius: 10px;
   padding: 4px 4px;
 }
@@ -433,13 +496,16 @@ footer p {
   color: #ffffff;
   background-color: #d82515;
 }
+.iconDelete :hover:hover {
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1.1);
+}
 
 .iconModify {
   color: #558b2f;
   font-size: 40px;
 }
 .iconModify i {
-  border: 1px solid #e0e0e0;
   border-radius: 10px;
   padding: 4px 4px;
 }
@@ -447,4 +513,94 @@ footer p {
   transition: background-color 0.3s ease-in-out;
   color: #ffffff;
   background-color: #558b2f;
+}
+.iconModify :hover:hover {
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1.1);
+}
+
+.leaflet-popup-content-wrapper {
+  background: #f7f5ee !important;
+  border: 1px solid #558b2f !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.leaflet-popup-content-wrapper .leaflet-popup-content {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #333333;
+  line-height: 1.7;
+}
+.leaflet-popup-content-wrapper .leaflet-popup-content a {
+  font-size: 12px;
+  color: #558b2f;
+}
+.leaflet-popup-content-wrapper .leaflet-popup-content .zona {
+  font-size: 14.5px;
+  color: #8bc34a;
+  text-decoration: underline;
+}
+.leaflet-popup-content-wrapper .leaflet-popup-content hr {
+  border: 1px solid #e0e0e0;
+}
+.leaflet-popup-content-wrapper .leaflet-popup-content .parcelas-li {
+  font-size: 12px;
+  font-style: italic;
+}
+
+hr {
+  color: #558b2f;
+}
+
+.modal-body,
+.modal-header {
+  font-family: "Montserrat", sans-serif;
+}
+.modal-body h5,
+.modal-header h5 {
+  font-family: "Merriweather", serif;
+  font-weight: bold;
+}
+
+.dataTables_info,
+label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: #333333;
+  font-weight: 500;
+}
+
+#tablaOrdenar_wrapper > div:first-child > div:first-child {
+  display: none;
+}
+#tablaOrdenar_wrapper > div:first-child div {
+  display: flex;
+}
+#tablaOrdenar_wrapper .dt-row {
+  max-height: 700px;
+  overflow: auto;
+}
+
+.pagination,
+.dataTables_info {
+  display: none;
+}
+
+.leaflet-popup-close-button {
+  position: absolute;
+  top: 5px !important;
+  right: 8px !important;
+}
+.leaflet-popup-close-button span {
+  font-size: 25px;
+  margin: 5px;
+  color: #333333;
+  transition: color 0.3s ease-in-out;
+}
+.leaflet-popup-close-button span:hover {
+  color: #d82515;
+}
+
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(85,139,47,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' fill='none' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }/*# sourceMappingURL=global-styles.css.map */
