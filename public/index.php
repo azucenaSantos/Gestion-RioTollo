@@ -4,22 +4,24 @@ require_once '../db/database.php';
 //Para la simulacion de la instalacion de la base de datos debemos comprobar:
 //1. Si la base de datos existe en modo local
 //2. Si estamos en el modo servidor, no realizar directamente la instalación.
+//Verificamos si la base de datos existe
+$bdExiste = false;
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
     $host = 'localhost';
     $user = 'root';
     $password = '';
     $bdName = 'gestion_rio_tollo'; //CAMBIAR PARA PRUEBAS DE INSTALACION !!
-}
-//Verificamos si la base de datos existe
-$bdExiste = false;
-$conexion = new mysqli($host, $user, $password);
-if (!$conexion->connect_error) {
-    $resultado = $conexion->query("SHOW DATABASES LIKE '$bdName'");
-    if ($resultado && $resultado->num_rows > 0) {
-        $bdExiste = true;
+    $conexion = new mysqli($host, $user, $password);
+    if (!$conexion->connect_error) {
+        $resultado = $conexion->query("SHOW DATABASES LIKE '$bdName'");
+        if ($resultado && $resultado->num_rows > 0) {
+            $bdExiste = true;
+        }
     }
+    $conexion->close();    
+}else{
+    $bdExiste = true; //En servidor no se comprueba la base de datos
 }
-$conexion->close();
 
 
 //Gestion de controladores y acciones
