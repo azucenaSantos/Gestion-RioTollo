@@ -117,10 +117,10 @@ class RrhhController
         } else {
             //Si estoy creando, se asigna la contraseña por defecto
             //La contraseña es un patron de (2 primeras letras apellido+ nombre completo+ 123), en minusculas
-            $contraseñaDefecto = strtolower(substr($apellidos, 0, 2))
+            $contrasenaDefecto = strtolower(substr($apellidos, 0, 2))
                 . strtolower($nombre) . "123";
             //Hasheamos la contraseña
-            $hashed_password = password_hash($contraseñaDefecto, PASSWORD_BCRYPT);
+            $hashed_password = password_hash($contrasenaDefecto, PASSWORD_BCRYPT);
             //Asignamos la contraseña hasheada
             $trabajador->setPassword($hashed_password);
             $trabajador->setPasswordChanged(0);
@@ -184,7 +184,13 @@ class RrhhController
         $pagina = "editar-jefes";
         //Recoger los datos del formulario
         $id = $_POST['id'] ?? "null";
-        $nombre = $_POST['nombre'] ?? null;
+        $nombrePost = $_POST['nombre'] ?? null;
+        $nombreFranccion = strtolower(trim(explode(' ', $nombrePost)[0]));
+        $nombre = strtolower(trim(preg_replace(
+            '/[^a-zA-Z]/',
+            '',
+            iconv('UTF-8', 'ASCII//TRANSLIT', $nombreFranccion)
+        ))); //primera parte del nombre sin tildes ni caracteres especiales
         $apellidos = $_POST['apellidos'] ?? null;
         $usuario = $_POST['usuario'] ?? null;
         $idRol = $_POST['rol'] ?? null;
@@ -194,10 +200,10 @@ class RrhhController
         //Nombre
         if (validarCampoVacio($nombre, "Nombre")) {
             $cadenaErrores[] = validarCampoVacio($nombre, "Nombre");
-            $nombre = "";
+            $nombrePost = "";
         } else if (validarCampoLetras($nombre, "Nombre")) {
             $cadenaErrores[] = validarCampoLetras($nombre, "Nombre");
-            $nombre = "";
+            $nombrePost = "";
         }
 
         //Apellidos
@@ -244,10 +250,10 @@ class RrhhController
         } else {
             //Si estoy creando, se asigna la contraseña por defecto
             //La contraseña es un patron de (2 primeras letras apellido+ nombre completo+ 123), en minusculas
-            $contraseñaDefecto = strtolower(substr($apellidos, 0, 2))
+            $contrasenaDefecto = strtolower(substr($apellidos, 0, 2))
                 . strtolower($nombre) . "123";
             //Hasheamos la contraseña
-            $hashed_password = password_hash($contraseñaDefecto, PASSWORD_BCRYPT);
+            $hashed_password = password_hash($contrasenaDefecto, PASSWORD_BCRYPT);
             //Asignamos la contraseña hasheada
             $jefe->setPassword($hashed_password);
             $jefe->setPasswordChanged(0);

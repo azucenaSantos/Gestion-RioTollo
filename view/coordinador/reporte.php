@@ -73,14 +73,14 @@
                         <div class="mt-3">
                             <label for="inputHorario">Horario: </label>
                             <input type="time" class="form-control" id="horaIni" name="hora_inicio"
-                                value="<?php echo isset($trabajo) ? $trabajo->getHoraInicio() : ''; ?>" required readonly>
+                                value="" required readonly>
                             <input type="time" class="form-control" id="horaFin" name="hora_fin"
-                                value="<?php echo isset($trabajo) ? $trabajo->getHoraFin() : ''; ?>" required readonly>
+                                value="" required readonly>
                         </div>
                         <div class="mt-3">
                             <label for="inputFecha">Fecha: </label>
                             <input type="date" class="form-control" id="inputFecha" name="fecha"
-                                value="<?php echo isset($trabajo) ? $trabajo->getFecha() : ''; ?>" required readonly>
+                                value="" required readonly>
                         </div>
                     </div>
                     <div class="error-container">

@@ -41,6 +41,7 @@
                 <?php else: ?>
                     <h1>Crear Grupo</h1>
                 <?php endif; ?>
+                <hr>
             </div>
             <div class="container containerTable">
                 <form method="post" class="mx-auto p-5 shadow-sm formEdits" action="?c=Jefe&a=guardarGrupo"

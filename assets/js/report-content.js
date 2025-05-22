@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function cargarTrabajos(idTrabajo) {
     //Recogemos los campos del formulario
     const inputGrupo = document.getElementById("inputGrupo");
+    const inputHoraInicio = document.getElementById("horaIni");
+    const inputHoraFin = document.getElementById("horaFin");
+    const inputFecha = document.getElementById("inputFecha");
     // const inputTrabajo = document.getElementById("inputTrabajo");
     const inputPorcentaje = document.getElementById("inputPorcentaje");
     const inputPorcentajeNum = document.getElementById("inputPorcentajeNum");
@@ -31,6 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // console.log(data);
         if (data.trabajos && data.trabajos.length > 0) {
           inputGrupo.value = data.trabajos[0].nombre_grupo;
+          inputHoraInicio.value = data.trabajos[0].hora_inicio;
+          inputHoraFin.value = data.trabajos[0].hora_fin;
+          inputFecha.value = data.trabajos[0].fecha;
           hiddenIdGrupo.value = data.trabajos[0].id_grupo;
           // inputTrabajo.value = data.trabajos[0].nombre;
           inputPorcentaje.value = data.trabajos[0].porcentaje;

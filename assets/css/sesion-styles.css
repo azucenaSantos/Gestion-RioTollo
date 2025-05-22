@@ -72,6 +72,19 @@ form .form-inputs {
     margin-top: 2rem !important;
   }
 }
+form .form-inputs-2 {
+  width: 502px !important;
+}
+@media screen and (max-width: 600px) {
+  form .form-inputs-2 {
+    padding: 0px 70px;
+  }
+}
+@media screen and (max-width: 600px) {
+  form .form-inputs-2 .mt-5 {
+    margin-top: 2rem !important;
+  }
+}
 form .inputPassword {
   border-top-right-radius: 0px !important;
   border-bottom-right-radius: 0px !important;

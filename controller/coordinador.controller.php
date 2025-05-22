@@ -140,7 +140,12 @@ class CoordinadorController
         $trabajador = $this->model->getTrabajador($idCoordinador); //obj trabajador
         //Trabajos asociados
         $trabajosAsociados = $this->model->getTrabajosCoordinador($idCoordinador); //obj trabajo
-        $fechaTrabajos = date("d-m-Y", strtotime($trabajosAsociados[0]->getFecha()));
+        if ($trabajosAsociados == null) {
+            $trabajosAsociados = [];
+            $fechaTrabajos = date("d-m-Y"); //fecha actual en la que se genera el parte
+        } else {
+            $fechaTrabajos = date("d-m-Y", strtotime($trabajosAsociados[0]->getFecha())); //fecha del primer trabajo
+        }
         //Vista para crear el PDF del parte de trabajo
         require_once '../view/coordinador/generadorParte.php';
         require_once '../view/header.php';

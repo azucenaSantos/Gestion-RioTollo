@@ -78,7 +78,7 @@ nav {
 }
 
 .containerTable {
-  margin-left: 0px !important;
+  // margin-left: 0px !important;
   padding-left: 0px !important;
   padding-right: 0px !important;
 
@@ -387,6 +387,16 @@ nav {
   }
 
   .pendiente {
+    font-size: 14px;
+    background: $orange;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: $color-white;
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  .noFinalizado {
     font-size: 14px;
     background: $red;
     padding: 5px 10px;

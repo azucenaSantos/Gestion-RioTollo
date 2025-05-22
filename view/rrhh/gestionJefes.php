@@ -29,6 +29,7 @@
         <main>
             <div class="info-container">
                 <h1>Listado de Jefes</h1>
+                <hr>
             </div>
             <div class="container containerTable">
                 <form class="btn-container" action="?c=Rrhh&a=editarJefe" method="post">
@@ -55,7 +56,7 @@
                                     <?php if ($jefe->getPasswordChanged()): ?>
                                         <p class="finalizado">Modificada</p>
                                     <?php else: ?>
-                                        <p class="pendiente">No modificada</p>
+                                        <p class="noFinalizado">No modificada</p>
                                     <?php endif; ?>
                                 </td>
                                 <td class="roles">

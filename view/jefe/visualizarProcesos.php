@@ -37,7 +37,7 @@
         <main>
             <div class="info-container">
                 <h1>Procesos de Trabajos</h1>
-
+                <hr>
             </div>
             <div class="container containerTable">
                 <form method="post" class="mx-auto p-5 shadow-sm formEdits" action="?c=Jefe&a=guardarTrabajo"

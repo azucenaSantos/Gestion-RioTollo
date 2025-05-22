@@ -12,7 +12,8 @@ class UserController
         $this->model = new UserDAO();
     }
 
-    public function index(){
+    public function index()
+    {
         require_once '../view/sesion/sesion.php';
     }
 

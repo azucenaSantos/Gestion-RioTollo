@@ -36,8 +36,8 @@ if (session_status() === PHP_SESSION_NONE) {
                         <h1>Solicitud de cambio de contraseña</h1>
                         <p class="mt-3">Para cambiar la contraseña contacte con el apartado de <strong>RRHH</strong> de
                             la
-                            empresa</p>
-                        <div class="form-inputs">
+                            empresa.</p>
+                        <div class="form-inputs-2">
                             <button class="w-100 btn-lg" type="submit" disabled>Contactar</button>
                             <div class="checkbox mt-3 mb-3">
                                 <div class="form-forgot">

@@ -73,7 +73,8 @@ class JefeController
         $pagina = "guardar-trabajo";
         $id_trabajo = $_POST['id'] ?? null; //Trabajo a editar
         $nombre = htmlspecialchars(trim(strip_tags($_POST['trabajo'])), ENT_QUOTES, "ISO-8859-1");
-        $zona = isset($_POST['zona']) ? $this->model->getNameOfZona(id_zona: $_POST['zona']) : null;
+        $zona = isset($_POST['zona']) ? $this->model->getNameOfZona($_POST['zona']) : null;
+        $id_zona = $_POST['zona'] ?? null;
         $parcelasSeleccionadas = $_POST['opcionesSeleccionadas'] ?? []; //Ids de las parcelas
         //Obtengo el nombre de cada una de las parcelas
         $parcelasNumeros = [];
@@ -155,7 +156,7 @@ class JefeController
             $hora_fin,
             $fecha,
             $anotaciones,
-            $_POST['zona']
+            $id_zona
         );
 
 
@@ -163,9 +164,7 @@ class JefeController
         //Si hay errores se muestran en el formulario
         if (!empty($cadenaErrores)) {
             $rol = "jefe";
-
             $pagina = "editar-trabajo";
-
             $trabajoId = $_POST['id'] ?? null;
 
             if ($trabajoId) {
@@ -177,6 +176,10 @@ class JefeController
             }
             $grupos = $this->model->getAllGrupos();
             $zonas = $this->model->getAllZonas();
+            //Aseguramos que tenemos parcelas tengamos o no trabajo
+            if ($zona !== null) {
+                $parcelas = $this->model->getParcelasByZona($id_zona);
+            }
             require_once '../view/header.php';
             require_once '../view/jefe/editarTrabajo.php';
             require_once '../view/footer.php';

@@ -1,0 +1,81 @@
+.form-container {
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  margin-top: 5%;
+}
+
+.form-container label,
+.form-container .text {
+  display: block;
+  margin-bottom: 8px;
+  color: #333333;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333333;
+  box-sizing: border-box;
+}
+
+.form-container button {
+  padding: 12px 20px;
+  background-color: #558b2f;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 50%;
+  transition: background-color 0.3s ease;
+  font-family: "Montserrat", sans-serif;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.form-container button:hover {
+  background-color: #8bc34a;
+}
+
+.error-message {
+  background-color: #f7f5ee;
+  color: #d82515;
+  border: 1px solid #d82515;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.italic {
+  font-style: italic;
+  font-size: 13px;
+  color: #558b2f;
+}
+
+h1,
+p {
+  text-align: center;
+}
+
+h1 {
+  color: #558b2f;
+  font-family: "Merriweather", serif;
+}/*# sourceMappingURL=instalacion.css.map */

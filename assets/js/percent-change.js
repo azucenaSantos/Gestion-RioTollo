@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
       numberInput.value = rangeInput.value;
     });
     rangeInput.addEventListener("change", function () {
-      if (rangeInput.value == 100 || rangeInput.value == 100) {
+      if (rangeInput.value == 100 || numberInput.value == 100) {
         if (radioFinalizadoSi && radioFinalizadoNo) {
           radioFinalizadoSi.checked = true;
           radioFinalizadoNo.disabled = true;

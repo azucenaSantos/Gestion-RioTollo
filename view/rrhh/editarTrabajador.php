@@ -35,6 +35,7 @@
                 <?php else: ?>
                     <h1>Crear Trabajador</h1>
                 <?php endif; ?>
+                <hr>
             </div>
             <div class="container containerTable">
                 <form method="post" class="mx-auto p-5 shadow-sm formEdits" action="?c=Rrhh&a=guardarTrabajador"

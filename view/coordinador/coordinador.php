@@ -112,32 +112,39 @@
             <div class="container mt-5">
                 <div class="row text-center">
                     <div class="col-md-6">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <i class="las la-briefcase display-4 mb-3"></i>
-                                <h5 class="card-title">Reportar Trabajo</h5>
-                                <p class="card-text">Reporta un trabajo realizado añadiendo comentarios en caso de
-                                    que
-                                    sea necesario.</p>
-                                <!-- <a href="../../public/index.php?c=Jefe&a=gestionTrabajos" class="btn btn-primary">Ir a
+                        <a href="../../public/index.php?c=Coordinador&a=reportarTrabajos">
+
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <i class="las la-briefcase display-4 mb-3"></i>
+                                    <h5 class="card-title">Reportar Trabajo</h5>
+                                    <p class="card-text">Reporta un trabajo realizado añadiendo comentarios en caso de
+                                        que
+                                        sea necesario.</p>
+                                    <!-- <a href="../../public/index.php?c=Jefe&a=gestionTrabajos" class="btn btn-primary">Ir a
                                         Trabajos</a> -->
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-md-6">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <i class="las la-object-group display-4 mb-3"></i>
-                                <h5 class="card-title">Visualizar Parte</h5>
-                                <p class="card-text">Visualiza y/o descarga el parte de trabajos que debes realizar
-                                    cada
-                                    día.</p>
-                                <!-- <a href="../../public/index.php?c=Jefe&a=gestionGrupos" class="btn btn-primary">Ir a
+                        <a href="../../public/index.php?c=Coordinador&a=verParte">
+
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <i class="las la-object-group display-4 mb-3"></i>
+                                    <h5 class="card-title">Visualizar Parte</h5>
+                                    <p class="card-text">Visualiza y/o descarga el parte de trabajos que debes realizar
+                                        cada
+                                        día.</p>
+                                    <!-- <a href="../../public/index.php?c=Jefe&a=gestionGrupos" class="btn btn-primary">Ir a
                                         Grupos</a> -->
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                    <p class="text-center mt-5">Navega por el <span>menu lateral</span> para acceder a los diferentes apartados
+                    <p class="text-center mt-5">Navega por el <span>menu lateral</span> para acceder a los diferentes
+                        apartados
                         del
                         panel.</p>
 

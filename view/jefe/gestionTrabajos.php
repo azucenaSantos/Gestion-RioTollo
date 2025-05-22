@@ -31,6 +31,7 @@
         <main>
             <div class="info-container">
                 <h1>Listado de Trabajos</h1>
+                <hr>
             </div>
             <div class="container containerTable">
                 <form class="btn-container" action="?c=Jefe&a=editarTrabajo" method="post">
@@ -57,10 +58,12 @@
                                 <td><?php echo $trabajo->getGrupoNombre(); ?></td>
                                 <td class="anotaciones"><?php echo $trabajo->getAnotaciones(); ?></td>
                                 <td class="estado">
-                                    <?php if ($trabajo->getFinalizado()): ?>
-                                        <p class="finalizado">Finalizado</p>
+                                    <?php if ($trabajo->getPorcentaje() == 0): ?>
+                                        <p class="noFinalizado">Sin Realizar</p>
+                                    <?php elseif ($trabajo->getPorcentaje() > 0 && $trabajo->getPorcentaje() <= 90): ?>
+                                        <p class="pendiente">Pendiente</p>
                                     <?php else: ?>
-                                        <p class="pendiente">No Finalizado</p>
+                                        <p class="finalizado">Finalizado</p>
                                     <?php endif; ?>
                                 </td>
                                 <td class="acciones">

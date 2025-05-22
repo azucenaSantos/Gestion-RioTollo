@@ -37,6 +37,7 @@
         <main>
             <div class="info-container">
                 <h1>Listado de Grupos</h1>
+                <hr>
             </div>
             <div class="container containerTable">
                 <form class="btn-container" action="?c=Jefe&a=editarGrupo" method="post">

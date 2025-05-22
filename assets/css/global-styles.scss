@@ -4,9 +4,11 @@ body {
   background-color: $crema !important;
   padding: 0px !important;
 }
-.li-active{
+
+.li-active {
   background-color: #aecb67 !important;
 }
+
 #map {
   height: 500px;
   margin-top: 40px;
@@ -30,6 +32,17 @@ textarea {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  animation: fadeIn 1s ease-in forwards;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
 }
 
 main {
@@ -412,14 +425,16 @@ footer {
 
   .navbar-nav {
     width: 100%;
+    margin-top: 25px;
   }
 
   li {
     display: flex;
     align-items: center;
-    height: 55px !important;
-    // padding-left: 10px;
-    margin-top: 20px;
+    /* height: 55px !important; */
+    /* margin-top: 20px; */
+    padding-top: 20px;
+    padding-bottom: 10px;
     transition: background-color 0.4s ease-in-out;
 
     @media #{$mobile2} {
@@ -437,7 +452,7 @@ footer {
     // color: $crema;
     color: $color-grey;
     display: flex;
-    align-items: baseline;
+    // align-items: baseline;
     margin-left: 10px;
 
     i {
@@ -475,28 +490,32 @@ footer {
 
 //Control del acordeon y tabla
 .desktop-table {
+  display: table;
+
   @media #{$mobile2} {
     display: none;
   }
 }
 
 .mobile-accordion {
+  display: none;
+
   @media #{$mobile2} {
     display: block;
   }
 }
 
-.desktop-table {
-  @media #{$mobile2} {
-    display: table;
-  }
-}
+// .desktop-table {
+//   @media #{$mobile2} {
+//     display: table;
+//   }
+// }
 
-.mobile-accordion {
-  @media #{$mobile2} {
-    display: none;
-  }
-}
+// .mobile-accordion {
+//   @media #{$mobile2} {
+//     display: none;
+//   }
+// }
 
 .accordion {
   .accordion-item {
@@ -603,9 +622,10 @@ footer {
     }
   }
 }
- hr{
+
+hr {
   color: $secondary-color;
- }
+}
 
 .modal-body,
 .modal-header {
@@ -665,9 +685,21 @@ label {
   }
 }
 
-.navbar-toggler{
+.navbar-toggler {
   // border: 1px solid $secondary-color !important;
-  .navbar-toggler-icon{
+  .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(85,139,47,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' fill='none' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+}
+
+.col-md-4, .col-md-6{
+  a{
+    text-decoration: none;
+  }
+  .card-body{
+    transition: background-color 0.5s ease-in-out;
+    &:hover{
+      background-color: $third-color;
+    }
   }
 }

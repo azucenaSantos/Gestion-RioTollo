@@ -1,7 +1,7 @@
 let mapa = document.getElementById("map");
 
 if (mapa) {
-  var map = L.map("map").setView([41.94143972277272, -8.777393281038458], 17); // Coordenada inicial
+  var map = L.map("map").setView([41.939595, -8.772415], 16); // Coordenada inicial
 
   //Capa satélite gratuita
   L.tileLayer(
@@ -51,17 +51,16 @@ if (mapa) {
                 Object.values(zona.parcelas).forEach((parcela) => {
                   if (parcela.trabajos && parcela.trabajos.length > 0) {
                     parcela.trabajos.forEach((trabajo) => {
-                      if (trabajo.trabajo === null) {
-                        //Comprobamos si el nombre del trabajo es null-> no hay trabajos asociados
-                        popupHtml += `<li>No hay trabajos asociados a la zona</li>`;
-                      } else {
+                      if (trabajo.trabajo != null) {
                         if (!trabajos[trabajo.trabajo]) {
                           trabajos[trabajo.trabajo] = {
                             porcentaje: trabajo.porcentaje,
                             parcelas: [],
                           };
                         }
-                        trabajos[trabajo.trabajo].parcelas.push(parcela.num_parcela);
+                        trabajos[trabajo.trabajo].parcelas.push(
+                          parcela.num_parcela
+                        );
                       }
                     });
                   } else {
@@ -70,14 +69,17 @@ if (mapa) {
                 });
                 //Agregar trabajos, porcentajes y parcelas al popup
                 Object.entries(trabajos).forEach(([trabajo, data]) => {
-                  popupHtml += `<li>${trabajo} <b>(${data.porcentaje
-                    }%)</b><ul><li class="parcelas-li"> Parcelas: ${data.parcelas.join(", ")}</li></ul></li>`;
+                  popupHtml += `<li>${trabajo} <b>(${
+                    data.porcentaje
+                  }%)</b><ul><li class="parcelas-li"> Parcelas: ${data.parcelas.join(
+                    ", "
+                  )}</li></ul></li>`;
                 });
               } else {
                 popupHtml += "<li>No hay parcelas asociados a esta zona</li>";
               }
               popupHtml += "</ul><hr>";
-              popupHtml += `<b>Promedio realizado: ${zona.porcentaje_total}%</b><br>`;
+              popupHtml += `<b>Promedio realizado: ≈ ${zona.porcentaje_total}%</b><br>`;
               popupHtml += `<a href="?c=Jefe&a=gestionTrabajos">Más información</a>`;
               //Añadir el pop up a la capa
               geoJsonLayer.bindPopup(popupHtml);

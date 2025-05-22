@@ -5,7 +5,7 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 
 $dompdf = new Dompdf();
-$options= new Options();
+$options = new Options();
 $options->set('isRemoteEnabled', true);
 
 ob_start();
@@ -15,9 +15,13 @@ $html = ob_get_clean();
 $dompdf->loadHtml($html);
 $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
-// $dompdf->stream("archivo.pdf");
-// $dompdf->render();
 
 
-//Guardar el PDF en un archivo
-file_put_contents("ParteDiario.pdf", $dompdf->output()); ?>
+$userName = $_SESSION['name'];
+$date = date('dmY_His'); //fecha y hora actual
+$fileName = "ParteDiario_{$userName}_{$date}.pdf";
+$filePath = "../public/pdfs/" . $fileName;
+
+//Guardar el PDF la ruta especificada
+file_put_contents($filePath, $dompdf->output());
+?>

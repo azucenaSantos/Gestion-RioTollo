@@ -9,6 +9,7 @@
   width: 100vw;
   background-color: $primary-color;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+
   @media (max-width: 600px) {
     //width: 100vh !important;
   }
@@ -32,6 +33,7 @@ form {
   align-items: center;
   // margin-bottom: 190px !important;
   margin-bottom: 2rem; // mucho más razonable
+
   @media (max-width: 600px) {
     width: 90%;
   }
@@ -58,13 +60,16 @@ form {
   div {
     text-align: left;
   }
+
   .form-control {
     height: 46px !important;
     border-radius: 10px !important;
+
     @media (max-width: 600px) {
       height: 40px !important;
     }
   }
+
   .form-inputs {
     width: 454px !important;
 
@@ -78,10 +83,26 @@ form {
       }
     }
   }
+
+  .form-inputs-2 {
+    width: 502px !important;
+
+    @media screen and (max-width: 600px) {
+      padding: 0px 70px;
+    }
+
+    .mt-5 {
+      @media screen and (max-width: 600px) {
+        margin-top: 2rem !important;
+      }
+    }
+  }
+
   .inputPassword {
     border-top-right-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
   }
+
   .input-group-text {
     border: 1px solid $color-lightgrey;
     border-top-right-radius: 10px !important;
@@ -98,9 +119,11 @@ form {
 
   .form-remember {
     display: flex;
+
     label {
       margin-left: 5px;
       font-size: 16px;
+
       @media (max-width: 600px) {
         font-size: 14px;
       }
@@ -111,10 +134,12 @@ form {
     display: flex;
     align-items: center;
     margin-top: 10px;
+
     a {
       position: relative;
       color: $color-grey;
       text-decoration: none;
+
       &:hover {
         text-decoration: underline;
       }
@@ -123,9 +148,11 @@ form {
 
   label {
     font-size: 18px;
+
     @media (max-width: 600px) {
       font-size: 16px;
     }
+
     input[type="checkbox"] {
       font-size: 15px;
     }
@@ -142,6 +169,7 @@ form {
     color: $color-white;
     margin-top: 20px;
     transition: background-color 0.3s ease-in-out;
+
     &:hover {
       background-color: $primary-color;
     }

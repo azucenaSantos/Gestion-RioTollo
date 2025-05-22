@@ -41,6 +41,7 @@
                 <?php else: ?>
                     <h1>Crear Trabajo</h1>
                 <?php endif; ?>
+                <hr>
             </div>
             <div class="container containerTable">
                 <form method="post" class="mx-auto p-5 shadow-sm formEdits" action="?c=Jefe&a=guardarTrabajo"
@@ -64,7 +65,6 @@
                                     <?php foreach ($zonas as $zona): ?>
                                         <option value="<?php echo $zona->getId(); ?>" <?php echo (isset($trabajo) && $trabajo->getZona() == $zona->getNombre())
                                                || (isset($zonaSeleccionar) && $zonaSeleccionar == $zona->getNombre()) ? 'selected' : ''; ?>>
-
                                             <?php echo $zona->getNombre(); ?>
                                         </option>
                                     <?php endforeach; ?>
@@ -88,7 +88,6 @@
                                 <?php else: ?>
                                     <option value="">No hay parcelas disponibles</option>
                                 <?php endif; ?>
-
                             </select>
                         </div>
                         <div class="mt-3 d-flex">
@@ -109,7 +108,7 @@
                             </div>
                             <div class="inputRadio" style="display: inline-block;">
                                 <input type="radio" id="finalizadoNo" name="finalizado" value="0" <?php
-                                echo (isset($trabajo) && $trabajo->getFinalizado() == 0) || (isset($finalizado) && $finalizado == 0) ? 'checked' : ''; ?>>
+                                echo (isset($trabajo) && $trabajo->getFinalizado() == 0) || (isset($finalizado) && $finalizado == 0) || (!isset($trabajo)) ? 'checked' : ''; ?>>
                                 <label for="finalizadoNo">No</label>
                             </div>
                         </div>

@@ -111,26 +111,30 @@
             <div class="container mt-5">
                 <div class="row text-center">
                     <div class="col-md-6">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <i class="las la-user-edit display-4 mb-3"></i>
-                                <h5 class="card-title">Gestión de Trabajador</h5>
-                                <p class="card-text">Crea, edita y elimina trabajadores de la empresa.</p>
-                                <!-- <a href="../../public/index.php?c=Jefe&a=gestionTrabajos" class="btn btn-primary">Ir a
+                        <a href="../../public/index.php?c=Rrhh&a=gestionTrabajadores">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <i class="las la-user-edit display-4 mb-3"></i>
+                                    <h5 class="card-title">Gestión de Trabajador</h5>
+                                    <p class="card-text">Crea, edita y elimina trabajadores de la empresa.</p>
+                                    <!-- <a href="../../public/index.php?c=Jefe&a=gestionTrabajos" class="btn btn-primary">Ir a
                                         Trabajos</a> -->
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-md-6">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <i class="las la-user-shield display-4 mb-3"></i>
-                                <h5 class="card-title">Gestión de Jefes</h5>
-                                <p class="card-text">Crea, edita y elimina jefes de la empresa.</p>
-                                <!-- <a href="../../public/index.php?c=Jefe&a=gestionGrupos" class="btn btn-primary">Ir a
+                        <a href="../../public/index.php?c=Rrhh&a=gestionJefes">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <i class="las la-user-shield display-4 mb-3"></i>
+                                    <h5 class="card-title">Gestión de Jefes</h5>
+                                    <p class="card-text">Crea, edita y elimina jefes de la empresa.</p>
+                                    <!-- <a href="../../public/index.php?c=Jefe&a=gestionGrupos" class="btn btn-primary">Ir a
                                         Grupos</a> -->
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <p class="text-center mt-5">Navega por el menu lateral para acceder a los diferentes
                         apartados
