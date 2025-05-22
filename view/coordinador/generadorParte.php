@@ -18,7 +18,7 @@ $dompdf->render();
 
 
 $userName = $_SESSION['name'];
-$date = date('dmY_His'); //fecha y hora actual
+$date = date('dmY'); //fecha
 $fileName = "ParteDiario_{$userName}_{$date}.pdf";
 $filePath = "../public/pdfs/" . $fileName;
 
