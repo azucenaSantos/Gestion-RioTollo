@@ -24,31 +24,32 @@ El sistema web se desarrolla con la intención de facilitar el **seguimiento** y
   * **PHP** - lenguaje de programación de entorno servidor.
   
 * **Herramientas:**  
-  * **GitHub** - control de versiones y almacenamiento de archivos del proyecto.
-  * **Visual Studio Code** ( y extensiones ) - editor de código fuente.
-  * **XAMPP + MySQL** - sistema de gestión de la base de datos.
-  * **InfinityFree** - servicio de alojamiento web.
-  * **Bootstrap** - framework que facilita la creación de páginas web _responsive_.
-  * **Leaflet** - biblioteca de JavaScript para la creación de mapas web.
+  * **[GitHub](https://github.com/)** - control de versiones y almacenamiento de archivos del proyecto.
+  * **[Visual Studio Code](https://code.visualstudio.com/)** ( y extensiones ) - editor de código fuente.
+  * **[XAMPP](https://www.apachefriends.org/es/index.html) + MySQL** - sistema de gestión de la base de datos.
+  * **[InfinityFree](https://www.infinityfree.com/)** - servicio de alojamiento web.
+  * **[Bootstrap](https://getbootstrap.com/)** - framework que facilita la creación de páginas web _responsive_.
+  * **[Composser](https://getcomposer.org/)** - gestor de dependencias para PHP.
+  * **[Leaflet](https://leafletjs.com/)** - biblioteca de JavaScript para la creación de mapas web.
   * **[DomPdf](https://github.com/dompdf/dompdf)** - compilador de HTML a PDF.
   
 ## :wrench: Instrucciones de Instalación
-El usuario puede ejecutar el proyecto de dos formas diferentes:
+El usuario puede ejecutar el proyecto de **dos** formas diferentes:
 1. Instalación del proyecto en una máquina **local**:
 Para ejecutar el proyecto de forma local (con la posibilidad de ver el código fuente del mismo), deben seguirse los siguientes pasos:
-- Realizar una previa instalación de [XAMPP](https://www.apachefriends.org/es/index.html) en caso de no tenerlo, para la gestión y acceso a la base de datos.
-- Copiar el _link_ de este repositorio
+- Realizar una previa instalación de [XAMPP](https://www.apachefriends.org/es/index.html), en caso de no tenerlo, para la gestión y acceso a la base de datos.
+- Iniciar la aplicación de XAMPP y activar los módulos de "Apache" y "MySQL".
+- Copiar el _link_ de este repositorio.
   ```plaintext
   https://github.com/azucenaSantos/Gestion-RioTollo.git
-- Clonar el repositorio en la carpeta "htdocs" creada tras la instalación de XAMPP
+- Clonar el repositorio en la carpeta "htdocs" creada tras la instalación de XAMPP.
   ```plaintext
   git clone https://github.com/azucenaSantos/Gestion-RioTollo.git
-- Ejecutar el proyecto escribiendo el siguiente link en un navegador
+- Ejecutar el proyecto escribiendo el siguiente _link_ en un navegador.
   ```plaintext
   localhost/Gestion-RioTollo
-- Debe completarse la instalación del proyecto introduciendo las credenciales de acceso válidas.
- 
-Una vez seguidos estos pasos, la base de datos se generará con valores por defecto, y será posible utilizar la aplicación localmente si se cuenta con una cuenta de usuario registrada.
+- Al acceder a la aplicación, se requiere una instalación previa de la base de datos. Para realizarla, tan solo es necesario iniciar la instalación con los valores por defecto que se asignan en el formulario.
+- Tras finalizar la instalación, se redrige al usuario a la pantalla de "Inicio de Sesión"; podrá acceder a la web con credenciales de usuario válidas.
   
 3. Ejecución del proyecto en el **servidor**:
 Para ejecutar el proyecto en el servidor online tan sólo es necesario Acceder al dominio de [Gestion-Rio-Tollo](https://gestion-riotollo.free.nf/) e iniciar sesión con una cuenta de usuario válida. </br>
@@ -56,9 +57,9 @@ _Cuentas de usuario de prueba:_
 
 | Rol  | Usuario | Contraseña |
 | ------------- | ------------- | ------------- |
-| Jefe  | pecarlos  | carlos123. |
-| RRHH  | fepatricia | patricia123. |
-| Coordinadora  | esrosa | rosa123. |
+| Jefe  | pecarlos  | carlos123 |
+| RRHH  | fepatricia | patricia123 |
+| Coordinadora  | esrosa | rosa123 |
 
 ## :interrobang: Funcionamiento de la Aplicación 
 El sistema permite que los integrantes de la empresa inicien sesión y realicen dentro de la aplicación diferentes tareas dependiendo del rol asignado.
@@ -74,11 +75,11 @@ El sistema permite que los integrantes de la empresa inicien sesión y realicen 
 
 ### Funcionalidades del departamento de **RRHH**
 * Añadir, modificar y eliminar coordinadores(as) y/o trabajadores(as).
-* Añadir, modificar y eliminar jefes y/o integrantes del departamento de RRHH.
+* Añadir, modificar y eliminar jefes(as) y/o integrantes del departamento de RRHH.
 
 ### Funcionalidades de los **Coordinadores(as)**
 * Reportar un trabajo realizado.
-* Visualizar el parte de trabajos asociados a él/ella en determinado día.
+* Visualizar el parte de trabajos asociados a él/ella.
 
 ### Flujo de uso de la aplicación
 * Acceso a la página de _login_.
@@ -101,16 +102,22 @@ La organización de carpetas y archivos de este proyecto se realiza siguiendo el
  ┃      ┗ 📁 js/
  ┣ 📁 controller/
  ┃ ┣ 📁 functions/
- ┃ ┃ ┗ 📄 functions.php
+ ┃ ┃ ┣ 📄 formFunctions.php
+ ┃ ┃ ┗ 📄 ...
  ┃ ┣ 📄 controller.php 
  ┃ ┗ 📄 ... 
  ┣ 📁 db/
  ┃ ┗ 📄 database.php
  ┣ 📁 public/
- ┃ ┗ 📄 index.php
+ ┃ ┣ 📁 pdfs/
+ ┃ ┃ ┗ 📄 --> pdfs de los partes
+ ┃ ┣ 📄 index.php
+ ┃ ┗ 📄 instalacion.php
  ┣ 📁 vendedor/
- ┃ ┗ 📁 ... (contenido composser)
+ ┃ ┗ 📁 ... (contenido composser + dompdf)
  ┣ 📁 view/
+ ┃ ┣ 📁 errores/
+ ┃ ┃ ┗ 📄 errorAceso.php
  ┃ ┣ 📁 coordinador/
  ┃ ┃ ┣ 📄 coordinador.php
  ┃ ┃ ┣ 📄 parte.php
@@ -125,9 +132,12 @@ La organización de carpetas y archivos de este proyecto se realiza siguiendo el
  ┃ ┗ 📄 footer.php
  ┣ 📄 .gitignore
  ┣ 📄 LICENSE.md
+ ┣ 📄 composer.json
+ ┣ 📄 composer.lock
  ┣ 📄 README.md
  ┗ 📄 index.php
 ```
+
 En el esquema se contemplan las carpetas y los archivos suficientes para comprender la estructura del proyecto.
 
 ## :unlock: Derechos de Autor y Licencias
