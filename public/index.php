@@ -10,7 +10,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     $host = 'localhost';
     $user = 'root';
     $password = '';
-    $bdName = 'gestion_rio_tollo'; //CAMBIAR PARA PRUEBAS DE INSTALACION !!
+    $bdName = 'gestion_rio_tollo';
     $conexion = new mysqli($host, $user, $password);
     if (!$conexion->connect_error) {
         $resultado = $conexion->query("SHOW DATABASES LIKE '$bdName'");

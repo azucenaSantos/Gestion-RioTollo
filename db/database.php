@@ -11,7 +11,7 @@ class Database
             $password = '';
         } else {
             //Configuración para el servidor en la nube
-            $data = 'mysql:host=sql309.infinityfree.com;dbname=if0_38520432_gestion_rio_tollo;charset=utf8';
+            $data = 'mysql:host=sql309.infinityfree.com;dbname=if0_38520432_gestion_riotollo;charset=utf8';
             $username = 'if0_38520432';
             $password = 'suneu2468';
         }
