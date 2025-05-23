@@ -32,6 +32,7 @@ El sistema web se desarrolla con la intención de facilitar el **seguimiento** y
   * **[Composser](https://getcomposer.org/)** - gestor de dependencias para PHP.
   * **[Leaflet](https://leafletjs.com/)** - biblioteca de JavaScript para la creación de mapas web.
   * **[DomPdf](https://github.com/dompdf/dompdf)** - compilador de HTML a PDF.
+  * **[Datatables](https://datatables.net/)** - librería de mejora del comportamiento de las tablas.
   
 ## :wrench: Instrucciones de Instalación
 El usuario puede ejecutar el proyecto de **dos** formas diferentes:
