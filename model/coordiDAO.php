@@ -50,6 +50,37 @@ class CoordiDAO
             echo "Error al obtener trabajos: " . $e->getMessage();
         }
     }
+    public function getIntegrantesGrupo($idGrupo)
+    {
+        try {
+            $sql = "SELECT u.nombre, u.apellido
+                FROM grupos g
+                JOIN grupos_trabajadores gt ON g.id = gt.id_grupo
+                JOIN usuarios u ON gt.id_trabajador = u.id
+                WHERE g.id = :idGrupo"; // Cambiado de g.id_coordinador a g.id
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':idGrupo', $idGrupo);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $integrantes = [];
+            foreach ($result as $row) {
+                $integrante = new Trabajador(
+                    null,
+                    $row['nombre'],
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                );
+                $integrantes[] = $integrante;
+            }
+            return $integrantes;
+        } catch (Exception $e) {
+            echo "Error al obtener integrantes del grupo: " . $e->getMessage();
+        }
+    }
 
     public function registrarReporte($trabajo)
     {

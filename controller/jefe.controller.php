@@ -160,7 +160,6 @@ class JefeController
         );
 
 
-
         //Si hay errores se muestran en el formulario
         if (!empty($cadenaErrores)) {
             $rol = "jefe";
@@ -193,10 +192,11 @@ class JefeController
                 $this->model->updateTrabajo($trabajo);
                 $this->model->actualizarGrupoTrabajo($trabajo->getId(), $id_grupo);
                 $this->model->actualizarParcelasTrabajo($trabajo->getId(), $parcelasSeleccionadas);
+
+
             } else {
                 $id_trabajo = $this->model->guardarTrabajo($trabajo);
                 $trabajo->setId($id_trabajo);
-
                 if (!$id_trabajo) {
                     throw new Exception("Error al guardar el trabajo. ID no generado.");
                 }
@@ -255,7 +255,7 @@ class JefeController
         try {
             require_once '../db/database.php';
             $db = Database::connect();
-            //Consulta SQL para obtener os trabajos de cada zona y el porcentaje de cada trabajo realizado
+
             $query = $db->prepare("SELECT 
                     z.id AS zona_id, z.nombre AS zona_nombre, z.limites AS zona_limites,
                     t.id AS trabajo_id, t.nombre AS trabajo_nombre, t.porcentaje AS trabajo_porcentaje,
@@ -269,7 +269,6 @@ class JefeController
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
-            //Agrupar info por zona
             $zonas = [];
 
             foreach ($result as $row) {
@@ -281,9 +280,11 @@ class JefeController
                         'limites' => $row['zona_limites'],
                         'parcelas' => [],
                         'porcentaje_total' => 0,
-                        'parcelas_count' => 0
+                        'trabajo_count_total' => 0,
+                        'porcentaje_sum_total' => 0
                     ];
                 }
+
                 if ($row['parcela_id']) {
                     $parcelaId = $row['parcela_id'];
                     if (!isset($zonas[$zonaId]['parcelas'][$parcelaId])) {
@@ -294,36 +295,38 @@ class JefeController
                             'trabajos' => []
                         ];
                     }
-                    $zonas[$zonaId]['parcelas'][$parcelaId]['trabajos'][] = [
-                        'trabajo' => $row['trabajo_nombre'],
-                        'porcentaje' => intval($row['trabajo_porcentaje'])
-                    ];
-                    // Sumamos el porcentaje y luego calculamos el promedio
-                    $zonas[$zonaId]['porcentaje_total'] += intval($row['trabajo_porcentaje']);
-                    $zonas[$zonaId]['parcelas_count']++;
+
+                    if ($row['trabajo_id']) {
+                        $porcentaje = intval($row['trabajo_porcentaje']);
+                        $zonas[$zonaId]['parcelas'][$parcelaId]['trabajos'][] = [
+                            'trabajo' => $row['trabajo_nombre'],
+                            'porcentaje' => $porcentaje
+                        ];
+
+                        //Sumar al total por zona
+                        $zonas[$zonaId]['porcentaje_sum_total'] += $porcentaje;
+                        $zonas[$zonaId]['trabajo_count_total']++;
+                    }
                 }
             }
 
-            //Calculamos el porcentaje total de la zona como promedio
-            foreach ($zonas as $zonaId => &$zona) {
-                if ($zona['parcelas_count'] > 0) {
-                    $zona['porcentaje_total'] = round($zona['porcentaje_total'] / $zona['parcelas_count']);
+            //Calcular el promedio por zona
+            foreach ($zonas as &$zona) {
+                if ($zona['trabajo_count_total'] > 0) {
+                    $zona['porcentaje_total'] = round($zona['porcentaje_sum_total'] / $zona['trabajo_count_total']);
                 } else {
-                    //Si no hay parcelas el porcentaje es 0
                     $zona['porcentaje_total'] = 0;
                 }
-                //Eliminamos el contador
-                unset($zona['parcelas_count']);
+                unset($zona['porcentaje_sum_total'], $zona['trabajo_count_total']);
             }
-            unset($zona);
 
             echo json_encode(array_values($zonas));
-
 
         } catch (PDOException $e) {
             echo json_encode(['error' => 'Error en la consulta: ' . $e->getMessage()]);
         }
     }
+
 
 
     //Grupos

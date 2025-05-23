@@ -144,6 +144,11 @@ class CoordinadorController
             $trabajosAsociados = [];
             $fechaTrabajos = date("d-m-Y"); //fecha actual en la que se genera el parte
         } else {
+            //Buscamos los integrantes de los grupos asociados al coordinador
+            $integrantesGrupo = [];
+            foreach ($trabajosAsociados as $trabajo) {
+                $integrantesGrupo[] = $this->model->getIntegrantesGrupo($trabajo->getIdGrupo());
+            }
             $fechaTrabajos = date("d-m-Y", strtotime($trabajosAsociados[0]->getFecha())); //fecha del primer trabajo
         }
         //Vista para crear el PDF del parte de trabajo

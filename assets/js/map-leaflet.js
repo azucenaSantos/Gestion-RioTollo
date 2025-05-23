@@ -43,10 +43,9 @@ if (mapa) {
                 },
               }).addTo(map);
               // Construir contenido del popup con trabajos, porcentajes y parcelas asociadas
-              let popupHtml = `<b class="zona">${zona.nombre}</b><br><b>Trabajos:</b><ul>`;
+              let popupHtml = `<b class="zona">${zona.nombre}</b><br>`;
               if (zona.parcelas && Object.keys(zona.parcelas).length > 0) {
                 const trabajos = {};
-
                 // Recopilar trabajos, porcentajes y parcelas asociadas
                 Object.values(zona.parcelas).forEach((parcela) => {
                   if (parcela.trabajos && parcela.trabajos.length > 0) {
@@ -63,23 +62,28 @@ if (mapa) {
                         );
                       }
                     });
-                  } else {
-                    popupHtml += `<li>No hay trabajos asociados a la parcela ${parcela.num_parcela}</li>`;
                   }
                 });
                 //Agregar trabajos, porcentajes y parcelas al popup
+                if (Object.keys(trabajos).length > 0) {
+                  popupHtml += `<b>Trabajos:</b>`;
+                }else{
+                  popupHtml += `<b>No hay trabajos registrados</b>`;
+                }
                 Object.entries(trabajos).forEach(([trabajo, data]) => {
-                  popupHtml += `<li>${trabajo} <b>(${
-                    data.porcentaje
-                  }%)</b><ul><li class="parcelas-li"> Parcelas: ${data.parcelas.join(
+                  popupHtml += `<ul>
+                  <li>${trabajo} <b>(${data.porcentaje}%)</b></li>
+                  <ul><li class="parcelas-li"> Parcelas: ${data.parcelas.join(
                     ", "
-                  )}</li></ul></li>`;
+                  )}</li></ul></li></ul>`;
                 });
               } else {
-                popupHtml += "<li>No hay parcelas asociados a esta zona</li>";
+                popupHtml += "<li>No hay parcelas asociadas a esta zona</li>";
               }
               popupHtml += "</ul><hr>";
-              popupHtml += `<b>Promedio realizado: ≈ ${zona.porcentaje_total}%</b><br>`;
+              if (zona.porcentaje_total > 0) {
+                popupHtml += `<b>Promedio realizado: ≈ ${zona.porcentaje_total}%</b><br>`;
+              }
               popupHtml += `<a href="?c=Jefe&a=gestionTrabajos">Más información</a>`;
               //Añadir el pop up a la capa
               geoJsonLayer.bindPopup(popupHtml);

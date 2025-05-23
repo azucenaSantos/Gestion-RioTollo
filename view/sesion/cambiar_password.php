@@ -75,8 +75,8 @@ if (session_status() === PHP_SESSION_NONE) {
 
                     <button class="w-100 btn-lg" type="submit">Cambiar Contraseña</button>
                     <div class="form-forgot">
-                        <a href="../../public/index.php">Volver atrás</a>
                         <i class="las la-angle-double-left"></i>
+                        <a href="../../public/index.php">Volver atrás</a>
                     </div>
                 </div>
             </form>

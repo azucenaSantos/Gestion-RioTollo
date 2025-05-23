@@ -138,8 +138,6 @@
                 }
             }
             echo "</p>";
-        } else {
-            echo "<p><strong>No hay integrantes asignados.</strong></p>";
         }
         ?>
         <?php foreach ($trabajosGrupo as $trabajo): ?>

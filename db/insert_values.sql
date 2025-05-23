@@ -32,7 +32,7 @@ VALUES (
         'Patricia',
         'Fernández García',
         'fepatricia',
-        '$2y$10$hoE9OD4JO7O1o0rinwPcau/SSDWa1hydtpaSPembqP.opjOf8jk.2',
+        '$2y$10$5htYBD8dCe3kTid8G.BTwODV1e1IorQ9qefAvvzL24pltMG3EW8bS',
         0,
         20
     ),
@@ -59,6 +59,38 @@ VALUES (
         '$2y$10$cmzVxkOi27PtuOq8uc0psOx7GVVRnyylOZuFhhj7dOZXGKGArSLV2',
         0,
         30
+    ),
+        (
+        'María',
+        'Gómez López',
+        'gomaria',
+        '$2y$10$ZItZRykt0UorVoJmvpMWie3800PgnIyOHMb8ceh6/wEUhA7inxTP.',
+        0,
+        40
+    ),
+        (
+        'Laura',
+        'Navarro Ruiz',
+        'nalaura',
+        '$2y$10$WQhJPRm.x.5mqyyQXi085.gTHWedbIP.nGCZjUiLnxgMckkYWG0py',
+        0,
+        40
+    ),
+        (
+        'Iván',
+        'Sánchez Morales',
+        'moivan',
+        '$2y$10$aN3n3.8o8viUfl2nWtaDn.8k9XG5iugRPKVg4E3eLpMrWV.ZRkVFa',
+        0,
+        40
+    ),
+        (
+        'Elena',
+        'Castro Díaz',
+        'caelena',
+        '$2y$10$nRgQ95zrDUTzLWg9fD9SiODLlb1isdpvQRLHe/pI2M0iicw4kOssu',
+        0,
+        40
     );
 INSERT INTO `zonas` (`nombre`, `limites`)
 VALUES (

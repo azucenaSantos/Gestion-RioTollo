@@ -11,7 +11,7 @@ body {
 
 #map {
   height: 500px;
-  margin-top: 40px;
+  margin-top: 25px;
 }
 
 .content {
@@ -278,6 +278,11 @@ footer {
     flex-wrap: wrap;
   }
 
+  @media #{$tablet2} {
+    margin-left: 20px;
+    flex-wrap: wrap;
+  }
+
   img {
     width: 110px;
     height: 110px;
@@ -293,21 +298,23 @@ footer {
       width: 70%;
     }
 
+    @media #{$tablet2} {
+      width: 70%;
+    }
+
+
+
     .iconUser {
       font-size: 32px;
-      // color: $crema;
     }
   }
 
   .nav-container {
     margin-left: 20px;
 
-    @media #{$tablet2} {
-      margin-left: 36px;
-    }
 
     @media #{$tablet2} {
-      margin-left: 80px;
+      margin-left: 0px;
     }
 
     @media #{$mobile2} {
@@ -647,6 +654,7 @@ label {
 
 #tablaOrdenar_wrapper {
   >div:first-child {
+    margin-bottom: 15px !important;
     >div:first-child {
       display: none;
     }
@@ -686,19 +694,24 @@ label {
 }
 
 .navbar-toggler {
+
   // border: 1px solid $secondary-color !important;
   .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(85,139,47,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' fill='none' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
   }
 }
 
-.col-md-4, .col-md-6{
-  a{
+.col-md-4,
+.col-md-6,
+.col-md-12 {
+  a {
     text-decoration: none;
   }
-  .card-body{
+
+  .card-body {
     transition: background-color 0.5s ease-in-out;
-    &:hover{
+
+    &:hover {
       background-color: $third-color;
     }
   }

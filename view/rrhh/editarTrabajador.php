@@ -105,6 +105,9 @@
                         <div id="errorRol"></div>
                         <!--contenedor errores servidor-->
                         <?php if (!empty($cadenaErrores)): ?>
+                            <div id="erroresCliente">
+                                <h2>Revise los errores del formulario.</h2>
+                            </div>
                             <ul style="list-style: none;">
                                 <?php foreach ($cadenaErrores as $error): ?>
                                     <div class="alert alert-danger">

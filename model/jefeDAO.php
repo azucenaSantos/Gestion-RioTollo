@@ -137,9 +137,9 @@ class JefeDAO
 
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $grupo = new Grupo(
-            $row['id'],
-            $row['nombre'],
-            $row['id_coordinador']
+                $row['id'],
+                $row['nombre'],
+                $row['id_coordinador']
             );
             $grupo->setIntegrantes($row['numero_integrantes']);
             $grupo->setNombreCoordinador($row['nombre_coordinador']); // Asumiendo que el método setNombreCoordinador existe en la clase Grupo
@@ -286,7 +286,8 @@ class JefeDAO
         return null; // Si no se encuentra el grupo, devuelve null
     }
 
-    public function updateGrupo($grupo){
+    public function updateGrupo($grupo)
+    {
         $sql = "UPDATE grupos SET nombre = :nombre, id_coordinador = :id_coordinador WHERE id = :id";
         $stmt = $this->pdo->prepare($sql);
 
@@ -300,10 +301,11 @@ class JefeDAO
         $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
         $stmt->bindParam(':id_coordinador', $id_coordinador, PDO::PARAM_INT);
 
-        return $stmt->execute();        
+        return $stmt->execute();
     }
 
-    public function actualizarIntegrantesGrupo($id_grupo, $integrantesseleccionados){
+    public function actualizarIntegrantesGrupo($id_grupo, $integrantesseleccionados)
+    {
         $sql_delete = "DELETE FROM grupos_trabajadores WHERE id_grupo = :id_grupo";
         $stmt_delete = $this->pdo->prepare($sql_delete);
         $stmt_delete->bindParam(':id_grupo', $id_grupo, PDO::PARAM_INT);
@@ -320,10 +322,11 @@ class JefeDAO
         }
 
         return true;
-        
+
     }
 
-    public function guardarGrupo($grupo){
+    public function guardarGrupo($grupo)
+    {
         $sql = "INSERT INTO grupos (nombre, id_coordinador) VALUES (:nombre, :id_coordinador)";
         $stmt = $this->pdo->prepare($sql);
 
@@ -368,10 +371,10 @@ class JefeDAO
         $anotaciones = $trabajo->getAnotaciones();
         $id_zona = $trabajo->getIdZona();
 
-        // Pasar las variables a bindParam
+        //Pasar las variables a bindParam
         $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
         $stmt->bindParam(':zona', $zona, PDO::PARAM_STR);
-        $stmt->bindParam(':parcelas', $parcelas, PDO::PARAM_INT);
+        $stmt->bindParam(':parcelas', $parcelas, PDO::PARAM_STR);
         $stmt->bindParam(':porcentaje', $porcentaje, PDO::PARAM_INT);
         $stmt->bindParam(':finalizado', $finalizado, PDO::PARAM_BOOL);
         $stmt->bindParam(':hora_inicio', $hora_inicio, PDO::PARAM_STR);
@@ -382,7 +385,7 @@ class JefeDAO
 
         $stmt->execute();
 
-        // Devuelve el ID del trabajo recién creado
+        //Devuelve el ID del trabajo recién creado
         return $this->pdo->lastInsertId();
     }
 

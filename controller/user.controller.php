@@ -70,7 +70,7 @@ class UserController
                                 header('Location: ../view/coordinador/coordinador.php');
                                 break;
                             case '40': //trabajador
-                                // header('Location: ../view/user/dashboard.php');
+                                header('Location: ../view/trabajador/trabajador.php');
                                 break;
                             default:
                                 header('Location: ../view/sesion/sesion.php');
@@ -143,10 +143,10 @@ class UserController
                         header('Location: ../view/coordinador/coordinador.php');
                         break;
                     case '40': // trabajador
-                        //header('Location: ../view/user/dashboard.php');
+                        header('Location: ../view/trabajador/trabajador.php');
                         break;
                     default:
-                        //header('Location: ../view/sesion/sesion.php');
+                        header('Location: ../view/sesion/sesion.php');
                         break;
                 }
                 exit();
