@@ -12,7 +12,9 @@ El sistema web se desarrolla con la intención de facilitar el **seguimiento** y
 * Contacto
 
 ## :chart_with_downwards_trend: Estado del Proyecto
-:construction: Proyecto en construcción :construction:
+:construction: Proyecto en construcción :construction: </br>
+Actualmente el proyecto se encuentra en una **version 1** con las implementaciones de las funcionalidades establecidas en la planificación inicial.
+Se puede acceder a los contenidos de la aplicación y gestionar trabajos y personal de la empresa si se cuenta con una cuenta válida para el inicio de sesión.
 
 ## :computer: Tecnologías Empleadas
 * **Front End:**
