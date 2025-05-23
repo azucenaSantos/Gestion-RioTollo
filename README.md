@@ -12,7 +12,9 @@ El sistema web se desarrolla con la intención de facilitar el **seguimiento** y
 * Contacto
 
 ## :chart_with_downwards_trend: Estado del Proyecto
-:construction: Proyecto en construcción :construction:
+:construction: Proyecto en construcción :construction: </br>
+Actualmente el proyecto se encuentra en una **version 1** con las implementaciones de las funcionalidades establecidas en la planificación inicial.
+Se puede acceder a los contenidos de la aplicación y gestionar trabajos y personal de la empresa si se cuenta con una cuenta válida para el inicio de sesión.
 
 ## :computer: Tecnologías Empleadas
 * **Front End:**
@@ -32,6 +34,7 @@ El sistema web se desarrolla con la intención de facilitar el **seguimiento** y
   * **[Composser](https://getcomposer.org/)** - gestor de dependencias para PHP.
   * **[Leaflet](https://leafletjs.com/)** - biblioteca de JavaScript para la creación de mapas web.
   * **[DomPdf](https://github.com/dompdf/dompdf)** - compilador de HTML a PDF.
+  * **[Datatables](https://datatables.net/)** - librería de mejora del comportamiento de las tablas.
   
 ## :wrench: Instrucciones de Instalación
 El usuario puede ejecutar el proyecto de **dos** formas diferentes:
