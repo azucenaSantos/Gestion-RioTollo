@@ -84,6 +84,9 @@ El sistema permite que los integrantes de la empresa inicien sesión y realicen 
 * Reportar un trabajo realizado.
 * Visualizar el parte de trabajos asociados a él/ella.
 
+* ### Funcionalidades de los **Trabajadores(as)**
+* Visualizar el parte de trabajos asociados a él/ella.
+
 ### Flujo de uso de la aplicación
 * Acceso a la página de _login_.
 * Inicio de sesión (y cambio de contraseña si es su primer inicio de sesión).
