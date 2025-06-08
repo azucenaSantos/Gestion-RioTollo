@@ -35,7 +35,8 @@
             </div>
             <div class="container">
                 <!--iframe donde se carga el PDF en modo previsualizacion-->
-                <iframe src="pdfs/<?php echo $fileName; ?>" width="90%" height="600px"></iframe>
+                <iframe src="pdfs/<?php echo $fileName; ?>?v=<?php echo time(); ?>" width="90%" height="600px"></iframe>
+                <!--ponemos un time para asegurar que se recargue el PDF si se ha actualizado (evitar caché del navegador)-->
             </div>
         </main>
     </div>
