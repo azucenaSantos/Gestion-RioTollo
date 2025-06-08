@@ -7,7 +7,6 @@ CREATE TABLE `grupos` (
 );
 CREATE TABLE `grupos_trabajadores` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
-    `trabajador_nombre` varchar(50) NOT NULL,
     `id_grupo` int(11) NOT NULL,
     `id_trabajador` int(11) NOT NULL,
     PRIMARY KEY (`id`),
