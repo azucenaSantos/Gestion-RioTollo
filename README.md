@@ -48,7 +48,13 @@ Para ejecutar el proyecto de forma local (con la posibilidad de ver el código f
 - Clonar el repositorio en la carpeta "htdocs" creada tras la instalación de XAMPP.
   ```plaintext
   git clone https://github.com/azucenaSantos/Gestion-RioTollo.git
-- Ejecutar el proyecto escribiendo el siguiente _link_ en un navegador.
+- Antes de ejecutar el proyecto, instalamos el gestor de independencias "Composer" desde el siguiente link:
+   ```plaintext
+  https://getcomposer.org/.
+- Una vez instalado, en la raíz del proyecto clonado ejecutamos el siguiente comando:
+  ```plaintext
+  composer install    
+- Finalmente, para poder ejecutar el proyecto, se escribe el siguiente _link_ en el navegador que se desee usar.
   ```plaintext
   localhost/Gestion-RioTollo
 - Al acceder a la aplicación, se requiere una instalación previa de la base de datos. Para realizarla, tan solo es necesario iniciar la instalación con los valores por defecto que se asignan en el formulario.
