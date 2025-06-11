@@ -48,34 +48,38 @@
                     </thead>
                     <tbody>
                         <?php foreach ($jefesInfo as $jefe): ?>
-                            <tr onclick="location.href='?c=Rrhh&a=editarJefe&id=<?php echo $jefe->getId(); ?>'">
-                                <td><?php echo $jefe->getName(); ?></td>
-                                <td><?php echo $jefe->getSurname(); ?></td>
-                                <td><?php echo $jefe->getUsername(); ?></td>
-                                <td class="estado">
-                                    <?php if ($jefe->getPasswordChanged()): ?>
-                                        <p class="finalizado">Modificada</p>
-                                    <?php else: ?>
-                                        <p class="noFinalizado">No modificada</p>
-                                    <?php endif; ?>
-                                </td>
-                                <td class="roles">
-                                    <?php if ($jefe->getRol() == "10"): ?>
-                                        <p class="jefe">Jefe(a)</p>
-                                    <?php else: ?>
-                                        <p class="rrhh">RRHH</p>
-                                    <?php endif; ?>
-                                </td>
-                                <td class="acciones">
-                                    <a href="?c=Rrhh&a=editarJefe&id=<?php echo $jefe->getId(); ?>" class="iconModify">
-                                        <i class="las la-edit"></i></a>
+                            <?php if ($jefe->getId() != $_SESSION['user_id']): ?>
+                                <!--Excluimos al usuario que se ha logeado para evitar que se pueda editar a si mismo-->
+                                <tr onclick="location.href='?c=Rrhh&a=editarJefe&id=<?php echo $jefe->getId(); ?>'">
+                                    <td><?php echo $jefe->getName(); ?></td>
+                                    <td><?php echo $jefe->getSurname(); ?></td>
+                                    <td><?php echo $jefe->getUsername(); ?></td>
+                                    <td class="estado">
+                                        <?php if ($jefe->getPasswordChanged()): ?>
+                                            <p class="finalizado">Modificada</p>
+                                        <?php else: ?>
+                                            <p class="noFinalizado">No modificada</p>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td class="roles">
+                                        <?php if ($jefe->getRol() == "10"): ?>
+                                            <p class="jefe">Jefe(a)</p>
+                                        <?php else: ?>
+                                            <p class="rrhh">RRHH</p>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td class="acciones">
+                                        <a href="?c=Rrhh&a=editarJefe&id=<?php echo $jefe->getId(); ?>" class="iconModify">
+                                            <i class="las la-edit"></i></a>
 
-                                    <a href="?c=Rrhh&a=gestionTrabajadores" class="iconDelete" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal-<?php echo $jefe->getId(); ?>"
-                                        onclick="event.stopPropagation();">
-                                        <i class="las la-trash-alt"></i></a>
-                                </td>
-                            <?php endforeach; ?>
+                                        <a href="?c=Rrhh&a=gestionTrabajadores" class="iconDelete" data-bs-toggle="modal"
+                                            data-bs-target="#deleteModal-<?php echo $jefe->getId(); ?>"
+                                            onclick="event.stopPropagation();">
+                                            <i class="las la-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
                 <!--acordeon que se muestra por cada jefe en resolucion movil-->
